@@ -21,7 +21,7 @@
   <body layout layout-fill layout-align="center center" ng-cloak style="direction: rtl; background-color: #ECECEC">
   <div style="background-color: white">
       <md-whiteframe class="md-whiteframe-z2" layout="column" layout-align="start center">
-          <div layout="row" style="border-bottom:1px solid #D6D6D6;" layout-padding layout-align="start center">
+          <div layout="row" layout-sm="column" style="border-bottom:1px solid #D6D6D6;" layout-padding layout-align="start center">
               <img style="margin:0 12px 0 6px; border-radius: 50%" ng-src="http://placehold.it/70x70" alt="message.who">
               <div flex>
                   <h2 class="md-title">דוקטור אאאא אאאא</h2>
@@ -35,8 +35,8 @@
                   </div>
               </div>
           </div>
-          <div layout="row" layout-fill layout-align="start start">
-              <div class="md-body-2" flex="50" layout="row" style="padding-right:18px;">
+          <div layout="row" layout-sm="column" layout-fill layout-align="start start">
+              <div class="md-body-2" layout="row" style="padding: 0 24px;">
                   <md-content>
                       <dl>
                           <dt><h3>בבב בבב</h3></dt>
@@ -66,12 +66,12 @@
                       </dl>
                   </md-content>
               </div>
-              <div flex="50" style="padding: 0;  border-right: 1px solid #D6D6D6;" layout="column" layout-fill layout-align="center center">
-                  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" >
+              <div style="padding: 0;  border-right: 1px solid #D6D6D6;" layout="column" layout-fill layout-align="center center">
+                  <ui-gmap-google-map flex-order-sm="2" center="map.center" zoom="map.zoom" options="map.options" >
                       <ui-gmap-marker coords='{ latitude: 21.279201, longitude: 24.856963 }' idkey="0">
                       </ui-gmap-marker>
                   </ui-gmap-google-map>
-                  <div style="padding: 18px; border-top: 1px solid #D6D6D6;" layout-fill layout="row" layout-align="start center">
+                  <div flex-order-sm="1" style="padding: 18px; border-top: 1px solid #D6D6D6;" layout-fill layout="row" layout-align="start center">
                       <strong>כתובת</strong>
                       <div flex layout-fill layout="row" layout-align="end">פרטים כלשהם, איפשהו</div>
                   </div>
