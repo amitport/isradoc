@@ -21,6 +21,13 @@
     background-color: rgb(224,224,224);
     padding: 2px 11px;
     color: #717171;
+
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.md-tab.md-active > .d-badge {
+    background-color: rgb(121,134,203);
+    color: #FDFDFD;
 }
 
 @media (max-width: 599px) {
@@ -38,6 +45,7 @@ md-tab-content {
 
 md-tab-item {
     font-size: 16px !important;
+    transition: color 0.5s !important;
 }
 
 md-tab-content h1 {
@@ -45,7 +53,7 @@ md-tab-content h1 {
 }
 
 md-tabs md-ink-bar {
-    background: #E1E1E1 !important;
+    background: rgb(121,134,203) !important;
 }
 
 /* temp fix for https://github.com/angular/material/issues/4082 */
