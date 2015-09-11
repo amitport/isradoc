@@ -82,7 +82,7 @@
         document.body.appendChild(s);
     }
 
-    if (location.hostname !== 'localhost') {
+    if (location.hostname === 'localhost') {
         addScriptSrc('jspm_packages/system.js');
         addScriptSrc('config.js');
         addScriptSrc('main.js');
