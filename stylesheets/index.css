@@ -1,0 +1,50 @@
+.d-body {
+    background-color: #ECECEC;
+}
+
+.d-middle-col {
+    direction: rtl;
+}
+.d-card {
+    background-color: white;
+}
+.d-profile-pic {
+    border-radius: 50%;
+    max-width: 96px;
+    width: 96px;
+    height: 96px;
+}
+
+.d-badge {
+    margin-right: 7px;
+    border-radius: 16px;
+    background-color: rgb(224,224,224);
+    padding: 2px 11px;
+    color: #717171;
+}
+
+@media (max-width: 599px) {
+    .d-profile-pic {
+        max-width: 116px;
+        width: 116px;
+        height: 116px;
+    }
+}
+
+md-tab-content {
+    direction: rtl;
+    padding: 16px;
+}
+
+md-tab-content h1 {
+    margin: 0;
+}
+
+md-tabs md-ink-bar {
+    background: #E1E1E1 !important;
+}
+
+/* temp fix for https://github.com/angular/material/issues/4082 */
+md-tabs[md-no-bar] md-ink-bar {
+    display: none;
+}

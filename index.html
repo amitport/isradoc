@@ -1,96 +1,94 @@
 <!doctype html>
-<html>
-  <head>
+<html style="height: inherit;">
+<head>
     <meta charset="utf-8">
     <title>IsraDoc</title>
+    <meta name="description" content="Israel doctor index">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <style>
         [ng-cloak] {
             display: none !important;
         }
-        .angular-google-map, .angular-google-map-container {
-            width: 100%;
-            height: 298px;
-        }
     </style>
-  </head>
+</head>
+<body ng-cloak layout="row" class="d-body" style="min-height: 100vh;">
+<div class="d-middle-col" layout="column" layout-align="center center" flex-sm flex-md offset-gt-md="10" flex-gt-md="80" offset-gt-lg="20" flex-gt-lg="60">
+    <md-whiteframe layout-fill class="d-card md-whiteframe-z1" layout="column" flex-sm flex-md layout-align="start center">
+        <div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
+            <img flex class="d-profile-pic" ng-src="http://placehold.it/100x100" alt="message.who">
+            <div flex>
+                <h2 class="md-title">דוקטור אאאא אאאא</h2>
+                <p class="md-subhead">אאא אאאא, אאאאאא אאאא אאא אאאאא אאאאא אאא</p>
+            </div>
+            <div flex="30" flex-md="40" layout="row" layout-align="end">
+                <div>
+                    <md-icon style="float:right; height: 48px; width: 48px;" md-svg-src="icons/phone.svg" class="s48" aria-label="Call"></md-icon>
+                    <div style="width:142px;" layout="column" layout-align="center start">
+                        <div>להזמנת תור</div>
+                        <h1 style="margin: 0;" class="md-headline">000-0000000</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <body layout layout-fill layout-align="center center" ng-cloak style="direction: rtl; background-color: #ECECEC">
-  <div style="background-color: white">
-      <md-whiteframe class="md-whiteframe-z2" layout="column" layout-align="start center">
-          <div layout="row" layout-sm="column" style="border-bottom:1px solid #D6D6D6;" layout-padding layout-align="start center">
-              <img style="margin:0 12px 0 6px; border-radius: 50%" ng-src="http://placehold.it/70x70" alt="message.who">
-              <div flex>
-                  <h2 class="md-title">דוקטור אאאא אאאא</h2>
-                  <p class="md-subhead">אאא אאאא, אאאאאא אאאא אאא אאאאא אאאאא אאא</p>
-              </div>
-              <div style="padding-right:12px; padding-left:12px;" layout="row" layout-align="center center">
-                  <md-icon style="transform: scaleX(-1); height: 48px; width: 48px;" md-svg-src="icons/phone.svg" class="s48" aria-label="Call"></md-icon>
-                  <div layout="column" layout-align="center start">
-                      <div>להזמנת תור</div>
-                      <h1 style="margin: 0;" class="md-headline">00-0000000</h1>
-                  </div>
-              </div>
-          </div>
-          <div layout="row" layout-sm="column" layout-fill layout-align="start start">
-              <div class="md-body-2" layout="row" style="padding: 0 24px;">
-                  <md-content>
-                      <dl>
-                          <dt><h3>בבב בבב</h3></dt>
-                          <dd>
-אאאאאא
-                              <br>
-אאאאאא
-                              <br>
-                          </dd>
-                          <dt><h3>בבבבב</h3></dt>
-                          <dd>אאאא<br>אאא אאא<br>אאאאאא אא אאאאא<br>אאאאא אאא אא
-                          </dd>
-                      </dl>
-                  </md-content>
-                  <md-content>
-                      <dl>
-                          <dt><h3>בבבבבבב</h3></dt>
-                          <dd>
-אאא אא
-                              <br>
-אאאאא
-                              <br>
-                          </dd>
-                          <dt><h3>בבבבב</h3></dt>
-                          <dd>אא אא<br>אאאא<br>אאאאא
-                          </dd>
-                      </dl>
-                  </md-content>
-              </div>
-              <div style="padding: 0;  border-right: 1px solid #D6D6D6;" layout="column" layout-fill layout-align="center center">
-                  <ui-gmap-google-map flex-order-sm="2" center="map.center" zoom="map.zoom" options="map.options" >
-                      <ui-gmap-marker coords='{ latitude: 21.279201, longitude: 24.856963 }' idkey="0">
-                      </ui-gmap-marker>
-                  </ui-gmap-google-map>
-                  <div flex-order-sm="1" style="padding: 18px; border-top: 1px solid #D6D6D6;" layout-fill layout="row" layout-align="start center">
-                      <strong>כתובת</strong>
-                      <div flex layout-fill layout="row" layout-align="end">פרטים כלשהם, איפשהו</div>
-                  </div>
-              </div>
-          </div>
-      </md-whiteframe>
-  </div>
+        <div style="width:98%" flex>
+            <md-tabs class="md-hue-1" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-ink md-border-bottom style="direction:ltr;">
+                <md-tab ng-disabled="false">
+                    <md-tab-label>מאמרים<span class="d-badge">0</span>
+                    </md-tab-label>
+                    <md-tab-body>
+                        <h1 class="md-subhead">לא נמצאו מאמרים</h1>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab ng-disabled="false">
+                    <md-tab-label>
+                        המלצות
+                    <span class="d-badge">0</span>
+                    </md-tab-label>
+                    <md-tab-body>
+                        <h1 class="md-subhead">לא נמצאו המלצות</h1>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab label="פרטים">
+                    lot of text lot of text
+                        lot of text
+                        lot of textlot of textlot of text lot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of text
+                        lot of text lot of text
+                        lot of text
+                        lot of textlot of textlot of text lot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of text lot of text
+                        lot of text
+                        lot of textlot of textlot of text lot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of text lot of text
+                        lot of text
+                        lot of textlot of textlot of text lot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of text lot of text
+                        lot of text
+                        lot of textlot of textlot of text lot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of text lot of text
+                        lot of text
+                        lot of textlot of textlot of text lot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of textlot of text lot of text
 
+                </md-tab>
+            </md-tabs>
+        </div>
+    </md-whiteframe>
 
-    <script src="main.min.js"></script>
+</div>
+<script>
+    function addScriptSrc(src) {
+        var s = document.createElement('script');
+        s.setAttribute('src', src);
+        s.async = false;
+        document.body.appendChild(s);
+    }
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-38622992-4', 'auto');
-        ga('send', 'pageview');
-    </script>
-  </body>
+    if (location.hostname !== 'localhost') {
+        addScriptSrc('jspm_packages/system.js');
+        addScriptSrc('config.js');
+        addScriptSrc('main.js');
+    } else {
+        addScriptSrc('main.sfx.js');
+    }
+</script>
+</body>
 </html>

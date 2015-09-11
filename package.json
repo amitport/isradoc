@@ -1,0 +1,27 @@
+{
+  "name": "isradoc",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "jspm": "^0.16.2"
+  },
+  "author": "Amit Portnoy <amit.portnoy@gmail.com> (https://github.com/amitport)",
+  "license": "AGPL",
+  "scripts": {
+    "sfx": "jspm bundle-sfx index main.sfx.js --minify --skip-source-maps"
+  },
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.5",
+      "angular-material": "github:angular/bower-material@^0.11.0",
+      "clean-css": "npm:clean-css@^3.4.1",
+      "css": "github:systemjs/plugin-css@^0.1.16"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.23",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
