@@ -27,14 +27,8 @@
     }
 }
 
-.experience > div:nth-last-child(n+2)  {
+.experience > div {
     padding-bottom: 16px;
-}
-
-@media (max-width: 959px) {
-    .experience > div {
-        padding-bottom: 16px;
-    }
 }
 
 @media (max-width: 599px) {
