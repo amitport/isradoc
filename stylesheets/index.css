@@ -36,6 +36,10 @@ md-tab-content {
     padding: 16px;
 }
 
+md-tab-item {
+    font-size: 16px !important;
+}
+
 md-tab-content h1 {
     margin: 0;
 }
