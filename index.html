@@ -18,26 +18,28 @@
 <div class="d-middle-col" layout="column" layout-align="center center" flex-sm flex-md offset-gt-md="10" flex-gt-md="80" offset-gt-lg="20" flex-gt-lg="60">
     <md-whiteframe layout-fill class="d-card md-whiteframe-z1" layout="column" flex-sm flex-md layout-align="start center">
         <div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
-            <img flex class="d-profile-pic" ng-src="http://placehold.it/100x100" alt="message.who">
+            <img flex class="d-profile-pic" ng-src="img/ariela.jpg" alt="message.who">
             <div flex>
-                <h2 class="md-title">דוקטור אאאא אאאא</h2>
-                <p class="md-subhead">אאא אאאא, אאאאאא אאאא אאא אאאאא אאאאא אאא</p>
+                <h2 class="md-title">ד”ר אריאלה פורטנוי הידש</h2>
+                <p class="md-subhead">רופאת שיניים מומחית לילדים</p>
             </div>
             <div flex="30" flex-md="40" layout="row" layout-align="end">
-                <a  href="tel:000-0000000" style="text-decoration: none; color: rgba(0, 0, 0, 0.87);">
+                <a class="md-button md-raised md-accent" style="padding: 6px 0; font-size: inherit; text-align: inherit; line-height: inherit; letter-spacing: 0; margin: 6px 0;" href="tel:08-6999888">
                     <md-icon style="float:right; height: 48px; width: 48px;" md-svg-src="icons/phone.svg" class="s48" aria-label="Call"></md-icon>
                     <div style="margin-left:8px;" layout="column" layout-align="center start">
                         <div>להזמנת תור</div>
-                        <h1 style="margin: 0; width: 142px;" class="md-headline">00-0000000</h1>
+                        <h1 style="margin: 0; width: 142px;" class="md-headline">08-6999888</h1>
                     </div>
                 </a>
             </div>
         </div>
 
-        <div style="width:98%" flex>
-            <md-tabs class="md-hue-1" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-pagination="true" md-swipe-content="true" md-no-ink md-border-bottom style="direction:ltr;">
+        <div style="width:100%">
+            <md-tabs class="md-primary md-hue-1" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-pagination="true" md-swipe-content="true"  style="direction:ltr; border-radius:0">
+                <!--md-no-ink md-border-bottom-->
                 <md-tab ng-disabled="false">
-                    <md-tab-label>מאמרים<span class="d-badge">0</span>
+                    <md-tab-label>מאמרים
+                        <!--<span class="d-badge">0</span>-->
                     </md-tab-label>
                     <md-tab-body>
                         <h1 class="md-subhead">לא נמצאו מאמרים</h1>
@@ -46,7 +48,7 @@
                 <md-tab ng-disabled="false">
                     <md-tab-label>
                         המלצות
-                    <span class="d-badge">0</span>
+                    <!--<span class="d-badge">0</span>-->
                     </md-tab-label>
                     <md-tab-body>
                         <h1 class="md-subhead">לא נמצאו המלצות</h1>
@@ -55,14 +57,109 @@
                 <md-tab label="פרטים">
                     <div layout="column" layout-gt-md="row" layout-align="start start">
 
-                        <div style="height:300px;" layout layout-fill layout-align="center center" flex-gt-md="45" style="background-color:none">
-                            center center
+                        <div class="experience" layout="column" layout-fill layout-align="start center" flex-gt-md="55">
+                            <div>
+                                <md-toolbar style="height:48px; min-height: initial; margin-bottom:10px;" class="md-primary md-hue-1">
+                                    <div style="height:48px" class="md-toolbar-tools">
+                                        <h2>
+                                            <span style="font-size:16px">ניסיון</span>
+                                        </h2>
+                                    </div>
+                                </md-toolbar>
+                                <md-content style="padding:0 16px;">
+                                    ד"ר הידש סיימה את התמחותה ברפואת שיניים לילדים באוניברסיטה העברית הדסה ירושלים בשנת 2009. ד"ר הידש שימשה כרופאה בכירה במחלקה לרפואת שיניים לילדים הדסה עיו כרם ושימשה כמדריכת סטודנטים לרופאי שיניים ומתמחים לרפואת שיניים לילדים. בסוף שנת 2010 יצאה ד"ר הידש לשליחות בארה"ב שם שימשה כפרופסור בפקולטה לרפואת שיניים לילדים באוניברסיטת דרום קליפורניה (USC) שבלוס אנג'לס. בארצות הברית עשתה ד"ר הידש קורסים בטיפול דנטלי תחת סדציה הכרתית, הרחיבה ידיעותיה בתחום רפואת שיניים אסטטית לילדים וכן השלימה לימודי תעודה במחקר קליני. ד"ר הידש חברה בהסתדרות לרפואת שיניים ובאיגוד לרפואת שיניים לילדים.
+
+                                </md-content>
+                            </div>
+                            <div style="width:100%">
+                                <md-toolbar style="height:48px; min-height: initial; margin-bottom:10px;" class="md-primary md-hue-1">
+                                    <div style="height:48px" class="md-toolbar-tools">
+                                        <h2>
+                                            <span style="font-size:16px">טיפולים מיוחדים</span>
+                                        </h2>
+                                    </div>
+                                </md-toolbar>
+                                <md-content style="padding:0 16px;">
+                                    <div layout-fill layout="row">
+                                        <div flex layout="column">
+                                    <span>
+                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
+                                    גז צחוק
+                                    </span>
+                                            <span>
+                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
+                                            הרדמה
+                                            </span>
+                                        </div>
+                                        <div flex layout="column">
+                                    <span>
+                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
+                                    שיקום</span>
+                                            <span>
+                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
+                                            בינוי</span>
+                                        </div>
+
+                                    </div>
+                                </md-content>
+                            </div>
                         </div>
 
-                        <md-whiteframe layout-padding class="md-whiteframe-z2" layout="column" layout-fill layout-align="center center" flex-gt-md="55" style="background-color: none">
-                            <iframe style="width:100%"  height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=הר+כנען+10,+באר+שבע,+ישראל&key=AIzaSyBNmOomOEwinx8kvki-JG-ipNbf2abaHfQ" allowfullscreen></iframe>
-                        </md-whiteframe>
+                        <div flex-gt-md="45" layout="column" layout-fill>
+                            <md-toolbar style="height:48px; min-height: inherit; margin-bottom:10px;" class="md-primary md-hue-1">
+                                <div style="height:48px" class="md-toolbar-tools">
+                                    <h2>
+                                        <span style="font-size:16px">מרפאות</span>
+                                    </h2>
+                                </div>
+                            </md-toolbar>
+                            <div layout="row" layout-gt-md="column">
+                        <md-whiteframe layout-padding class="md-whiteframe-z2" layout="column" layout-align="center center" >
+                            <h5 class="md-subhead">מרכז מומחים שניידר</h5>
+                            <iframe style="width:100%"  height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C&key=AIzaSyBNmOomOEwinx8kvki-JG-ipNbf2abaHfQ" allowfullscreen></iframe>
+                            <div layout-fill layout="row" layout-align="start center">
+                                <strong  style="margin-right:14px;">כתובת</strong>
+                                <span flex></span>
+                                <md-button class="md-primary md-hue-1"
+                                           onclick="navigate('%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C')">
+                                    <md-icon md-svg-icon="icons/directions.svg"></md-icon>
 
+                                    מרכז רננים, מכבים-קומת קרקע
+
+                                </md-button>
+                            </div>
+                            <div layout="column" layout-fill layout-align="start">
+                                <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
+                                    <strong>טלפון</strong>
+                                    <span flex></span>
+                                    <a style="text-transform: inherit; font-size: inherit; font-weight: inherit;" class="md-button md-primary md-hue-1" href="tel:08-6999888">
+                                        <md-icon md-svg-icon="icons/phone.svg"></md-icon>
+                                        08-6999888
+                                    </a>
+                                </div>
+                                <div style="height:48px; padding:0 14px;" layout-fill layout="row" layout-align="start center">
+                                    <strong>פקס</strong>
+                                    <span flex></span>
+                                    <span>08-6999889</span>
+                                </div>
+                                <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
+                                    <strong>דוא"ל</strong>
+                                    <span flex></span>
+                                    <a style="text-transform: inherit;" class="md-button md-primary md-hue-1" href="mailto:info@schneider-center.co.il">
+                                        <md-icon md-svg-icon="icons/email.svg"></md-icon>
+                                        info@schneider-center.co.il
+                                    </a>
+                                </div>
+                                <div style="height:48px; padding:0 14px;" layout-fill layout="row" layout-align="start center">
+                                    <strong>שעות פעילות</strong>
+                                    <span flex></span>
+                                    <span style="text-align:left"><strong>א'-ה' </strong>18:00-8:00<br><strong>ו' </strong>13:00-8:00</span>
+                                </div>
+                            </div>
+
+                        </md-whiteframe>
+                            </div>
+                        </div>
                     </div>
                 </md-tab>
             </md-tabs>
@@ -84,6 +181,31 @@
         addScriptSrc('main.js');
     } else {
         addScriptSrc('main.sfx.js');
+    }
+
+    function navigate(q) {
+        // If it's an iPhone..
+        if ((navigator.platform.indexOf("iPhone") !== -1) || (navigator.platform.indexOf("iPod") !== -1)) {
+            function iOSversion() {
+                if (/iP(hone|od|ad)/.test(navigator.platform)) {
+                    // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
+                    var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+                    return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+                }
+            }
+            var ver = iOSversion() || [0];
+
+            if (ver[0] >= 6) {
+                protocol = 'maps://';
+            } else {
+                protocol = 'http://';
+
+            }
+            window.location = protocol + 'maps.apple.com/maps?daddr=' + q;
+        }
+        else {
+            window.open('http://maps.google.com?daddr=' + q);
+        }
     }
 </script>
 </body>

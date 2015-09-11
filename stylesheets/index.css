@@ -15,19 +15,26 @@
     height: 96px;
 }
 
-.d-badge {
-    margin-right: 7px;
-    border-radius: 16px;
-    background-color: rgb(224,224,224);
-    padding: 2px 11px;
-    color: #717171;
 
-    transition: background-color 0.5s, color 0.5s;
+
+@media (min-width: 960px) {
+    .experience {
+        padding-left: 16px;
+    }
+    .d-middle-col {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
 }
 
-.md-tab.md-active > .d-badge {
-    background-color: rgb(121,134,203);
-    color: #FDFDFD;
+.experience > div:not(:last-child) {
+    padding-bottom: 16px;
+}
+
+@media (max-width: 959px) {
+    .experience > div {
+        padding-bottom: 16px;
+    }
 }
 
 @media (max-width: 599px) {
@@ -43,18 +50,34 @@ md-tab-content {
     padding: 16px;
 }
 
+
 md-tab-item {
     font-size: 16px !important;
     transition: color 0.5s !important;
 }
 
-md-tab-content h1 {
-    margin: 0;
-}
+/*md-tab-content h1 {*/
+    /*margin: 0;*/
+/*}*/
 
-md-tabs md-ink-bar {
-    background: rgb(121,134,203) !important;
-}
+/*md-tabs md-ink-bar {*/
+    /*background: rgb(121,134,203) !important;*/
+/*}*/
+
+/*.d-badge {*/
+    /*margin-right: 7px;*/
+    /*border-radius: 16px;*/
+    /*background-color: rgb(224,224,224);*/
+    /*padding: 2px 11px;*/
+    /*color: #717171;*/
+
+    /*transition: background-color 0.5s, color 0.5s;*/
+/*}*/
+
+/*.md-tab.md-active > .d-badge {*/
+    /*background-color: rgb(121,134,203);*/
+    /*color: #FDFDFD;*/
+/*}*/
 
 /* temp fix for https://github.com/angular/material/issues/4082 */
 md-tabs[md-no-bar] md-ink-bar {
