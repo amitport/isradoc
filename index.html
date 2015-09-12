@@ -113,9 +113,17 @@
                                     </h2>
                                 </div>
                             </md-toolbar>
-                            <div layout="column">
+                            <div layout="column" ng-controller="clinicsController">
                         <md-whiteframe layout-padding class="md-whiteframe-z3" layout="column" layout-align="center center" >
-                            <h5 class="md-subhead">מרכז מומחים שניידר</h5>
+                            <div style="margin: 20px 0;" layout="row" layout-fill>
+                            <span flex style="line-height: 48px;padding-right: 6px;letter-spacing: .01em;">
+                                מרכז מומחים שניידר
+                            </span>
+                                <md-button class="md-icon-button" ng-click="clincs[0].show = !clincs[0].show">
+                                    <md-icon md-svg-icon="{{'icons/arrow_' + (clincs[0].show ? 'up' : 'down') + '.svg'}}"></md-icon>
+                                </md-button>
+                            </div>
+                            <div ng-show="clincs[0].show" layout="column" layout-fill>
                             <div flex-order-gt-md="3" layout="column" layout-fill layout-align="start">
                                 <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
                                     <strong>טלפון</strong>
@@ -157,7 +165,7 @@
                             </div>
                             <iframe flex-order-gt-md="1" style="width:100%"  height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C&key=AIzaSyBNmOomOEwinx8kvki-JG-ipNbf2abaHfQ" allowfullscreen></iframe>
 
-
+                            </div>
                         </md-whiteframe>
                             </div>
                         </div>
