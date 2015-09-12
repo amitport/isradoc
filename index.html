@@ -13,13 +13,14 @@
             display: none !important;
         }
     </style>
+
 </head>
 <body ng-cloak layout="row" class="d-body" style="min-height: 100vh;">
 <div class="d-middle-col" layout="column" layout-align="center center" flex-sm flex-md offset-gt-md="10" flex-gt-md="80" offset-gt-lg="20" flex-gt-lg="60">
     <md-whiteframe layout-fill class="d-card md-whiteframe-z1" layout="column" flex-sm flex-md layout-align="start center">
         <div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
-            <img flex class="d-profile-pic" ng-src="img/ariela.jpg" alt="message.who">
-            <div flex>
+            <img flex class="d-profile-pic" ng-src="img/ariela.jpg" alt="ד”ר אריאלה פורטנוי הידש">
+            <div flex class="doctor-name">
                 <h2 class="md-title">ד”ר אריאלה פורטנוי הידש</h2>
                 <p class="md-subhead">רופאת שיניים מומחית לילדים</p>
             </div>
@@ -35,20 +36,19 @@
         </div>
 
         <div style="width:100%">
-            <md-tabs class="md-primary" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-pagination="true"  style="direction:ltr; border-radius:0">
+            <md-tabs class="md-hue-1" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-pagination="true"  style="direction:ltr; border-radius:0">
                 <!--md-no-ink md-border-bottom-->
-                <md-tab ng-disabled="false">
-                    <md-tab-label>מאמרים
-                        <!--<span class="d-badge">0</span>-->
+                <md-tab ng-disabled="true">
+                    <md-tab-label>
+                        <span class="mdl-badge" data-badge="0">מאמרים</span>
                     </md-tab-label>
                     <md-tab-body>
                         <h1 class="md-subhead">לא נמצאו מאמרים</h1>
                     </md-tab-body>
                 </md-tab>
-                <md-tab ng-disabled="false">
+                <md-tab ng-disabled="true">
                     <md-tab-label>
-                        המלצות
-                    <!--<span class="d-badge">0</span>-->
+                        <span class="mdl-badge" data-badge="0">המלצות</span>
                     </md-tab-label>
                     <md-tab-body>
                         <h1 class="md-subhead">לא נמצאו המלצות</h1>
@@ -114,21 +114,9 @@
                                 </div>
                             </md-toolbar>
                             <div layout="column">
-                        <md-whiteframe layout-padding class="md-whiteframe-z2" layout="column" layout-align="center center" >
+                        <md-whiteframe layout-padding class="md-whiteframe-z3" layout="column" layout-align="center center" >
                             <h5 class="md-subhead">מרכז מומחים שניידר</h5>
-                            <iframe style="width:100%"  height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C&key=AIzaSyBNmOomOEwinx8kvki-JG-ipNbf2abaHfQ" allowfullscreen></iframe>
-                            <div layout-fill layout="row" layout-align="start center">
-                                <strong  style="margin-right:14px;">כתובת</strong>
-                                <span flex></span>
-                                <md-button class="md-primary md-hue-1"
-                                           onclick="navigate('%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C')">
-                                    <md-icon md-svg-icon="icons/directions.svg"></md-icon>
-
-                                    מרכז רננים, מכבים-קומת קרקע
-
-                                </md-button>
-                            </div>
-                            <div layout="column" layout-fill layout-align="start">
+                            <div flex-order-gt-md="3" layout="column" layout-fill layout-align="start">
                                 <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
                                     <strong>טלפון</strong>
                                     <span flex></span>
@@ -156,6 +144,19 @@
                                     <span style="text-align:left"><strong>א'-ה' </strong>18:00-8:00<br><strong>ו' </strong>13:00-8:00</span>
                                 </div>
                             </div>
+                            <div flex-order-gt-md="2" layout-fill layout="row" layout-align="start center">
+                                <strong  style="margin-right:14px;">כתובת</strong>
+                                <span flex></span>
+                                <md-button class="md-primary md-hue-1"
+                                           onclick="navigate('%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C')">
+                                    <md-icon md-svg-icon="icons/directions.svg"></md-icon>
+
+                                    מרכז רננים, מכבים-קומת קרקע
+
+                                </md-button>
+                            </div>
+                            <iframe flex-order-gt-md="1" style="width:100%"  height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C&key=AIzaSyBNmOomOEwinx8kvki-JG-ipNbf2abaHfQ" allowfullscreen></iframe>
+
 
                         </md-whiteframe>
                             </div>

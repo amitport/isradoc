@@ -5,9 +5,11 @@
 .d-middle-col {
     direction: rtl;
 }
+
 .d-card {
     background-color: white;
 }
+
 .d-profile-pic {
     border-radius: 50%;
     max-width: 96px;
@@ -15,12 +17,11 @@
     height: 96px;
 }
 
-
-
 @media (min-width: 960px) {
     .experience {
         padding-left: 16px;
     }
+
     .d-middle-col {
         padding-top: 16px;
         padding-bottom: 16px;
@@ -33,9 +34,14 @@
 
 @media (max-width: 599px) {
     .d-profile-pic {
-        max-width: 116px;
-        width: 116px;
-        height: 116px;
+        margin-top: 16.6px;
+        max-width: 136px;
+        width: 136px;
+        height: 136px;
+    }
+
+    .doctor-name {
+        text-align: center;
     }
 }
 
@@ -44,36 +50,95 @@ md-tab-content {
     padding: 16px;
 }
 
-
 md-tab-item {
     font-size: 16px !important;
     transition: color 0.5s !important;
 }
 
 /*md-tab-content h1 {*/
-    /*margin: 0;*/
+/*margin: 0;*/
 /*}*/
 
 /*md-tabs md-ink-bar {*/
-    /*background: rgb(121,134,203) !important;*/
+/*background: rgb(121,134,203) !important;*/
 /*}*/
 
 /*.d-badge {*/
-    /*margin-right: 7px;*/
-    /*border-radius: 16px;*/
-    /*background-color: rgb(224,224,224);*/
-    /*padding: 2px 11px;*/
-    /*color: #717171;*/
+/*margin-right: 7px;*/
+/*border-radius: 16px;*/
+/*background-color: rgb(224,224,224);*/
+/*padding: 2px 11px;*/
+/*color: #717171;*/
 
-    /*transition: background-color 0.5s, color 0.5s;*/
+/*transition: background-color 0.5s, color 0.5s;*/
 /*}*/
 
 /*.md-tab.md-active > .d-badge {*/
-    /*background-color: rgb(121,134,203);*/
-    /*color: #FDFDFD;*/
+/*background-color: rgb(121,134,203);*/
+/*color: #FDFDFD;*/
 /*}*/
 
 /* temp fix for https://github.com/angular/material/issues/4082 */
 md-tabs[md-no-bar] md-ink-bar {
     display: none;
+}
+
+/* badge only */
+.mdl-badge {
+    position: relative;
+    white-space: nowrap;
+    margin-left: 24px
+}
+
+.mdl-badge:not([data-badge]) {
+    margin-left: auto
+}
+
+.mdl-badge[data-badge]:after {
+    content: attr(data-badge);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    top: -11px;
+    left: -24px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgb(255, 128, 171);
+    color: #fff
+}
+
+.mdl-button .mdl-badge[data-badge]:after {
+    top: -10px;
+    left: -5px
+}
+
+.mdl-badge.mdl-badge--no-background[data-badge]:after {
+    color: rgb(255, 128, 171);
+    background: rgba(255, 255, 255, .2);
+    box-shadow: 0 0 1px gray
 }
