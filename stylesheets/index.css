@@ -7,6 +7,7 @@
 }
 
 .d-card {
+    padding-top: 8px;
     background-color: white;
 }
 
@@ -15,6 +16,7 @@
     max-width: 96px;
     width: 96px;
     height: 96px;
+    margin-right: 16px;
 }
 
 @media (min-width: 960px) {
@@ -38,9 +40,13 @@
     }
     .d-profile-pic {
         margin-top: 16.6px;
+        margin-right: 0;
         max-width: 136px;
         width: 136px;
         height: 136px;
+    }
+    .d-card {
+        padding-top: 0;
     }
 
     .doctor-name {
