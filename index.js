@@ -5,7 +5,7 @@ import './stylesheets/index.css!';
 const app = angular.module('isradoc', ['ngMaterial']);
 
 app.controller('clinicsController', ['$scope', function ($scope) {
-    $scope.clincs = [{
+    $scope.clinics = [{
         show: true
     }]
 }]);
