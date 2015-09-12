@@ -158,3 +158,7 @@ md-tabs.md-hue-1 .md-tab {
 md-tabs.md-hue-1 .md-tab.md-active, md-tabs.md-hue-1 .md-tab.md-focused {
     color: rgba(0, 0, 0, 0.87);
 }
+
+md-tab-item {
+    min-width: 122px;
+}
