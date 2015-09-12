@@ -150,3 +150,11 @@ md-tabs[md-no-bar] md-ink-bar {
     background: rgba(255, 255, 255, .2);
     box-shadow: 0 0 1px gray
 }
+
+md-tabs.md-hue-1 .md-tab {
+    color: rgb(121,134,203);
+}
+
+md-tabs.md-hue-1 .md-tab.md-active, md-tabs.md-hue-1 .md-tab.md-focused {
+    color: rgba(0, 0, 0, 0.87);
+}
