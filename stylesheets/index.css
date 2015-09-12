@@ -137,6 +137,16 @@ md-tabs[md-no-bar] md-ink-bar {
     transition: background-color 0.5s cubic-bezier(0.35, 0, 0.25, 1);
 }
 
+@media (max-width: 599px) {
+    .mdl-badge {
+        margin-left: 0;
+    }
+
+    .mdl-badge[data-badge]:after {
+        display: none;
+    }
+}
+
 .md-tab.md-active > .mdl-badge:after {
     background-color: rgb(255, 128, 171);
 }
@@ -159,7 +169,14 @@ md-tabs.md-hue-1 .md-tab.md-active, md-tabs.md-hue-1 .md-tab.md-focused {
     color: rgba(0, 0, 0, 0.87);
 }
 
-md-tab-item.md-active {
-    min-width: 122px;
-}
 
+/*md-tab-item.md-active {*/
+    /*min-width: 122px;*/
+/*}*/
+
+/*md-tab-item {*/
+    /*direction: rtl;*/
+/*}*/
+/*.md-tab {*/
+    /*text-overflow: clip !important;*/
+/*}*/
