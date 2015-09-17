@@ -1,3 +1,14 @@
+/* override angular material font with hebrew support*/
+html.isradoc,
+html.isradoc button,
+html.isradoc select,
+html.isradoc textarea,
+html.isradoc input,
+html.isradoc md-bottom-sheet .md-subheader,
+html.isradoc .md-chips {
+    font-family: 'Noto Sans Hebrew', Roboto, 'Helvetica Neue', sans-serif;
+}
+
 .d-body {
     background-color: #ECECEC;
 }
