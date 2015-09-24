@@ -14,30 +14,30 @@ System.config({
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.4.5",
+    "angular": "github:angular/bower-angular@1.4.6",
     "angular-material": "github:angular/bower-material@0.11.0",
-    "babel": "npm:babel-core@5.8.23",
-    "babel-runtime": "npm:babel-runtime@5.8.20",
-    "clean-css": "npm:clean-css@3.4.1",
+    "babel": "npm:babel-core@5.8.25",
+    "babel-runtime": "npm:babel-runtime@5.8.25",
+    "clean-css": "npm:clean-css@3.4.4",
     "core-js": "npm:core-js@1.1.4",
-    "css": "github:systemjs/plugin-css@0.1.16",
-    "github:angular/bower-angular-animate@1.4.5": {
-      "angular": "github:angular/bower-angular@1.4.5"
+    "css": "github:systemjs/plugin-css@0.1.17",
+    "github:angular/bower-angular-animate@1.4.6": {
+      "angular": "github:angular/bower-angular@1.4.6"
     },
-    "github:angular/bower-angular-aria@1.4.5": {
-      "angular": "github:angular/bower-angular@1.4.5"
+    "github:angular/bower-angular-aria@1.4.6": {
+      "angular": "github:angular/bower-angular@1.4.6"
     },
     "github:angular/bower-material@0.11.0": {
-      "angular": "github:angular/bower-angular@1.4.5",
-      "angular-animate": "github:angular/bower-angular-animate@1.4.5",
-      "angular-aria": "github:angular/bower-angular-aria@1.4.5",
-      "css": "github:systemjs/plugin-css@0.1.16"
+      "angular": "github:angular/bower-angular@1.4.6",
+      "angular-animate": "github:angular/bower-angular-animate@1.4.6",
+      "angular-aria": "github:angular/bower-angular-aria@1.4.6",
+      "css": "github:systemjs/plugin-css@0.1.17"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.4.3"
+      "buffer": "npm:buffer@3.5.0"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -80,15 +80,15 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:babel-runtime@5.8.20": {
+    "npm:babel-runtime@5.8.25": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:buffer@3.4.3": {
+    "npm:buffer@3.5.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
     },
-    "npm:clean-css@3.4.1": {
+    "npm:clean-css@3.4.4": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
