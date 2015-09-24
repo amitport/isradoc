@@ -2,13 +2,11 @@ import angular from 'angular';
 import 'angular-sanitize';
 import 'angular-material';
 import './stylesheets/index.css!';
-import {DocRepo} from './doc';
-import {ClinicRepo} from './clinic';
+import Repos from './repos';
 
 const app = angular.module('isradoc', ['ngMaterial', 'ngSanitize']);
 
-app.service('DocRepo', DocRepo);
-app.service('ClinicRepo', ClinicRepo);
+app.service('repos', Repos);
 app.config(
     ['$sceDelegateProvider', function($sceDelegateProvider) {
         $sceDelegateProvider.resourceUrlWhitelist([
@@ -19,11 +17,8 @@ app.config(
         ]);
     }]
 );
-app.run(['$rootScope', 'DocRepo', 'ClinicRepo', async function($rootScope, DocRepo, ClinicRepo) {
-    $rootScope.doc = await DocRepo.get('ariela_portnoy_hidas', 'he');
-    $rootScope.clinics = await* ($rootScope.doc.clincIds.map(async function (clinicId) {
-        return await ClinicRepo.get(clinicId, 'he');
-    }));
+app.run(['$rootScope', 'repos', async function($rootScope, repos) {
+    $rootScope.doc = await repos.doc.get('ariela_portnoy_hidas');
 
     $rootScope.navigate = function (q) {
         q = encodeURIComponent(q);

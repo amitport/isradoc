@@ -1,4 +1,4 @@
-import Repo from './repo'
+import ModelRepo from './modelRepo'
 
 export class Clinic {
     constructor(json) {
@@ -10,11 +10,8 @@ export class Clinic {
 }
 Clinic.path = 'clinics';
 
-export class ClinicRepo extends Repo {
-    constructor($http) {
-        super($http, Clinic)
+export class ClinicRepo extends ModelRepo {
+    constructor($http, repos) {
+        super($http, repos, Clinic)
     }
 }
-
-ClinicRepo.$inject = ['$http'];
-
