@@ -16,6 +16,7 @@ System.config({
   map: {
     "angular": "github:angular/bower-angular@1.4.6",
     "angular-material": "github:angular/bower-material@0.11.0",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.6",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
     "clean-css": "npm:clean-css@3.4.4",
@@ -25,6 +26,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.4.6"
     },
     "github:angular/bower-angular-aria@1.4.6": {
+      "angular": "github:angular/bower-angular@1.4.6"
+    },
+    "github:angular/bower-angular-sanitize@1.4.6": {
       "angular": "github:angular/bower-angular@1.4.6"
     },
     "github:angular/bower-material@0.11.0": {

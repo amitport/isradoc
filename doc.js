@@ -1,3 +1,5 @@
+import Repo from './repo'
+
 export class Doc {
     constructor(json) {
         Object.assign(this, json);
@@ -7,18 +9,11 @@ export class Doc {
         });
     }
 }
+Doc.path = 'doctors';
 
-export class DocRepo {
+export class DocRepo extends Repo {
     constructor($http) {
-        this.$http = $http;
-    }
-
-    get(docId, langId) {
-        return this.$http.get(`doctors/${docId}/${langId}.json`).then(
-            function (response) {
-                return new Doc(response.data)
-            }
-        );
+        super($http, Doc)
     }
 }
 

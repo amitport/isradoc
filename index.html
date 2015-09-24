@@ -103,12 +103,10 @@
                                     </h2>
                                 </div>
                             </md-toolbar>
-                            <div layout="column" ng-controller="clinicsController">
+                            <div layout="column">
                         <md-whiteframe layout-padding class="md-whiteframe-z3" layout="column" layout-align="center center" >
                             <div style="margin: 20px 0;" layout="row" layout-fill>
-                            <span flex style="line-height: 48px;padding-right: 6px;letter-spacing: .01em;">
-                                מרכז מומחים שניידר
-                            </span>
+                            <span flex style="line-height: 48px;padding-right: 6px;letter-spacing: .01em;">{{clinics[0].name}}</span>
                                 <md-button class="md-icon-button" ng-click="clinics[0].show = !clinics[0].show">
                                     <md-icon md-svg-icon="{{'icons/arrow_' + (clinics[0].show ? 'up' : 'down') + '.svg'}}"></md-icon>
                                 </md-button>
@@ -118,42 +116,44 @@
                                 <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
                                     <strong>טלפון</strong>
                                     <span flex></span>
-                                    <a style="text-transform: inherit; font-size: inherit; font-weight: inherit;" class="md-button md-primary md-hue-1" href="tel:08-6999888">
+                                    <a style="text-transform: inherit; font-size: inherit; font-weight: inherit;" class="md-button md-primary md-hue-1" ng-href="tel:{{clinics[0].phone}}">
                                         <md-icon md-svg-icon="icons/phone.svg"></md-icon>
-                                        08-6999888
+                                        {{clinics[0].phone}}
                                     </a>
                                 </div>
                                 <div style="height:48px; padding:0 14px;" layout-fill layout="row" layout-align="start center">
                                     <strong>פקס</strong>
                                     <span flex></span>
-                                    <span>08-6999889</span>
+                                    <span>{{clinics[0].fax}}</span>
                                 </div>
                                 <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
                                     <strong>דוא"ל</strong>
                                     <span flex></span>
-                                    <a style="text-transform: inherit;" class="md-button md-primary md-hue-1" href="mailto:info@schneider-center.co.il">
+                                    <a style="text-transform: inherit;" class="md-button md-primary md-hue-1" href="mailto:{{clinics[0].email}}">
                                         <md-icon md-svg-icon="icons/email.svg"></md-icon>
-                                        info@schneider-center.co.il
+                                        {{clinics[0].email}}
                                     </a>
                                 </div>
                                 <div style="height:48px; padding:0 14px;" layout-fill layout="row" layout-align="start center">
                                     <strong>שעות פעילות</strong>
                                     <span flex></span>
-                                    <span style="text-align:left"><strong>א'-ה' </strong>18:00-8:00<br><strong>ו' </strong>13:00-8:00</span>
+                                    <span style="text-align:left">
+                                        <div ng-repeat="entry in clinics[0].open track by $index">
+                                            <strong>{{entry.days}} </strong>{{entry.hours}}
+                                        </div>
+                                    </span>
                                 </div>
                             </div>
                             <div flex-order-gt-md="2" layout-fill layout="row" layout-align="start center">
                                 <strong  style="margin-right:14px;">כתובת</strong>
                                 <span flex></span>
                                 <md-button class="md-primary md-hue-1"
-                                           onclick="navigate('%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C')">
+                                           ng-click="navigate(clinics[0].addressForGoogle)">
                                     <md-icon md-svg-icon="icons/directions.svg"></md-icon>
-
-                                    מרכז רננים, מכבים-קומת קרקע
-
+                                {{clinics[0].addressText}}
                                 </md-button>
                             </div>
-                            <iframe flex-order-gt-md="1" style="width:100%"  height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=%D7%9E%D7%A8%D7%9B%D7%96%20%D7%A8%D7%A0%D7%A0%D7%99%D7%9D%2C%20%D7%9E%D7%9B%D7%91%D7%99%D7%9D%2C%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C&language=iw&key=AIzaSyBNmOomOEwinx8kvki-JG-ipNbf2abaHfQ" allowfullscreen></iframe>
+                            <iframe flex-order-gt-md="1" style="width:100%"  height="300" frameborder="0" style="border:0" ng-src="{{clinics[0].mapResourceUrl}}" allowfullscreen></iframe>
 
                             </div>
                         </md-whiteframe>
@@ -180,31 +180,6 @@
         addScriptSrc('main.js');
     } else {
         addScriptSrc('main.sfx.js');
-    }
-
-    function navigate(q) {
-        // If it's an iPhone..
-        if ((navigator.platform.indexOf("iPhone") !== -1) || (navigator.platform.indexOf("iPod") !== -1)) {
-            function iOSversion() {
-                if (/iP(hone|od|ad)/.test(navigator.platform)) {
-                    // supports iOS 2.0 and later: <http://bit.ly/TJjs1V>
-                    var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
-                    return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
-                }
-            }
-            var ver = iOSversion() || [0];
-
-            if (ver[0] >= 6) {
-                protocol = 'maps://';
-            } else {
-                protocol = 'http://';
-
-            }
-            window.location = protocol + 'maps.apple.com/maps?daddr=' + q;
-        }
-        else {
-            window.open('http://maps.google.com?daddr=' + q);
-        }
     }
 </script>
 </body>
