@@ -21,17 +21,17 @@
 <div class="d-middle-col" layout="column" layout-align="center center" flex-sm flex-md offset-gt-md="10" flex-gt-md="80" offset-gt-lg="20" flex-gt-lg="60">
     <md-whiteframe layout-fill class="d-card md-whiteframe-z1" layout="column" flex-sm flex-md layout-align="start center">
         <div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
-            <img flex class="d-profile-pic" ng-src="img/ariela.jpg" alt="ד”ר אריאלה פורטנוי הידש">
+            <img flex class="d-profile-pic" ng-src="{{doc.imgUrl}}" title="{{doc.name.full}}" alt="{{doc.name.full}}">
             <div flex class="doctor-name">
-                <h2 class="md-title">ד”ר אריאלה פורטנוי הידש</h2>
-                <p class="md-subhead">רופאת שיניים מומחית לילדים</p>
+                <h2 class="md-title">{{doc.name.full}}</h2>
+                <p class="md-subhead">{{doc.tagline}}</p>
             </div>
             <div flex="30" flex-md="40" layout="row" layout-align="end">
-                <a class="md-button md-raised md-accent" style="padding: 6px 0; font-size: inherit; text-align: inherit; line-height: inherit; letter-spacing: 0; margin: 6px 0;" href="tel:08-6999888">
+                <a class="md-button md-raised md-accent" style="padding: 6px 0; font-size: inherit; text-align: inherit; line-height: inherit; letter-spacing: 0; margin: 6px 0;" ng-href="tel:{{doc.mainPhone}}">
                     <md-icon style="float:right; height: 48px; width: 48px;" md-svg-src="icons/phone.svg" class="s48" aria-label="Call"></md-icon>
                     <div style="margin-left:8px;" layout="column" layout-align="center start">
                         <div>להזמנת תור</div>
-                        <h1 style="margin: 0; width: 142px;" class="md-headline">08-6999888</h1>
+                        <h1 style="margin: 0; width: 142px;" class="md-headline">{{doc.mainPhone}}</h1>
                     </div>
                 </a>
             </div>
@@ -68,10 +68,7 @@
                                         </h2>
                                     </div>
                                 </md-toolbar>
-                                <md-content style="padding:0 16px;">
-                                    ד"ר הידש סיימה את התמחותה ברפואת שיניים לילדים באוניברסיטה העברית הדסה ירושלים בשנת 2009. ד"ר הידש שימשה כרופאה בכירה במחלקה לרפואת שיניים לילדים הדסה עיו כרם ושימשה כמדריכת סטודנטים לרופאי שיניים ומתמחים לרפואת שיניים לילדים. בסוף שנת 2010 יצאה ד"ר הידש לשליחות בארה"ב שם שימשה כפרופסור בפקולטה לרפואת שיניים לילדים באוניברסיטת דרום קליפורניה (USC) שבלוס אנג'לס. בארצות הברית עשתה ד"ר הידש קורסים בטיפול דנטלי תחת סדציה הכרתית, הרחיבה ידיעותיה בתחום רפואת שיניים אסטטית לילדים וכן השלימה לימודי תעודה במחקר קליני. ד"ר הידש חברה בהסתדרות לרפואת שיניים ובאיגוד לרפואת שיניים לילדים.
-
-                                </md-content>
+                                <md-content style="padding:0 16px;">{{doc.experienceParagraph}}</md-content>
                             </div>
                             <div style="width:100%">
                                 <md-toolbar style="height:48px; min-height: initial; margin-bottom:10px;" class="md-primary md-hue-1">
@@ -81,27 +78,18 @@
                                         </h2>
                                     </div>
                                 </md-toolbar>
-                                <md-content style="padding:0 16px;">
-                                    <div layout-fill layout="row">
-                                        <div flex layout="column">
-                                    <span>
-                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
-                                    גז צחוק
-                                    </span>
-                                            <span>
-                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
-                                            הרדמה
-                                            </span>
-                                        </div>
-                                        <div flex layout="column">
-                                    <span>
-                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
-                                    שיקום</span>
-                                            <span>
-                                    <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
-                                            בינוי</span>
-                                        </div>
-
+                                <md-content layout="row" style="padding:0 16px;">
+                                    <div flex layout="column">
+                                        <span ng-repeat="treatment in doc.specialTreatments track by $index" ng-if="$odd">
+                                            <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
+                                            {{treatment}}
+                                        </span>
+                                    </div>
+                                    <div flex layout="column">
+                                        <span ng-repeat="treatment in doc.specialTreatments track by $index" ng-if="$even">
+                                            <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
+                                            {{treatment}}
+                                        </span>
                                     </div>
                                 </md-content>
                             </div>
