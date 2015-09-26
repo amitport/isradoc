@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "jspm": "^0.16.2"
+    "jspm": "^0.16.10"
   },
   "author": "Amit Portnoy <amit.portnoy@gmail.com> (https://github.com/amitport)",
   "license": "AGPL",

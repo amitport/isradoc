@@ -17,8 +17,8 @@ app.config(
         ]);
     }]
 );
-app.run(['$rootScope', 'repos', async function($rootScope, repos) {
-    $rootScope.doc = await repos.doc.get('ariela_portnoy_hidas');
+app.run(['$rootScope', 'repos', function($rootScope, repos) {
+    //$rootScope.doc = await repos.doc.get('ariela_portnoy_hidas');
 
     $rootScope.navigate = function (q) {
         q = encodeURIComponent(q);
@@ -46,6 +46,15 @@ app.run(['$rootScope', 'repos', async function($rootScope, repos) {
         }
     };
 }]);
+app.directive('iDoc', function () {
+   return {
+       templateUrl: 'templates/doc.html',
+       scope: true,
+       controller: ['$scope', '$attrs', 'repos', async function($scope, $attrs, repos) {
+           $scope.doc = await repos.doc.get($attrs.id);
+       }]
+   };
+});
 
 angular.element(document).ready(function () {
     angular.bootstrap(document, ['isradoc'], {strictDi: true});
