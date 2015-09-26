@@ -1,11 +1,19 @@
 <md-whiteframe layout-fill class="d-card md-whiteframe-1dp" layout="column" flex-sm flex-md layout-align="start center"
                ng-class="cls"
-                ng-mouseenter="cls = 'md-whiteframe-5dp'"
+                ng-mouseenter="cls = !doc.show ? 'md-whiteframe-5dp' : null"
                 ng-mouseleave="cls = null">
 <div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
     <img flex class="d-profile-pic" ng-src="{{doc.imgUrl}}" title="{{doc.name.full}}" alt="{{doc.name.full}}">
     <div flex class="doctor-name">
-        <h2 class="md-title">{{doc.name.full}}</h2>
+        <span layout="row" layout-align="start center">
+            <span class="md-title">{{doc.name.full}}</span>
+            <md-button ng-if="!doc.showAlways" ng-href="doctor.html#{{doc.id}}"
+                       title="פתח בחלון חדש"
+                       target="_blank"
+                       class="md-icon-button md-primary md-hue-1" >
+                <md-icon md-svg-icon="icons/launch.svg"></md-icon>
+            </md-button>
+        </span>
         <p class="md-subhead">{{doc.tagline}}</p>
     </div>
     <div flex="30" flex-md="40" layout="row" layout-align="end">
@@ -88,7 +96,7 @@
                             <md-whiteframe layout-padding class="md-whiteframe-2dp" layout="column" layout-align="center center" >
                                 <div style="margin: 20px 0;" layout="row" layout-fill>
                                     <span flex style="line-height: 48px;padding-right: 6px;letter-spacing: .01em;">{{doc.clinics[0].name}}</span>
-                                    <md-button class="md-icon-button" ng-click="doc.clinics[0].show = !doc.clinics[0].show">
+                                    <md-button title="{{(doc.clinics[0].show ? 'הסתר' : 'הצג') + ' פרטי מרפאה'}}" class="md-primary md-hue-1 md-icon-button" ng-click="doc.clinics[0].show = !doc.clinics[0].show">
                                         <md-icon md-svg-icon="{{'icons/arrow_' + (doc.clinics[0].show ? 'up' : 'down') + '.svg'}}"></md-icon>
                                     </md-button>
                                 </div>
@@ -144,8 +152,8 @@
             </md-tab>
         </md-tabs>
     </div>
-    <md-button style="width:100%; margin: 0; border-radius: 0;"
+    <md-button ng-if="!doc.showAlways" title="{{(doc.show ? 'הסתר' : 'הצג') + ' פרטי רופא'}}" class="md-primary md-hue-1" style="width:100%; margin: 0; border-radius: 0;"
                ng-click="doc.show = !doc.show">
-<md-icon md-svg-icon="{{'icons/arrow_' + (doc.show ? 'up' : 'down') + '.svg'}}"></md-icon>
-</md-button>
+        <md-icon md-svg-icon="{{'icons/arrow_' + (doc.show ? 'up' : 'down') + '.svg'}}"></md-icon>
+    </md-button>
 </md-whiteframe>

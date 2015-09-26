@@ -52,6 +52,11 @@ app.directive('dDoc', function () {
        scope: true,
        controller: ['$scope', '$attrs', 'repos', async function($scope, $attrs, repos) {
            $scope.doc = await repos.doc.get($attrs.id);
+
+           if ($attrs.showAlways != null) {
+               $scope.doc.show = true;
+               $scope.doc.showAlways = true;
+           }
        }]
    };
 });

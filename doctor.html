@@ -17,20 +17,24 @@
     </style>
 
 </head>
-<body ng-cloak layout="row" layout-align="center start">
+<body ng-cloak layout="row" layout-align="center start" style="min-height: 100vh;">
 
-    <div layout="column" layout-align="start center"
-         flex-sm flex-md offset-gt-md="10" flex-gt-md="80" offset-gt-lg="20" flex-gt-lg="60">
-        <div layout="column" layout-align="start center">
-            <h3 class="md-display-1">I<span style="font-size: 85%">SRA</span>D<span style="font-size: 85%">OC</span></h3>
-            <h4 style="margin-top: -20px; margin-bottom: 32px;" class="md-subhead">אינדקס רופאים</h4>
-        </div>
+    <div layout="column" layout-align="start center" layout-fill style="min-height: inherit;"
+        flex-sm flex-md offset-gt-md="10" flex-gt-md="80" offset-gt-lg="20" flex-gt-lg="60">
         <div style="width:100%;" class="d-middle-col" layout="column" layout-margin>
-            <d-doc flex id="ariela_portnoy_hidas"></d-doc>
-            <d-doc flex id="yosef_gohar"></d-doc>
+            <d-doc flex id="placeholder-doc-id" show-always></d-doc>
         </div>
+        <footer flex style="padding-top: 0;" layout-fill layout="row" layout-align="start end" layout-padding>
+            <a href="index.html" title="עבור לדף הבית" class="md-button md-raised md-primary">
+                <md-icon md-svg-icon="icons/home.svg"></md-icon>
+                I<span style="font-size: 85%">SRA</span>D<span style="font-size: 85%">OC</span>
+            </a>
+        </footer>
     </div>
+</div>
 <script>
+    document.getElementById("placeholder-doc-id").setAttribute("id", window.location.hash.substring(1));
+
     function addScriptSrc(src) {
         var s = document.createElement('script');
         s.setAttribute('src', src);

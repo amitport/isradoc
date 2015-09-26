@@ -1,8 +1,9 @@
 import ModelRepo from './modelRepo'
 
 export class Doc {
-    constructor(json, repos) {
+    constructor(json, objId, repos) {
         Object.assign(this, json);
+        this.id = objId;
 
         Reflect.defineProperty(this.name, 'full', {
             get: function () { return `${this.title} ${this.first} ${this.last}`; }

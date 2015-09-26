@@ -8,7 +8,7 @@ export default class ModelRepo {
     get(objId, langId = 'he') {
         return this.$http.get(`${this.Type.path}/${objId}/${langId}.json`).then(
             (response) => {
-                return new this.Type(response.data, this.repos)
+                return new this.Type(response.data, objId, this.repos)
             }
         );
     }
