@@ -46,7 +46,7 @@ app.run(['$rootScope', 'repos', function($rootScope, repos) {
         }
     };
 }]);
-app.directive('iDoc', function () {
+app.directive('dDoc', function () {
    return {
        templateUrl: 'templates/doc.html',
        scope: true,

@@ -1,24 +1,26 @@
-<md-whiteframe layout-fill class="d-card md-whiteframe-z1" layout="column" flex-sm flex-md layout-align="start center">
-    <div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
-        <img flex class="d-profile-pic" ng-src="{{doc.imgUrl}}" title="{{doc.name.full}}" alt="{{doc.name.full}}">
-        <div flex class="doctor-name">
-            <h2 class="md-title">{{doc.name.full}}</h2>
-            <p class="md-subhead">{{doc.tagline}}</p>
-        </div>
-        <div flex="30" flex-md="40" layout="row" layout-align="end">
-            <a class="md-button md-raised md-accent" style="padding: 6px 0; font-size: inherit; text-align: inherit; line-height: inherit; letter-spacing: 0; margin: 6px 0;" ng-href="tel:{{doc.mainPhone}}">
-                <md-icon style="float:right; height: 48px; width: 48px;" md-svg-src="icons/phone.svg" class="s48" aria-label="Call"></md-icon>
-                <div style="margin-left:8px;" layout="column" layout-align="center start">
-                    <div>להזמנת תור</div>
-                    <h1 style="margin: 0; width: 142px;" class="md-headline">{{doc.mainPhone}}</h1>
-                </div>
-            </a>
-        </div>
+<md-whiteframe layout-fill class="d-card md-whiteframe-1dp" layout="column" flex-sm flex-md layout-align="start center"
+               ng-class="cls"
+                ng-mouseenter="cls = 'md-whiteframe-5dp'"
+                ng-mouseleave="cls = null">
+<div layout-fill layout="column" layout-gt-sm="row" layout-padding layout-align="start center">
+    <img flex class="d-profile-pic" ng-src="{{doc.imgUrl}}" title="{{doc.name.full}}" alt="{{doc.name.full}}">
+    <div flex class="doctor-name">
+        <h2 class="md-title">{{doc.name.full}}</h2>
+        <p class="md-subhead">{{doc.tagline}}</p>
     </div>
-
-    <div style="width:100%">
-        <md-tabs class="md-hue-1" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-pagination="true"  style="direction:ltr; border-radius:0">
-            <!--md-no-ink md-border-bottom-->
+    <div flex="30" flex-md="40" layout="row" layout-align="end">
+        <a class="md-button md-raised md-accent" style="padding: 6px 0; font-size: inherit; text-align: inherit; line-height: inherit; letter-spacing: 0; margin: 6px 0;" ng-href="tel:{{doc.mainPhone}}">
+            <md-icon style="float:right; height: 48px; width: 48px;" md-svg-src="icons/phone.svg" class="s48" aria-label="Call"></md-icon>
+            <div style="margin-left:8px;" layout="column" layout-align="center start">
+                <div>להזמנת תור</div>
+                <h1 style="margin: 0; width: 142px;" class="md-headline">{{doc.mainPhone}}</h1>
+            </div>
+        </a>
+    </div>
+</div>
+<div style="width:100%;" ng-if="doc.show">
+    <md-tabs class="md-hue-1" md-dynamic-height md-stretch-tabs="always" md-selected="2"  md-no-pagination="true"  style="direction:ltr; border-radius:0">
+        <!--md-no-ink md-border-bottom-->
             <md-tab ng-disabled="false">
                 <md-tab-label>
                     <span class="mdl-badge" data-badge="0">פרסומים</span>
@@ -83,7 +85,7 @@
                             </div>
                         </md-toolbar>
                         <div layout="column">
-                            <md-whiteframe layout-padding class="md-whiteframe-z3" layout="column" layout-align="center center" >
+                            <md-whiteframe layout-padding class="md-whiteframe-2dp" layout="column" layout-align="center center" >
                                 <div style="margin: 20px 0;" layout="row" layout-fill>
                                     <span flex style="line-height: 48px;padding-right: 6px;letter-spacing: .01em;">{{doc.clinics[0].name}}</span>
                                     <md-button class="md-icon-button" ng-click="doc.clinics[0].show = !doc.clinics[0].show">
@@ -142,4 +144,8 @@
             </md-tab>
         </md-tabs>
     </div>
+    <md-button style="width:100%; margin: 0; border-radius: 0;"
+               ng-click="doc.show = !doc.show">
+<md-icon md-svg-icon="{{'icons/arrow_' + (doc.show ? 'up' : 'down') + '.svg'}}"></md-icon>
+</md-button>
 </md-whiteframe>
