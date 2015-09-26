@@ -102,12 +102,12 @@
                                                 {{doc.clinics[0].phone}}
                                             </a>
                                         </div>
-                                        <div style="height:48px; padding:0 14px;" layout-fill layout="row" layout-align="start center">
+                                        <div ng-if="!!doc.clinics[0].fax" style="height:48px; padding:0 14px;" layout-fill layout="row" layout-align="start center">
                                             <strong>פקס</strong>
                                             <span flex></span>
                                             <span>{{doc.clinics[0].fax}}</span>
                                         </div>
-                                        <div style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
+                                        <div ng-if="!!doc.clinics[0].email" style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">
                                             <strong>דוא"ל</strong>
                                             <span flex></span>
                                             <a style="text-transform: inherit;" class="md-button md-primary md-hue-1" href="mailto:{{doc.clinics[0].email}}">
@@ -115,7 +115,7 @@
                                                 {{doc.clinics[0].email}}
                                             </a>
                                         </div>
-                                        <div style="min-height:48px;padding:0 14px;" layout-fill layout="row" layout-align="start center">
+                                        <div ng-if="!!doc.clinics[0].open" style="min-height:48px;padding:0 14px;" layout-fill layout="row" layout-align="start center">
                                             <strong>שעות פעילות</strong>
                                             <span flex></span>
                                     <span style="text-align:left">
