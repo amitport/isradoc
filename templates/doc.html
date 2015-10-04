@@ -49,37 +49,52 @@
                 <div layout="column" layout-gt-md="row" layout-align="start start">
 
                     <div class="experience" layout="column" layout-fill layout-align="start center" flex-gt-md="55">
-                        <div>
+                        <div style="width: 100%">
                             <md-toolbar style="height:48px; min-height: initial; margin-bottom:10px;" class="md-primary md-hue-1">
                                 <div style="height:48px" class="md-toolbar-tools">
                                     <h2>
-                                        <span style="font-size:16px">ניסיון</span>
+                                        <span style="font-size:16px">הכשרה וניסיון</span>
                                     </h2>
                                 </div>
                             </md-toolbar>
-                            <md-content style="padding:0 16px;">{{doc.experienceParagraph}}</md-content>
-                        </div>
-                        <div style="width:100%">
-                            <md-toolbar style="height:48px; min-height: initial; margin-bottom:10px;" class="md-primary md-hue-1">
-                                <div style="height:48px" class="md-toolbar-tools">
-                                    <h2>
-                                        <span style="font-size:16px">טיפולים מיוחדים</span>
-                                    </h2>
-                                </div>
-                            </md-toolbar>
-                            <md-content layout="row" style="padding:0 16px;">
-                                <div flex layout="column">
-                                        <span ng-repeat="treatment in doc.specialTreatments track by $index" ng-if="$odd">
+                            <md-content style="padding:0 16px; overflow: hidden;">
+                                <table style="width:105%; margin-right: -20px;">
+
+                                    <tr style="height: 2rem;">
+                                        <td style="width: 6rem; text-align: center; position:relative">
+                                            <div style="color: #929292; position: absolute; height: 50%; border: 1px dashed; bottom: -3px; right: 49%;"></div>
+                                        </td>
+                                        <td width="10px"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 4rem;" ng-repeat="milestone in doc.milestones track by $index">
+                                        <td style="text-align: center; position:relative">
+                                            <div style="color: #929292; position: absolute; height: 100%; border: 1px solid; top: 0; right: 49%;"></div>
+                                            <div style="position: absolute; top: 24%; width: 100%; background-color: white; padding: 5px 0;">{{milestone.date}}</div>
+                                        </td>
+                                        <td></td>
+                                        <td>{{milestone.text}}</td>
+                                    </tr>
+                                    <tr style="height: 2rem;">
+                                        <td style="width: 6rem; text-align: center; position:relative">
+                                            <div style="color: #929292; position: absolute; height: 50%; border: 1px dashed; top: -3px; right: 49%;"></div>
+                                        </td>
+                                        <td width="10px"></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr style="height: 2rem"></tr>
+
+                                    <tr ng-repeat="bullet in doc.bullets track by $index">
+                                        <td style="text-align: center">
                                             <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
-                                            {{treatment}}
-                                        </span>
-                                </div>
-                                <div flex layout="column">
-                                        <span ng-repeat="treatment in doc.specialTreatments track by $index" ng-if="$even">
-                                            <md-icon class="md-accent md-hue-1" md-svg-icon="icons/check_circle.svg"></md-icon>
-                                            {{treatment}}
-                                        </span>
-                                </div>
+                                        </td>
+                                        <td></td>
+                                        <td style="padding: 10px 0;">
+                                            {{bullet}}
+                                        </td>
+                                    </tr>
+                                </table>
                             </md-content>
                         </div>
                     </div>
