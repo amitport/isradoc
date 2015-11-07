@@ -15,11 +15,15 @@ export default function http() {
     // TODO serve-favicon middleware
     .compress()
     .serveFonts()
-    .renderIndex({serverPagesDir: clientRelative('server-views')})
+    .renderIndex({
+      serverPagesDir: clientRelative('server-views'),
+      clientRoutes: ['doctors', 'clinics', 'errors']})
     .parseBody()
     // TODO API routes
     .serveStatic({dirs:
-      [clientRelative('jspm-sfx'), clientRelative('jspm-src')]})
+      [clientRelative('jspm-sfx'),
+        clientRelative('jspm-src'),
+        clientRelative('static')]})
     .handleErrors()
   .build();
 }
