@@ -2,7 +2,15 @@
   "name": "isradoc-server",
   "private": true,
   "license": "AGPL",
+  "scripts": {
+    "start": "node bin/start.js"
+  },
   "dependencies": {
-    "express": "^4.13.3"
+    "babel-core": "^6.1.2",
+    "babel-preset-es2015": "^6.1.2",
+    "config": "^1.15.0",
+    "split": "^1.0.0",
+    "useful-http": "^0.2.0",
+    "winston": "^2.1.0"
   }
 }

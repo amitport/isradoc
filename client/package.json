@@ -1,0 +1,24 @@
+{
+  "name": "isradoc-client",
+  "private": true,
+  "license": "AGPL",
+  "scripts": {
+    "sfx": "jspm bundle-sfx index jspm-sfx/main.min.js --minify --skip-source-maps"
+  },
+  "devDependencies": {
+    "jspm": "^0.16.14"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "jspm-src"
+    },
+    "dependencies": {
+      "material-design-icons": "github:google/material-design-icons@^2.0.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}

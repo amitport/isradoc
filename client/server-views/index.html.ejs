@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="/roboto-regular,roboto-medium,roboto-bold,roboto-italic/fonts.css" >
+    <style>
+        [ng-cloak] {
+            display: none !important;
+        }
+        /* add material design icons */
+        @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(jspm_packages/npm/material-design-icons@2.0.0/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+          src: local('Material Icons'),
+          local('MaterialIcons-Regular'),
+          url(jspm_packages/npm/material-design-icons@2.0.0/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+          url(jspm_packages/npm/material-design-icons@2.0.0/iconfont/MaterialIcons-Regular.woff) format('woff'),
+          url(jspm_packages/npm/material-design-icons@2.0.0/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+        }
+        .material-icons {
+          font-family: 'Material Icons';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;  /* Preferred icon size */
+          display: inline-block;
+          width: 1em;
+          height: 1em;
+          line-height: 1;
+          text-transform: none;
+          letter-spacing: normal;
+          word-wrap: normal;
+          white-space: nowrap;
+          direction: ltr;
+
+          /* Support for all WebKit browsers. */
+          -webkit-font-smoothing: antialiased;
+          /* Support for Safari and Chrome. */
+          text-rendering: optimizeLegibility;
+
+          /* Support for Firefox. */
+          -moz-osx-font-smoothing: grayscale;
+
+          /* Support for IE. */
+          font-feature-settings: 'liga';
+        }
+    </style>
+</head>
+<body layout layout-fill ng-cloak>
+
+<ng-view layout layout-fill></ng-view>
+
+
+<% if (env === 'production') { %>
+    <script src="main.min.js"></script>
+<% }  else { %>
+    <!--<md-whiteframe draggable class="md-whiteframe-z3" style="position: absolute; bottom: 15px; left: 15px;" layout="column" layout-padding>-->
+        <!--<io-monitor></io-monitor>-->
+    <!--</md-whiteframe>-->
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+        System.import('index');
+    </script>
+<% } %>
+</body>
+</html>
