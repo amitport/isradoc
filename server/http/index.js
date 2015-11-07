@@ -9,7 +9,7 @@ import usefulHttpBuilder from 'useful-http';
 
 export default function http() {
   return usefulHttpBuilder()
-    .configureSecurity()
+    .configureSecurity({forceSsl: false})
     .handleRobots({disallow: config.get('robotsDisallow')})
     .log({stream: config.get('httpLogStream')})
     // TODO serve-favicon middleware
