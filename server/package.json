@@ -1,0 +1,8 @@
+{
+  "name": "isradoc-server",
+  "private": true,
+  "license": "AGPL",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
