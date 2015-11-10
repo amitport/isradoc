@@ -1,0 +1,12 @@
+.view-progress {
+  opacity: 1;
+  position: absolute;
+}
+
+.view-progress.ng-hide {
+  opacity: 0;
+}
+
+.view-progress.ng-hide-add, .view-progress.ng-hide-remove {
+  transition: opacity 0.5s ease-in-out;
+}

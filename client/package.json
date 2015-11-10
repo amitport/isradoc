@@ -16,6 +16,7 @@
       "angular": "github:angular/bower-angular@^1.4.7",
       "angular-material": "github:angular/bower-material@master",
       "angular-route": "github:angular/bower-angular-route@^1.4.7",
+      "css": "github:systemjs/plugin-css@^0.1.19",
       "material-design-icons": "github:google/material-design-icons@^2.0.0"
     },
     "devDependencies": {

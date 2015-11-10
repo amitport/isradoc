@@ -48,9 +48,13 @@
         }
     </style>
 </head>
-<body layout layout-fill ng-cloak>
+<body layout="column" layout-fill ng-cloak>
 
-<ng-view layout layout-fill></ng-view>
+<div class="view-progress" ng-show="isViewLoadingSlow"
+     layout="column" layout-fill>
+  <md-progress-linear></md-progress-linear>
+</div>
+<ng-view layout="column" layout-fill layout-padding></ng-view>
 
 
 <% if (env === 'production') { %>

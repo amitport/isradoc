@@ -1,3 +1,5 @@
+import './main.css!';
+
 import angular from 'angular';
 
 // load angular modules
@@ -24,7 +26,9 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes'])
         doctorDetails: ['$http', '$route', function($http, $route) {
           return $http
             .get(`data/doctors/${$route.current.params.doctorId}.json`)
-            .then((response) => response.data);
+            .then((response) =>
+            //  new Promise(function(resolve){setTimeout(resolve,3000)}));
+              response.data);
         }]
       }
     })
@@ -39,12 +43,25 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes'])
       redirectTo: '/errors/404'
     });
 }])
-.run(['$rootScope', '$location', function ($rootScope, $location){
+.run(['$rootScope', '$location', '$timeout', function ($rootScope, $location, $timeout){
+  let isViewLoading = false;
+  $rootScope.isViewLoadingSlow = false;
+  $rootScope.$on('$routeChangeStart', function() {
+    isViewLoading = true;
+    $timeout(function () {
+      if (isViewLoading) {
+        $rootScope.isViewLoadingSlow = true;
+      }
+    }, 800);
+  });
+  $rootScope.$on('$routeChangeSuccess', function() {
+    $rootScope.isViewLoadingSlow = isViewLoading = false;
+  });
   $rootScope.$on('$routeChangeError', function (event, currentRoute, previousRoute, rejection) {
     $location.path(`/errors/${rejection.status}`).replace();
+    $rootScope.isViewLoadingSlow = isViewLoading = false;
   });
-}])
-;
+}]);
 
 
 angular.element(document).ready(function () {
