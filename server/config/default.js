@@ -12,6 +12,8 @@ const log = new winston.Logger({
 require('colors').enabled = true; // workaround for https://github.com/winstonjs/winston/issues/616 TODO revisit this
 
 export default module.exports = {
+  env: 'development',
+  port: 9000,
   robotsDisallow: "/", // disallow everything
   log: log,
   httpLogStream: split().on('data', function (message) {
@@ -19,6 +21,5 @@ export default module.exports = {
   }),
   paths: {
     client: __dirname + '/../../client'
-  },
-  port: process.env.PORT || 9000
+  }
 };

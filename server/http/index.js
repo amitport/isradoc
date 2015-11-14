@@ -5,6 +5,8 @@ function clientRelative(rel) {
   return path.join(clientPath, rel);
 }
 
+import User from '../models/user';
+
 import usefulHttpBuilder from 'useful-http';
 
 export default function http() {
@@ -19,6 +21,7 @@ export default function http() {
       serverPagesDir: clientRelative('server-views'),
       clientRoutes: ['doctors', 'clinics', 'errors']})
     .parseBody()
+//    .auth({User})
     // TODO API routes
     .serveStatic({dirs:
       [clientRelative('jspm-sfx'),

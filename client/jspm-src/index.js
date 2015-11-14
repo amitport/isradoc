@@ -7,7 +7,9 @@ import 'angular-material';
 import 'angular-route';
 import './routes/index';
 
-angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes'])
+import './modules/user-management/index';
+
+angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-management'])
 .config(['$locationProvider', '$routeProvider',
     function($locationProvider, $routeProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
@@ -43,7 +45,7 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes'])
       redirectTo: '/errors/404'
     });
 }])
-.run(['$rootScope', '$location', '$timeout', function ($rootScope, $location, $timeout){
+.run(['$rootScope', '$location', '$timeout', '$mdToast', '$mdDialog', function ($rootScope, $location, $timeout, $mdToast, $mdDialog){
   let isViewLoading = false;
   $rootScope.isViewLoadingSlow = false;
   $rootScope.$on('$routeChangeStart', function() {
@@ -52,7 +54,7 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes'])
       if (isViewLoading) {
         $rootScope.isViewLoadingSlow = true;
       }
-    }, 800);
+    }, 500);
   });
   $rootScope.$on('$routeChangeSuccess', function() {
     $rootScope.isViewLoadingSlow = isViewLoading = false;
@@ -61,6 +63,41 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes'])
     $location.path(`/errors/${rejection.status}`).replace();
     $rootScope.isViewLoadingSlow = isViewLoading = false;
   });
+
+  $rootScope.unlock = (event) => {
+    const dialogPromise = $mdDialog.show(
+      {
+      targetEvent: event,
+      clickOutsideToClose: true,
+      template: `
+<md-dialog>
+  <md-dialog-content class="md-dialog-content">
+    <div class="md-dialog-content-body">
+      <p>הרשם!</p>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="closeDialog()">סגור</md-button>
+  </md-dialog-actions>
+</md-dialog>`,
+      controller: ['$scope', '$mdDialog', 'employee',function GreetingController($scope, $mdDialog, employee) {
+        // Assigned from construction <code>locals</code> options...
+        $scope.employee = employee;
+        $scope.closeDialog = function() {
+          // Easily hides most recent dialog shown...
+          // no specific instance reference is needed.
+          $mdDialog.hide('userId');
+        };
+      }],
+      locals: { employee: 'userName' }
+    });
+    dialogPromise.then((userId) =>
+      $mdToast.showSimple('זהותך אומתה בהצלחה! '+ userId)
+    , (rejection) =>
+      $mdToast.showSimple('כשלון! ' + rejection)
+    )
+
+  }
 }]);
 
 

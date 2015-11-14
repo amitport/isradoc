@@ -1,6 +1,10 @@
+@import url(/stylesheets/fonts.css);
+
+
 .view-progress {
   opacity: 1;
   position: absolute;
+  background-color: rgba(204, 206, 255, 0.32);
 }
 
 .view-progress.ng-hide {
@@ -10,3 +14,9 @@
 .view-progress.ng-hide-add, .view-progress.ng-hide-remove {
   transition: opacity 0.5s ease-in-out;
 }
+
+body {
+  direction: rtl;
+  overflow-y: hidden;
+}
+
