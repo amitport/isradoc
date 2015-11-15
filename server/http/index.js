@@ -5,7 +5,7 @@ function clientRelative(rel) {
   return path.join(clientPath, rel);
 }
 
-import User from '../models/user';
+import {useUsersApi, useAuthApi} from '../auth/express';
 
 import usefulHttpBuilder from 'useful-http';
 
@@ -21,7 +21,8 @@ export default function http() {
       serverPagesDir: clientRelative('server-views'),
       clientRoutes: ['doctors', 'clinics', 'errors']})
     .parseBody()
-//    .auth({User})
+    .tap(useUsersApi)
+    .tap(useAuthApi)
     // TODO API routes
     .serveStatic({dirs:
       [clientRelative('jspm-sfx'),

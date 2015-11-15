@@ -14,7 +14,7 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.7",
-      "angular-material": "github:angular/bower-material@master",
+      "angular-material": "github:angular/bower-material@1.0.0-rc4",
       "angular-route": "github:angular/bower-angular-route@^1.4.7",
       "css": "github:systemjs/plugin-css@^0.1.19",
       "material-design-icons": "npm:material-design-icons@^2.0.0",

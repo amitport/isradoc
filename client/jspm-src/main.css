@@ -15,6 +15,10 @@
   transition: opacity 0.5s ease-in-out;
 }
 
+.avatar {
+  border-radius: 50%;
+}
+
 body {
   direction: rtl;
   overflow-y: hidden;

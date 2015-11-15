@@ -2,6 +2,10 @@
 	"mongo": {
 		"uri": "MONGO_URL"
 	},
+  "auth": {
+    "tokenSecret": "TOKEN_SECRET",
+    "googleSecret": "GOOGLE_SECRET"
+  },
 	"env": "NODE_ENV",
 	"port": "PORT"
 }
