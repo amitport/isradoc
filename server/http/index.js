@@ -19,7 +19,7 @@ export default function http() {
     .serveFonts()
     .renderIndex({
       serverPagesDir: clientRelative('server-views'),
-      clientRoutes: ['doctors', 'clinics', 'errors']})
+      clientRoutes: ['doctors', 'clinics', 'errors', 'users']})
     .parseBody()
     .tap(useUsersApi)
     .tap(useAuthApi)
