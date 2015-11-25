@@ -6,7 +6,7 @@
     "sfx": "jspm bundle-sfx index jspm-sfx/main.min.js --minify --skip-source-maps"
   },
   "devDependencies": {
-    "jspm": "^0.16.14"
+    "jspm": "^0.16.15"
   },
   "jspm": {
     "directories": {
@@ -17,6 +17,7 @@
       "angular-material": "github:angular/bower-material@1.0.0-rc4",
       "angular-route": "github:angular/bower-angular-route@^1.4.8",
       "css": "github:systemjs/plugin-css@^0.1.19",
+      "material-design-icons": "github:google/material-design-icons@^2.1.1",
       "moment": "npm:moment@^2.10.6",
       "satellizer": "github:sahat/satellizer@^0.13.1"
     },

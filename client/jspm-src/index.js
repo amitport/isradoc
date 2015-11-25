@@ -13,7 +13,12 @@ import './modules/recommendations/index';
 angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-management', 'id-recommendations'])
 .config(['$locationProvider', '$routeProvider', '$mdThemingProvider',
     function($locationProvider, $routeProvider, $mdThemingProvider) {
-  $mdThemingProvider.theme('default').dark();
+      $mdThemingProvider.theme('default')
+        .primaryPalette('blue-grey')
+        .accentPalette('brown')
+      //.warnPalette('brown')
+      //.backgroundPalette('cyan')
+      ;
 
 
   $locationProvider.html5Mode(true).hashPrefix('!');
