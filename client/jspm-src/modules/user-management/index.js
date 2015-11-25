@@ -20,7 +20,7 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
       $mdToast.showSimple('יצאת בהצלחה')
     };
     $rootScope.authenticate = function() {
-      $auth.authenticate('google').then(
+      return $auth.authenticate('google').then(
         ({data}) => {
           $rootScope.user = {
             _id: data._id,

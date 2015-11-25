@@ -8,10 +8,14 @@ import 'angular-route';
 import './routes/index';
 
 import './modules/user-management/index';
+import './modules/recommendations/index';
 
-angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-management'])
-.config(['$locationProvider', '$routeProvider',
-    function($locationProvider, $routeProvider) {
+angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-management', 'id-recommendations'])
+.config(['$locationProvider', '$routeProvider', '$mdThemingProvider',
+    function($locationProvider, $routeProvider, $mdThemingProvider) {
+  $mdThemingProvider.theme('default').dark();
+
+
   $locationProvider.html5Mode(true).hashPrefix('!');
 
   $routeProvider
@@ -99,7 +103,6 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
     , (rejection) =>
       $mdToast.showSimple('כשלון! ' + rejection)
     )
-
   }
 }]);
 

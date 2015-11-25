@@ -8,6 +8,7 @@ function clientRelative(rel) {
 import {useUsersApi, useAuthApi} from '../auth/express';
 
 import usefulHttpBuilder from 'useful-http';
+import recommendationsRouter from './routers/recommendations';
 
 export default function http() {
   return usefulHttpBuilder()
@@ -23,6 +24,10 @@ export default function http() {
     .parseBody()
     .tap(useUsersApi)
     .tap(useAuthApi)
+    .tap(function (app) {
+      // add routers
+      app.use(recommendationsRouter);
+    })
     // TODO API routes
     .serveStatic({dirs:
       [clientRelative('jspm-sfx'),

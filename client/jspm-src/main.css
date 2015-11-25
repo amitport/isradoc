@@ -1,4 +1,4 @@
-@import url("stylesheets/fonts.css");
+@import url("stylesheets/material-icons.css");
 
 
 .view-progress {
@@ -24,3 +24,32 @@ body {
   overflow-y: hidden;
 }
 
+/* override angular material font with hebrew support*/
+body.hebrew,
+body.hebrew button,
+body.hebrew select,
+body.hebrew textarea,
+body.hebrew input,
+body.hebrew md-bottom-sheet .md-subheader,
+body.hebrew .md-chips {
+  font-family: 'Noto Sans Hebrew', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* rtl fixes */
+body.hebrew md-input-container .md-char-counter {
+  left: 4px;
+  right: inherit;
+}
+
+md-input-container ng-message:not(.md-char-counter), md-input-container data-ng-message:not(.md-char-counter), md-input-container x-ng-message:not(.md-char-counter), md-input-container [ng-message]:not(.md-char-counter), md-input-container [data-ng-message]:not(.md-char-counter), md-input-container [x-ng-message]:not(.md-char-counter), md-input-container [ng-message-exp]:not(.md-char-counter), md-input-container [data-ng-message-exp]:not(.md-char-counter), md-input-container [x-ng-message-exp]:not(.md-char-counter), md-input-container .md-char-counter:not(.md-char-counter) {
+  padding-right: 4px !important;
+}
+body.hebrew md-list-item > .md-avatar {
+  margin-right: initial;
+  margin-left: 16px;
+}
+
+body.hebrew md-list-item md-divider[md-inset] {
+  left: initial;
+  right: 72.6px;
+}

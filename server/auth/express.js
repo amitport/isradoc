@@ -111,7 +111,7 @@ authRouter.post('/google', function(req, res) {
         user.linkedAuthProviders.google = profile.sub;
         user.displayName = profile.name;
         user.email = profile.email;
-        user.avatarImageUrl = profile.picture;
+        user.avatarImageUrl = profile.picture.replace(/\?sz=\d*$/, ''); // remove built in size pib size from google
         user.save(function(err) {
           if (err) {
             log.error(err);

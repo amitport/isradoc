@@ -1,33 +1,65 @@
 <!doctype html>
-<html>
+<html style="overflow-y: hidden;" dir="rtl" lang="he">
 <head>
-    <base href="/">
+  <base href="/">
 
-    <link href="/roboto-regular,roboto-medium,roboto-bold,roboto-italic/fonts.css" rel="stylesheet">
-
-    <style>
-        [ng-cloak] {
-            display: none !important;
-        }
-    </style>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/earlyaccess/notosanshebrew.css'>
+  <style>
+    [ng-cloak] {
+      display: none !important;
+    }
+  </style>
 </head>
-<body layout="column" layout-fill ng-cloak>
+<body class="hebrew" layout="column" layout-fill ng-cloak dir="rtl">
 
 <div class="view-progress" ng-show="isViewLoadingSlow"
      layout="column" layout-fill>
   <md-progress-linear></md-progress-linear>
 </div>
-<ng-view layout="column" layout-fill layout-padding></ng-view>
 
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <span>ישרא-דוק</span>
+    <!-- fill up the space between left and right area -->
+    <span flex></span>
+    <div layout layout-align="center center" ng-controller="UserMenuController as ctrl">
+      <md-menu layout layout-align="center center" ng-if="isAuthenticated()">
+        <md-button class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)" title="תפריט">
+          <div layout layout-align="center center">
+            <img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
+          </div>
+        </md-button>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button ng-click="ctrl.gotoProfile(user._id)" class="md-button">ערוך פרופיל משתמש</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button>נהל דפים</md-button>
+          </md-menu-item>
+          <md-menu-divider></md-menu-divider>
+          <md-menu-item>
+            <md-button ng-click="logout()">צא מהחשבון</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+      <md-button class="md-icon-button" ng-if="!isAuthenticated()" ng-click="authenticate()" title="כניסה">
+        <md-icon>person</md-icon>
+      </md-button>
+    </div>
+  </div>
+</md-toolbar>
+<md-content class="ng-view" flex layout="column">
+</md-content>
 
 <% if (env === 'production') { %>
-    <script src="main.min.js"></script>
+<script src="main.min.js"></script>
 <% }  else { %>
-    <script src="jspm_packages/system.js"></script>
-    <script src="config.js"></script>
-    <script>
-        System.import('index');
-    </script>
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>
+  System.import('index');
+</script>
 <% } %>
 </body>
 </html>
