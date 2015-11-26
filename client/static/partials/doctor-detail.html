@@ -1,12 +1,9 @@
-<div>
-hey {{doctor.id}}, tagline: {{doctor.details.tagline}}
-</div>
 <div layout="row">
 <div ng-controller="RecommendationsController as ctrl" flex>
   <div layout="row" layout-align="start center">
     <h3>המלצות</h3>
-    <div flex="10"></div>
-    <md-button class="md-raised md-accent md-hue-2" ng-click="ctrl.addRecommendation($event)"><md-icon>add</md-icon> הוסף המלצה&nbsp;</md-button>
+    <div flex="5"></div>
+    <md-button ng-show="!user || ctrl.canAddRecommendation" class="md-raised md-accent md-hue-2" ng-click="ctrl.addRecommendation($event)"><md-icon>add</md-icon> כתוב המלצה&nbsp;</md-button>
   </div>
   <div>
     <md-list>
@@ -15,11 +12,18 @@ hey {{doctor.id}}, tagline: {{doctor.details.tagline}}
         <div class="md-list-item-text">
           <h3 style="display:inline;">נכתב על-ידי {{recommendation.issuer.displayName}}</h3>
           <h4  class="md-caption" style="display:inline;">— {{recommendation.createdAt}}</h4>
-          <div style="position:absolute; bottom: 0; left: 0;">
-            <md-button class="md-icon-button">
+          <h4 class="md-caption" style="display:inline;" ng-show="!!recommendation.updatedAt">(נערך  {{recommendation.updatedAt}})</h4>
+          <div ng-show="!!user && user._id === recommendation.issuer._id" style="position:absolute; bottom: 0; left: 0;">
+            <md-button class="md-icon-button" ng-click="ctrl.addRecommendation($event, recommendation)">
+              <md-tooltip>
+                ערוך
+              </md-tooltip>
               <md-icon>mode_edit</md-icon>
             </md-button>
-            <md-button class="md-icon-button">
+            <md-button class="md-icon-button" ng-click="ctrl.delete(recommendation, $index)">
+              <md-tooltip>
+                מחק
+              </md-tooltip>
               <md-icon>delete</md-icon>
             </md-button>
           </div>
@@ -29,35 +33,6 @@ hey {{doctor.id}}, tagline: {{doctor.details.tagline}}
       </md-list-item >
     </md-list>
 
-      <!--<md-list-item class="md-3-line md-long-text">-->
-        <!--<img ng-src="https://lh6.googleusercontent.com/-va3kua4bqMg/AAAAAAAAAAI/AAAAAAAABKk/B4MtqPkp3kM/photo.jpg?sz=32" class="md-avatar" alt="{todos[0].who}}" />-->
-        <!--<div class="md-list-item-text">-->
-          <!--<h3 style="display:inline;">נכתב על-ידי  Amit Portnoy</h3>-->
-          <!--<h4  class="md-caption" style="display:inline;">— אתמול ב-23:09</h4>-->
-          <!--<div style="position:absolute; bottom: 0; left: 0;">-->
-            <!--<md-button class="md-icon-button">-->
-              <!--<md-icon>mode_edit</md-icon>-->
-            <!--</md-button>-->
-            <!--<md-button class="md-icon-button">-->
-              <!--<md-icon>delete</md-icon>-->
-            <!--</md-button>-->
-          <!--</div>-->
-          <!--<p style="margin: 4px 0 38px 0;">אימי התאשפזה לפני כשנה במחלקה של דר הרנוף לאחר שעברה אירוע מוחי , אין ספק כי נשקף מהד׳ר מיומנות מלאה ושליטה במצב , אימי הגיעה במצב החמור ביותר שיכלה , עברה ניתוח ויצאה במצב בהחלט הטוב ביותר , כל משפחתנו בספק אם לולא ד׳ר הרנוף אימנו הייתה עוד בחיים , אנו חייבים לו הרבה , ומודים לו על כל שניה שעברה </p>-->
-        <!--</div>-->
-        <!--<md-divider ></md-divider>-->
-      <!--</md-list-item>-->
-
-      <!--<md-list-item class="md-3-line md-long-text">-->
-        <!--<img ng-src="https://lh6.googleusercontent.com/-va3kua4bqMg/AAAAAAAAAAI/AAAAAAAABKk/B4MtqPkp3kM/photo.jpg?sz=32" class="md-avatar" alt="{todos[0].who}}" />-->
-        <!--<div class="md-list-item-text">-->
-          <!--<h3 style="display:inline">Amit Portnoy</h3>-->
-          <!--<h4 style="display:inline">— אתמול ב-23:09</h4>-->
-          <!--<p style="margin-top: 4px;">אימי התאשפזה לפני כשנה במחלקה של דר הרנוף לאחר שעברה אירוע מוחי , אין ספק כי נשקף מהד׳ר מיומנות מלאה ושליטה במצב , אימי הגיעה במצב החמור ביותר שיכלה , עברה ניתוח ויצאה במצב בהחלט הטוב ביותר , כל משפחתנו בספק אם לולא ד׳ר הרנוף אימנו הייתה עוד בחיים , אנו חייבים לו הרבה , ומודים לו על כל שניה שעברה ..</p>-->
-        <!--</div>-->
-      <!--</md-list-item>-->
-
-
-    <!--</md-list>-->
   </div>
 </div>
 </div>

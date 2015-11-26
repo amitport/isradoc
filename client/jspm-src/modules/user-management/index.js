@@ -17,7 +17,7 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
     $rootScope.logout = function() {
       $auth.logout();
       delete $rootScope.user;
-      $mdToast.showSimple('יצאת בהצלחה')
+      $mdToast.showSimple('יצאת בהצלחה');
     };
     $rootScope.authenticate = function() {
       return $auth.authenticate('google').then(

@@ -11,21 +11,21 @@
     }
   </style>
 </head>
-<body class="hebrew" layout="column" layout-fill ng-cloak dir="rtl">
+<body class="hebrew" layout="column" ng-cloak dir="rtl">
 
-<div class="view-progress" ng-show="isViewLoadingSlow"
-     layout="column" layout-fill>
-  <md-progress-linear></md-progress-linear>
-</div>
 
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <span>ישרא-דוק</span>
+    <a href="/doctors"><md-tooltip md-direction="left">
+        עבור לדף הבית
+      </md-tooltip>ישרא-דוק</a>
     <!-- fill up the space between left and right area -->
     <span flex></span>
     <div layout layout-align="center center" ng-controller="UserMenuController as ctrl">
       <md-menu layout layout-align="center center" ng-if="isAuthenticated()">
-        <md-button class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)" title="תפריט">
+        <md-button class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+          <md-tooltip md-direction="right">
+פתח תפריט</md-tooltip>
           <div layout layout-align="center center">
             <img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
           </div>
@@ -43,14 +43,22 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
-      <md-button class="md-icon-button" ng-if="!isAuthenticated()" ng-click="authenticate()" title="כניסה">
+      <md-button class="md-icon-button" ng-if="!isAuthenticated()" ng-click="authenticate()">
+        <md-tooltip md-direction="right">
+          כניסה
+        </md-tooltip>
         <md-icon>person</md-icon>
       </md-button>
     </div>
   </div>
 </md-toolbar>
-<md-content class="ng-view" flex layout="column">
+<md-content ng-class="{'view-progress-wrapper' : isViewLoadingSlow}" flex layout layout-padding>
+  <div class="view-progress" ng-show="isViewLoadingSlow" layout layout-fill layout-align="center center">
+    <md-progress-circular class="md-warn md-hue-1" md-diameter="96"></md-progress-circular>
+  </div>
+  <ng-view layout="column" layout-fill></ng-view>
 </md-content>
+
 
 <% if (env === 'production') { %>
 <script src="main.min.js"></script>

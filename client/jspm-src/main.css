@@ -1,10 +1,15 @@
 @import url("stylesheets/material-icons.css");
 
+.view-progress-wrapper {
+  overflow: initial;
+}
 
 .view-progress {
   opacity: 1;
+  top: 0;
+  right: 0;
   position: absolute;
-  background-color: rgba(204, 206, 255, 0.32);
+  background-color: rgba(204, 206, 255, 0.12);
 }
 
 .view-progress.ng-hide {
@@ -12,7 +17,7 @@
 }
 
 .view-progress.ng-hide-add, .view-progress.ng-hide-remove {
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .avatar {
@@ -21,7 +26,7 @@
 
 body {
   direction: rtl;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 }
 
 /* override angular material font with hebrew support*/
@@ -36,14 +41,26 @@ body.hebrew .md-chips {
 }
 
 /* rtl fixes */
-body.hebrew md-input-container .md-char-counter {
+/*body.hebrew md-input-container .md-char-counter {*/
+
+/*}*/
+
+body[dir=rtl] md-input-container label {
+  left: inherit;
+  right: 0;
+}
+body[dir=rtl] md-input-container .md-char-counter {
   left: 4px;
   right: inherit;
 }
 
-md-input-container ng-message:not(.md-char-counter), md-input-container data-ng-message:not(.md-char-counter), md-input-container x-ng-message:not(.md-char-counter), md-input-container [ng-message]:not(.md-char-counter), md-input-container [data-ng-message]:not(.md-char-counter), md-input-container [x-ng-message]:not(.md-char-counter), md-input-container [ng-message-exp]:not(.md-char-counter), md-input-container [data-ng-message-exp]:not(.md-char-counter), md-input-container [x-ng-message-exp]:not(.md-char-counter), md-input-container .md-char-counter:not(.md-char-counter) {
-  padding-right: 4px !important;
+body[dir=rtl] md-dialog .md-actions .md-button, md-dialog md-dialog-actions .md-button {
+  margin-right: 8px !important;
+  margin-left: 0 !important;
 }
+/*md-input-container ng-message:not(.md-char-counter), md-input-container data-ng-message:not(.md-char-counter), md-input-container x-ng-message:not(.md-char-counter), md-input-container [ng-message]:not(.md-char-counter), md-input-container [data-ng-message]:not(.md-char-counter), md-input-container [x-ng-message]:not(.md-char-counter), md-input-container [ng-message-exp]:not(.md-char-counter), md-input-container [data-ng-message-exp]:not(.md-char-counter), md-input-container [x-ng-message-exp]:not(.md-char-counter), md-input-container .md-char-counter:not(.md-char-counter) {*/
+  /*padding-right: 4px !important;*/
+/*}*/
 body.hebrew md-list-item > .md-avatar {
   margin-right: initial;
   margin-left: 16px;

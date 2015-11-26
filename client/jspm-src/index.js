@@ -16,8 +16,8 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
       $mdThemingProvider.theme('default')
         .primaryPalette('blue-grey')
         .accentPalette('brown')
-      //.warnPalette('brown')
-      //.backgroundPalette('cyan')
+        //.warnPalette('deep-orange')
+      //.backgroundPalette('brown')
       ;
 
 
@@ -38,7 +38,7 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
           return $http
             .get(`data/doctors/${$route.current.params.doctorId}.json`)
             .then((response) =>
-            //  new Promise(function(resolve){setTimeout(resolve,3000)}));
+              //new Promise(function(resolve){setTimeout(resolve,3000)}));
               response.data);
         }]
       }
@@ -75,40 +75,6 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
     $location.path(`/errors/${rejection.status}`).replace();
     $rootScope.isViewLoadingSlow = isViewLoading = false;
   });
-
-  $rootScope.unlock = (event) => {
-    const dialogPromise = $mdDialog.show(
-      {
-      targetEvent: event,
-      clickOutsideToClose: true,
-      template: `
-<md-dialog>
-  <md-dialog-content class="md-dialog-content">
-    <div class="md-dialog-content-body">
-      <p>הרשם!</p>
-    </div>
-  </md-dialog-content>
-  <md-dialog-actions>
-    <md-button ng-click="closeDialog()">סגור</md-button>
-  </md-dialog-actions>
-</md-dialog>`,
-      controller: ['$scope', '$mdDialog', 'employee',function GreetingController($scope, $mdDialog, employee) {
-        // Assigned from construction <code>locals</code> options...
-        $scope.employee = employee;
-        $scope.closeDialog = function() {
-          // Easily hides most recent dialog shown...
-          // no specific instance reference is needed.
-          $mdDialog.hide('userId');
-        };
-      }],
-      locals: { employee: 'userName' }
-    });
-    dialogPromise.then((userId) =>
-      $mdToast.showSimple('זהותך אומתה בהצלחה! '+ userId)
-    , (rejection) =>
-      $mdToast.showSimple('כשלון! ' + rejection)
-    )
-  }
 }]);
 
 

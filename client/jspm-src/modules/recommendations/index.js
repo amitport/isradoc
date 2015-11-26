@@ -15,7 +15,8 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
       };
   }])
   .controller('RecommendationsController', ['$auth', '$mdDialog', '$mdToast', '$http', '$rootScope', function ($auth, $mdDialog, $mdToast, $http, $rootScope) {
-    this.addRecommendation = (event) => {
+    this.addRecommendation = (event, recommendation) => {
+      const editing = recommendation ? true : false;
       $mdDialog.show(
         {
           focusOnOpen: false,
@@ -28,21 +29,21 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
     <div ng-if="isAuthenticated()" layout="column" class="md-inline-form md-dialog-content-body">
         <md-input-container class="md-block">
           <label>תוכן ההמלצה</label>
-          <textarea id-focus style="height: 200px; width: 400px;" required name="recommendation" md-no-autogrow ng-model="user.recommendation" columns="1" minlength="15" md-maxlength="250" rows="5"></textarea>
-          <div ng-messages="recommendationForm.recommendation.$error" role="alert">
+          <textarea id-focus style="height: 200px; width: 400px;" name="recommendation" md-no-autogrow ng-model="user.recommendation" columns="1" md-maxlength="250" rows="5"></textarea>
+          <!--div ng-messages="recommendationForm.recommendation.$error" role="alert">
             <div ng-message-exp="['required', 'minlength', 'md-maxlength']">
 בבקשה מלא בין 15 ל-250 תווים
             </div>
-          </div>
+          </div--->
         </md-input-container>
 
     </div>
-    <div ng-show="!isAuthenticated()" class="md-dialog-content-body">
-      <p><md-button ng-click="authenticate()">כניסה</md-button></p>
+    <div ng-show="!isAuthenticated()" class="md-dialog-content-body" layout layout-fill layout-align="center center">
+      <md-button ng-click="authenticate()">אמת זהות</md-button>
     </div>
   </md-dialog-content>
   <md-dialog-actions ng-show="isAuthenticated()">
-    <button class="md-primary md-button" ng-disabled="recommendationForm.$invalid" type="button" ng-click="publishRecommendation()">פרסם</button>
+    <button class="md-primary md-button" ng-disabled="recommendationForm.$invalid" type="button" ng-click="publishRecommendation()">{{editing ? 'ערוך' : 'פרסם'}}</button>
   </md-dialog-actions>
   </form>
 </md-dialog>`,
@@ -51,40 +52,72 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
             $scope.authenticate = function () {
               $rootScope.authenticate();
             };
-            $scope.user = {recommendation: ''},
+            $scope.editing = editing;
+
+            $scope.user = {recommendation: (editing && recommendation.content) || ''};
             $scope.publishRecommendation = function () {
               $mdDialog.hide($scope.user.recommendation);
             };
           }]
         }).then((content) => {
-          $http.post('/recommendations', {content: content}).then((response) => {
-            if (response.status !== 201) {
-              console.error('invalid http - status(%s) - content(%o)', response.status, response);
-              $mdToast.showSimple('היתה בעיה בשמירת ההמלצה, בבקשה נסה שוב מאוחר יותר');
-              return;
-            }
-            $mdToast.showSimple('המלצה נשמרה בהצלחה!');
-            const recommendationId = response.data;
-            // todo createdAt
-
-            this.recommendations.unshift({
-              _id: recommendationId,
-              issuer: {
-                displayName: $rootScope.user.displayName,
-                avatarImageUrl: $rootScope.user.avatarImageUrl
-              },
-              content: content
+          if (editing) {
+            $http.put(`/recommendations/${recommendation._id}`, {content: content}).then((response) => {
+              $mdToast.showSimple('השינויים נשמרו בהצלחה!');
+              recommendation.content = content;
+              recommendation.updatedAt = moment(response.data.updatedAt).calendar();
+            }).catch((rejection) => {
+              console.error('failed request - status(%s) - rejection(%o)', rejection.status, rejection);
+              $mdToast.showSimple('היתה בעיה בשמירת השינויים, בבקשה נסה שוב מאוחר יותר');
             });
-          });
+          } else {
+            $http.post('/recommendations', {content: content}).then((response) => {
+              $mdToast.showSimple('ההמלצה נשמרה בהצלחה!');
+              this.recommendations.unshift(
+                {
+                _id:  response.data._id,
+                issuer: {
+                  _id: $rootScope.user._id,
+                  displayName: $rootScope.user.displayName,
+                  avatarImageUrl: $rootScope.user.avatarImageUrl
+                },
+                content: content,
+                createdAt: moment(response.data.createdAt).calendar()
+              });
+              this.canAddRecommendation = false;
+            }).catch((rejection) => {
+              console.error('failed request - status(%s) - rejection(%o)', rejection.status, rejection);
+              $mdToast.showSimple('היתה בעיה בשמירת ההמלצה, בבקשה נסה שוב מאוחר יותר');
+            });
+          }
       });
     };
+
     this.recommendations = [];
 
+    this.delete = (recommendation, index) => {
+      $http.delete(`/recommendations/${recommendation._id}`)
+        .then((response) => {
+          $mdToast.showSimple('המלצה נמחקה');
+          this.recommendations.splice(index, 1);
+          this.canAddRecommendation = true;
+        })
+        .catch((rejection) => {
+          console.error(rejection);
+          $mdToast.showSimple('היתה בעיה במחיקת ההמלצה, בבקשה נסה שוב מאוחר יותר');
+        })
+    };
     $http.get('/recommendations').then((response) => {
       if (response.status === 200) {
         Array.prototype.push.apply(this.recommendations, response.data.map((r) => {
-          return {issuer: r.issuer, content: r.content, createdAt: moment(r.createdAt).calendar()};
+          const res = {_id: r._id, issuer: r.issuer, content: r.content, createdAt: moment(r.createdAt).calendar()};
+          if (r.updatedAt !== r.createdAt) {
+            res.updatedAt = moment(r.updatedAt).calendar();
+          }
+          return res;
         })); // using push apply because of  weird issue with concat
+        if (!$rootScope.user || this.recommendations.every((r) => r.issuer._id !== $rootScope.user._id)) {
+         this.canAddRecommendation = true;
+        }
       }
-    })
+    });
   }]);
