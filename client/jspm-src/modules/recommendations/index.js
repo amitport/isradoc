@@ -38,8 +38,28 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
         </md-input-container>
 
     </div>
-    <div ng-show="!isAuthenticated()" class="md-dialog-content-body" layout layout-fill layout-align="center center">
-      <md-button ng-click="authenticate()">אמת זהות</md-button>
+    <div ng-show="!isAuthenticated()" class="md-dialog-content-body" layout="column">
+      <!--<div layout="column">-->
+        <md-button ng-click="authenticate()" class="md-raised">
+          <span layout="row" layout-align="start center">
+            <img src="images/Google_-G-_Logo.svg" width="18" height="18">
+            <span flex style="margin:0 24px; text-align: start;">
+            אמת זהות
+          באמצעות גוגל</span>
+          </span>
+        </md-button>
+        <md-button ng-disabled="true" class="md-raised">
+          <span layout="row" layout-align="start center">
+            <img src="images/Facebook_-F-_Logo.svg" width="18" height="18">
+            <span flex style="margin:0 24px; text-align: start;">
+            אמת זהות
+          באמצעות פייסבוק</span>
+          <small class="md-caption">(לא נתמך)</small>
+          </span>
+        </md-button>
+
+      <!--</div>-->
+      <!--<md-button ng-click="authenticate()">אמת זהות</md-button>-->
     </div>
   </md-dialog-content>
   <md-dialog-actions ng-show="isAuthenticated()">
