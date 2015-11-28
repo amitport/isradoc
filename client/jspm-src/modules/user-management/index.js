@@ -67,9 +67,13 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
             displayName: data.displayName,
             avatarImageUrl: data.avatarImageUrl
           };
-          $mdToast.showSimple('התחברת בהצלחה')
+          $mdToast.showSimple('התחברת בהצלחה');
         },
-        (rejection) => $mdToast.showSimple('היתה בעיה בתהליך ההתחברות')
+        (rejection) => {
+          log.error(rejection);
+          $mdToast.showSimple('היתה בעיה בתהליך ההתחברות');
+          return Promise.reject();
+        }
 
       )
     };
