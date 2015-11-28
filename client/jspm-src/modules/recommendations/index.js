@@ -20,7 +20,7 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
       $mdDialog.show(
         {
           focusOnOpen: false,
-          targetEvent: event,
+          targetEvent: editing ? null : event,
           clickOutsideToClose: true,
           template: `
 <md-dialog>

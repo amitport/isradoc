@@ -23,12 +23,12 @@
     <span flex></span>
     <div layout layout-align="center center" ng-controller="UserMenuController as ctrl">
       <md-menu layout layout-align="center center" ng-if="isAuthenticated()">
-        <md-button class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+        <md-button style="padding: 4px 0 0 0;" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
           <md-tooltip md-direction="right">
 פתח תפריט</md-tooltip>
-          <div layout layout-align="center center">
+
             <img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
-          </div>
+
         </md-button>
         <md-menu-content>
           <md-menu-item>
