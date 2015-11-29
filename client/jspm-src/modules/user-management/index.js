@@ -7,7 +7,7 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
   .config(['$authProvider', function($authProvider) {
     $authProvider.google({
       url: '/api/auth/google',
-      clientId: '934313472226-n8fijjdof182odebbea8kk7htn2nlt91.apps.googleusercontent.com'
+      clientId: '981804266888-jnp1tjs5mpajj8pn43lp9eskj6nvq787.apps.googleusercontent.com'
     });
   }])
   .run(['$rootScope', '$auth', '$mdToast', '$mdDialog', '$http', function($rootScope, $auth, $mdToast, $mdDialog, $http) {
@@ -70,7 +70,7 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
           $mdToast.showSimple('התחברת בהצלחה');
         },
         (rejection) => {
-          log.error(rejection);
+          console.error(rejection);
           $mdToast.showSimple('היתה בעיה בתהליך ההתחברות');
           return Promise.reject();
         }

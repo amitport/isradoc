@@ -73,6 +73,7 @@ authRouter.post('/google', function(req, res) {
     json: true
   }, function(err, response, token) {
     if (err || response.statusCode != 200) {
+      log.error(err);
       log.error(token);
       return res.status(500).send({message: 'Could not retrieve access token from google'});
     }

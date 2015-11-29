@@ -18,8 +18,9 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <a href="/doctors"><md-tooltip md-direction="left">
-        עבור לדף הבית
-      </md-tooltip>יִשׂרָא-דּוֹק
+        מעבר לדף הבית
+      </md-tooltip>יִשׂרָא-דוֹק
+    <span class="md-caption">אינדקס רופאים</span>
     </a>
     <!-- fill up the space between left and right area -->
     <span flex></span>
@@ -27,21 +28,21 @@
       <md-menu layout layout-align="center center" ng-if="isAuthenticated()">
         <md-button style="padding: 4px 0 0 0;" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
           <md-tooltip md-direction="right">
-פתח תפריט</md-tooltip>
+פתיחת תפריט</md-tooltip>
 
             <img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
 
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-button ng-click="ctrl.gotoProfile(user._id)" class="md-button">ערוך פרופיל משתמש</md-button>
+            <md-button ng-click="ctrl.gotoProfile(user._id)" class="md-button">עריכת פרופיל משתמש</md-button>
           </md-menu-item>
           <md-menu-item>
-            <md-button>נהל דפים</md-button>
+            <md-button>ניהול דפים</md-button>
           </md-menu-item>
           <md-menu-divider></md-menu-divider>
           <md-menu-item>
-            <md-button ng-click="logout()">צא מהחשבון</md-button>
+            <md-button ng-click="logout()">יציאה מהחשבון</md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>
