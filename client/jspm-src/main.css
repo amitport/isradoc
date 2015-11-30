@@ -35,9 +35,14 @@ body.hebrew button,
 body.hebrew select,
 body.hebrew textarea,
 body.hebrew input,
+body.hebrew pre,
 body.hebrew md-bottom-sheet .md-subheader,
 body.hebrew .md-chips {
   font-family: 'Noto Sans Hebrew', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+pre {
+  font-style: italic;
 }
 
 /* rtl fixes */
