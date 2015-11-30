@@ -1,1 +1,37 @@
-<div> yeah</div>
+<div>
+  <h3>פרופיל משתמש</h3>
+  <div layout="row" layout-margin layout-wrap>
+    <md-whiteframe class="md-whiteframe-2dp" layout="row" layout-align="start center">
+      <div style="width: 320px;" layout="row" layout-padding layout-align="start center">
+        <div style="height: 18px; padding: 0;">
+          <img src="images/Google_-G-_Logo.svg" width="18" height="18">
+        </div>
+        <div layout="column"  layout-align="start center" style="margin:  0 20px;">
+          <h5>הפרופיל שלך מנוהל באמצעות גוגל</h5>
+
+          <md-button>בטל הרשאות ומחק חשבון</md-button>
+        </div>
+      </div>
+      <div style="background-color: #455A64; color: white;" layout="column" layout-align="center center" layout-padding>
+        <img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=120">
+        <div>{{user.displayName}}</div>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-2dp" layout="row" layout-align="start center">
+      <div style="width: 320px;" layout="row" layout-padding layout-align="start center">
+        <div style="height: 18px; padding: 0;">
+          <img src="images/Facebook_-F-_Logo.svg" width="18" height="18">
+        </div>
+        <div layout="column"  layout-align="start center" style="margin:  0 20px;">
+          <!--<h5>הפרופיל שלך מנוהל באמצעות גוגל</h5>-->
+
+          <md-button ng-disabled="true">קשר פרופיל עם פייסבוק (לא נתמך)</md-button>
+        </div>
+      </div>
+      <div style="width: 152px; height: 190px; background-color: #455A64; color: white;" layout="column" layout-align="center center" layout-padding>
+        <!--<img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=120">-->
+        <!--<div>{{user.displayName}}</div>-->
+      </div>
+    </md-whiteframe>
+  </div>
+</div>

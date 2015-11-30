@@ -15,7 +15,7 @@
 <body class="hebrew" layout="column" ng-cloak dir="rtl">
 
 
-<md-toolbar>
+<md-toolbar class="md-whiteframe-2dp">
   <div class="md-toolbar-tools">
     <a href="/doctors"><md-tooltip md-direction="left">
         מעבר לדף הבית
@@ -35,14 +35,14 @@
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-button ng-click="ctrl.gotoProfile(user._id)" class="md-button">עריכת פרופיל משתמש</md-button>
+            <md-button ng-click="ctrl.gotoProfile(user._id)" class="md-button">ניהול פרופיל משתמש</md-button>
           </md-menu-item>
           <md-menu-item>
             <md-button>ניהול דפים</md-button>
           </md-menu-item>
           <md-menu-divider></md-menu-divider>
           <md-menu-item>
-            <md-button ng-click="logout()">יציאה מהחשבון</md-button>
+            <md-button ng-click="logout()">יציאה</md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>
