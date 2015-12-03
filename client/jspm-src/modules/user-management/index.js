@@ -74,7 +74,10 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
       originatorEv = ev;
       $mdOpenMenu(ev);
     };
-    this.gotoProfile = function (userId) {
+    this.gotoUserProfile = function (userId) {
       $location.path(`/users/${userId}`);
+    }
+    this.gotoUserPages = function (userId) {
+      $location.path(`/users/${userId}/pages`);
     }
   }]);

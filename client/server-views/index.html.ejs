@@ -1,5 +1,5 @@
 <!doctype html>
-<html style="overflow-y: hidden;" dir="rtl" lang="he">
+<html dir="rtl" lang="he">
 <head>
   <meta charset="UTF-8">
   <base href="/">
@@ -17,28 +17,28 @@
 
 <md-toolbar class="md-whiteframe-2dp">
   <div class="md-toolbar-tools">
-    <a href="/doctors"><md-tooltip md-direction="left">
+    <a href="/doctors"><md-tooltip>
         מעבר לדף הבית
       </md-tooltip>יִשׂרָא-דוֹק
     <span class="md-caption">אינדקס רופאים</span>
     </a>
     <!-- fill up the space between left and right area -->
     <span flex></span>
-    <div layout layout-align="center center" ng-controller="UserMenuController as ctrl">
-      <md-menu layout layout-align="center center" ng-if="isAuthenticated()">
+    <div style="margin-left: 15px;" layout layout-align="center center" ng-controller="UserMenuController as ctrl">
+      <md-menu  layout layout-align="center center" ng-if="isAuthenticated()">
         <md-button style="padding: 4px 0 0 0;" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
-          <md-tooltip md-direction="right">
+          <md-tooltip>
 פתיחת תפריט</md-tooltip>
 
-            <img class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
+            <img md-menu-origin class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
 
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-button ng-click="ctrl.gotoProfile(user._id)" class="md-button">ניהול פרופיל משתמש</md-button>
+            <md-button ng-click="ctrl.gotoUserProfile(user._id)" class="md-button">ניהול פרופיל משתמש</md-button>
           </md-menu-item>
           <md-menu-item>
-            <md-button>ניהול דפים</md-button>
+            <md-button ng-click="ctrl.gotoUserPages(user._id)" class="md-button">ניהול דפים</md-button>
           </md-menu-item>
           <md-menu-divider></md-menu-divider>
           <md-menu-item>
@@ -47,7 +47,7 @@
         </md-menu-content>
       </md-menu>
       <md-button class="md-icon-button" ng-if="!isAuthenticated()" ng-click="openAuthProviderSelectionDialog($event)">
-        <md-tooltip md-direction="right">
+        <md-tooltip>
           כניסה
         </md-tooltip>
         <md-icon>person</md-icon>
@@ -55,12 +55,13 @@
     </div>
   </div>
 </md-toolbar>
-<md-content ng-class="{'view-progress-wrapper' : isViewLoadingSlow}" flex layout layout-padding>
+<div style="position: relative;" flex>
   <div class="view-progress" ng-show="isViewLoadingSlow" layout layout-fill layout-align="center center">
     <md-progress-circular md-mode="indeterminate" class="md-warn md-hue-1" md-diameter="96"></md-progress-circular>
   </div>
-  <ng-view layout="column" layout-fill></ng-view>
-</md-content>
+  <div class="ng-view route-content">
+  </div>
+</div>
 
 
 <% if (env === 'production') { %>

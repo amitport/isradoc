@@ -1,15 +1,19 @@
 @import url("stylesheets/material-icons.css");
 
-.view-progress-wrapper {
-  overflow: initial;
+.route-content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
 }
 
 .view-progress {
+  z-index: 300;
   opacity: 1;
   top: 0;
   right: 0;
   position: absolute;
-  background-color: rgba(204, 206, 255, 0.12);
+  background-color: rgba(204, 206, 255, 0.4);
 }
 
 .view-progress.ng-hide {
@@ -74,4 +78,13 @@ body.hebrew md-list-item > .md-avatar {
 body.hebrew md-list-item md-divider[md-inset] {
   left: initial;
   right: 72.6px;
+}
+
+md-toolbar .md-fab.md-mini {
+  margin-top: 54px;
+}
+
+html {
+  /* prevent weird issue where ng material add overflow-y scroll when opening menu */
+  overflow-y: hidden !important;
 }

@@ -46,6 +46,9 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
     .when('/users/:userId', {
       templateUrl: 'partials/user-detail.html'
     })
+    .when('/users/:userId/pages', {
+      templateUrl: 'partials/user-pages.html'
+    })
     .when('/errors/:status', {
       templateUrl: 'partials/error-detail.html',
       controllerAs: 'error',
