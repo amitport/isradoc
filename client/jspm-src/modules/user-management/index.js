@@ -10,7 +10,9 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
       clientId: '981804266888-jnp1tjs5mpajj8pn43lp9eskj6nvq787.apps.googleusercontent.com'
     });
   }])
-  .run(['$rootScope', '$auth', '$mdToast', '$mdDialog', '$http', function($rootScope, $auth, $mdToast, $mdDialog, $http) {
+  .run(['$rootScope', '$auth', '$mdToast', '$mdDialog', '$http', function($rootScope, $auth,
+                                                                          $mdToast, $mdDialog,
+                                                                                    $http) {
     $rootScope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
@@ -68,7 +70,7 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
       });
     }
   }])
-  .controller('UserMenuController', ['$location', function ($location) {
+  .controller('UserMenuController', ['$rootScope', '$location', '$route', function ($rootScope, $location, $route) {
     var originatorEv;
     this.openMenu = function($mdOpenMenu, ev) {
       originatorEv = ev;
@@ -76,8 +78,15 @@ angular.module('id-user-management', ['satellizer', 'ngMaterial'])
     };
     this.gotoUserProfile = function (userId) {
       $location.path(`/users/${userId}`);
-    }
+    };
     this.gotoUserPages = function (userId) {
       $location.path(`/users/${userId}/pages`);
+    };
+
+    this.logout = function () {
+      $rootScope.logout();
+      if ($route.current.requireAuth) {
+        $location.path('/');
+      }
     }
   }]);

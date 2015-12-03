@@ -29,8 +29,8 @@
         <md-button style="padding: 4px 0 0 0;" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
           <md-tooltip>
 פתיחת תפריט</md-tooltip>
-
-            <img md-menu-origin class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>
+            <md-icon md-menu-origin>menu</md-icon>
+            <!--<img md-menu-origin class="avatar" ng-src="{{user.avatarImageUrl}}?sz=32" md-menu-origin>-->
 
         </md-button>
         <md-menu-content>
@@ -42,7 +42,7 @@
           </md-menu-item>
           <md-menu-divider></md-menu-divider>
           <md-menu-item>
-            <md-button ng-click="logout()">יציאה</md-button>
+            <md-button ng-click="ctrl.logout()">יציאה</md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>

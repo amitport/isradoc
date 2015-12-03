@@ -88,3 +88,26 @@ html {
   /* prevent weird issue where ng material add overflow-y scroll when opening menu */
   overflow-y: hidden !important;
 }
+
+.rec-toolbar {
+  position: relative;
+  height: 64px;
+  transition: transform ease-in-out 0.2s;
+  transform: translateY(0);
+}
+.rec-toolbar.ng-hide {
+  transform: translateY(-64px);
+}
+.rec-toolbar.ng-hide-add,
+.rec-toolbar.ng-hide-remove {
+  display: block !important;
+}
+
+.d-profile-pic {
+  border-radius: 50%;
+  max-width: 96px;
+  width: 96px;
+  height: 96px;
+  margin-right: 16px;
+}
+

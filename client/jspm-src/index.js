@@ -26,6 +26,7 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
   $routeProvider
     .when('/doctors', {
       templateUrl: 'partials/doctor-list.html',
+      controllerAs: 'list',
       controller: 'DoctorListCtrl'
     })
     .when('/', {redirectTo: '/doctors'})
@@ -44,10 +45,12 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
       }
     })
     .when('/users/:userId', {
-      templateUrl: 'partials/user-detail.html'
+      templateUrl: 'partials/user-detail.html',
+      requireAuth: true
     })
     .when('/users/:userId/pages', {
-      templateUrl: 'partials/user-pages.html'
+      templateUrl: 'partials/user-pages.html',
+      requireAuth: true
     })
     .when('/errors/:status', {
       templateUrl: 'partials/error-detail.html',
@@ -60,16 +63,20 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
       redirectTo: '/errors/404'
     });
 }])
-.run(['$rootScope', '$location', '$timeout', '$mdToast', '$mdDialog', function ($rootScope, $location, $timeout, $mdToast, $mdDialog){
+.run(['$rootScope', '$location', '$timeout', function ($rootScope, $location, $timeout){
   let isViewLoading = false;
   $rootScope.isViewLoadingSlow = false;
-  $rootScope.$on('$routeChangeStart', function() {
-    isViewLoading = true;
-    $timeout(function () {
-      if (isViewLoading) {
-        $rootScope.isViewLoadingSlow = true;
-      }
-    }, 500);
+  $rootScope.$on('$routeChangeStart', function(e, nextRoute) {
+    if (nextRoute.$$route.requireAuth && !$rootScope.isAuthenticated()) {
+      $location.path(`/errors/unauthenticated`).replace();
+    } else {
+      isViewLoading = true;
+      $timeout(function () {
+        if (isViewLoading) {
+          $rootScope.isViewLoadingSlow = true;
+        }
+      }, 500);
+    }
   });
   $rootScope.$on('$routeChangeSuccess', function() {
     $rootScope.isViewLoadingSlow = isViewLoading = false;

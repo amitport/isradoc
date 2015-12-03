@@ -1,1 +1,10 @@
-{"tagline": "here"}
+{
+  "name": {
+    "title": "ד\"ר",
+    "first": "אריאלה",
+    "last": "פורטנוי הידש"
+  },
+  "tagline": "רופאת שיניים מומחית לרפואת שיניים לילדים ונוער",
+  "imgUrl": "images/ariela.jpg",
+  "mainPhone": "08-6999888"
+}
