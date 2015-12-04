@@ -8,7 +8,9 @@ function clientRelative(rel) {
 import {useUsersApi, useAuthApi} from '../auth/express';
 
 import usefulHttpBuilder from 'useful-http';
+
 import recommendationsRouter from './routers/recommendations';
+import doctorsRouter from './routers/doctors';
 
 export default function http() {
   return usefulHttpBuilder()
@@ -27,6 +29,7 @@ export default function http() {
     .tap(function (app) {
       // add routers
       app.use(recommendationsRouter);
+      app.use('/api', doctorsRouter)
     })
     // TODO API routes
     .serveStatic({dirs:

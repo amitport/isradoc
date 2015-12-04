@@ -1,27 +1,35 @@
-<md-content layout="column" layout-fill layout-padding>
-  Hello!
-  <div>רשימת רופאים: <a href="/doctors/test">רופא אחד</a>
-    <br>
-    <br>
-
-
-    <br><br>
-
-    <md-button class="md-icon-button" ng-click="list.openDialog($event)">
-      <md-icon>lock outline</md-icon>
+<div layout="column" layout-fill>
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" ng-click="ctrl.openSearchDialog($event)">
+      <md-icon>search</md-icon>
     </md-button>
-
   </div>
+</md-toolbar>
+<md-button class="md-warn md-fab md-fab-top-left">
+  <md-tooltip md-direction="bottom">
+    הוספת רופא / מרפאה
+  </md-tooltip>
+  <md-icon>add</md-icon>
+</md-button>
+<md-content>
+  <section>
+    <md-subheader class="md-primary md-no-sticky">רופאים אחרונים שנוספו</md-subheader>
+    <md-list layout-padding>
+      <md-list-item class="md-3-line" ng-repeat="doctorInfo in ctrl.doctors track by $index">
+        <!--<img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">-->
+        <div class="md-list-item-text">
+          <h3>{{doctorInfo.firstName}}</h3>
+          <h4>{message.who}}</h4>
+          <p>
+            {message.notes}}
+          </p>
+        </div>
+      </md-list-item>
+      </md-list>
+  </section>
 
-
-dsda <br>
-  dsda <br>
-  dsda <br>
-  dsda <br>vdsda <br>
-  dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>dsda <br>
-
-
-
-end
+  <a href="/doctors/test">רופא אחד</a>
 </md-content>
+</div>
 

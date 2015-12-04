@@ -1,6 +1,8 @@
 import angular from 'angular';
 import 'angular-material';
 import 'satellizer';
+import '../user-management/index';
+
 import moment from 'moment';
 import 'moment/locale/he';
 

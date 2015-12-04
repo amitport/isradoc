@@ -9,8 +9,10 @@ import './routes/index';
 
 import './modules/user-management/index';
 import './modules/recommendations/index';
+import './modules/doctors/index';
 
-angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-management', 'id-recommendations'])
+angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-management', 'id-recommendations',
+  'id-doctors'])
 .config(['$locationProvider', '$routeProvider', '$mdThemingProvider',
     function($locationProvider, $routeProvider, $mdThemingProvider) {
       $mdThemingProvider.theme('default')
@@ -26,7 +28,7 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
   $routeProvider
     .when('/doctors', {
       templateUrl: 'partials/doctor-list.html',
-      controllerAs: 'list',
+      controllerAs: 'ctrl',
       controller: 'DoctorListCtrl'
     })
     .when('/', {redirectTo: '/doctors'})

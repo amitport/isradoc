@@ -14,21 +14,28 @@ function DialogController($scope, $mdDialog) {
 DialogController.$inject = ['$scope', '$mdDialog'];
 
 angular.module('id-routes', [])
-  .controller('DoctorListCtrl', ['$mdDialog', function($mdDialog) {
-    this.openDialog = function (event) {
+  .controller('DoctorListCtrl', ['$mdDialog', '$mdToast', '$http', function($mdDialog, $mdToast, $http) {
+    this.doctors = [{firstName: 'test'}, {firstName: 'test2'}];
+    $http.get('/api/doctors').then(function (response) {
+      console.log(response.data)
+    }, function (rejection) {
+      console.error(rejection);
+      $mdToast.showSimple('היתה בעיה בטעינת האינדקס');
+    });
+    this.openSearchDialog = function (event) {
       $mdDialog.show({
-          controller: DialogController,
-          templateUrl: 'routes/tabDialog.tmpl.html',
-          parent: angular.element(document.body),
+          template: `
+<md-dialog>
+  <md-dialog-content class="md-dialog-content">
+    <div class="md-dialog-content-body" layout layout-padding>
+      <p style="font-style: italic;">האתר עדיין לא תומך בחיפוש, בבקשה בדקו מאוחר יותר</p>
+    </div>
+  </md-dialog-content>
+</md-dialog>`,
           targetEvent: event,
           clickOutsideToClose:true
-        })
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
         });
-    }
+    };
   }])
   .controller('DoctorDetailCtrl', ['$routeParams', 'doctorDetails',
       function($routeParams, doctorDetails) {
