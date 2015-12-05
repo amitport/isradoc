@@ -16,7 +16,9 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
         }
       };
   }])
-  .controller('RecommendationsController', ['$auth', '$mdDialog', '$mdToast', '$http', '$rootScope', function ($auth, $mdDialog, $mdToast, $http, $rootScope) {
+  .controller('RecommendationsController', ['$auth', '$mdDialog', '$mdToast', '$http', 'userManagementUtils',
+                                              function ($auth, $mdDialog, $mdToast, $http, userManagementUtils) {
+    this.auth = userManagementUtils;
     this.addRecommendation = (event, recommendation) => {
       const editing = recommendation ? true : false;
 
@@ -26,28 +28,8 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
             focusOnOpen: false,
             targetEvent: event,
             clickOutsideToClose: true,
-            template: `
-<md-dialog>
-  <form name="recommendationForm">
-  <md-dialog-content class="md-dialog-content">
-    <div layout="column" class="md-inline-form md-dialog-content-body">
-        <md-input-container class="md-block">
-          <label>תוכן ההמלצה</label>
-          <textarea id-focus style="height: 200px; width: 400px;" name="recommendation" md-no-autogrow ng-model="user.recommendation" columns="1" md-maxlength="250" rows="5"></textarea>
-          <!--div ng-messages="recommendationForm.recommendation.$error" role="alert">
-            <div ng-message-exp="['required', 'minlength', 'md-maxlength']">
-בבקשה מלא בין 15 ל-250 תווים
-            </div>
-          </div--->
-        </md-input-container>
-    </div>
-  </md-dialog-content>
-  <md-dialog-actions>
-    <button class="md-primary md-button" ng-disabled="recommendationForm.$invalid" type="button" ng-click="publishRecommendation()">{{editing ? 'ערוך' : 'פרסם'}}</button>
-  </md-dialog-actions>
-  </form>
-</md-dialog>`,
-            controller: ['$scope', '$rootScope', '$mdDialog', function AuthDialogController($scope, $rootScope, $mdDialog) {
+            templateUrl: 'partials/recommendations/addRecommendationDialog.html',
+            controller: ['$scope', '$mdDialog', function AuthDialogController($scope, $mdDialog) {
               $scope.editing = editing;
 
               $scope.user = {recommendation: (editing && recommendation.content) || ''};
@@ -59,19 +41,15 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
       }
 
       const getRecommendationFromUser = () => {
-        if (!$rootScope.isAuthenticated()) {
-          return $rootScope.openAuthProviderSelectionDialog(editing ? null : event).then(() => {
-            updateCanAddRecommendation();
-            if (this.canAddRecommendation) {
-              return showEditDialog();
-            } else {
-              $mdToast.showSimple('כבר כתבת בעבר המלצה עבור רופא זה');
-              return Promise.reject();
-            }
-          });
-        } else {
-          return showEditDialog(event);
-        }
+        return userManagementUtils.interactiveEnsureAuth(editing ? null : event, () => {
+          updateCanAddRecommendation();
+          if (this.canAddRecommendation) {
+            return showEditDialog();
+          } else {
+            $mdToast.showSimple('כבר כתבת בעבר המלצה עבור רופא זה');
+            return Promise.reject();
+          }
+        });
       };
 
       getRecommendationFromUser().then((content) => {
@@ -91,9 +69,9 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
                 {
                 _id:  response.data._id,
                 issuer: {
-                  _id: $rootScope.user._id,
-                  displayName: $rootScope.user.displayName,
-                  avatarImageUrl: $rootScope.user.avatarImageUrl
+                  _id: userManagementUtils.user._id,
+                  displayName: userManagementUtils.user.displayName,
+                  avatarImageUrl: userManagementUtils.user.avatarImageUrl
                 },
                 content: content,
                 createdAt: moment(response.data.createdAt).calendar()
@@ -136,7 +114,7 @@ angular.module('id-recommendations', ['satellizer', 'ngMaterial', 'id-user-manag
 
     const updateCanAddRecommendation = () => {
       this.canAddRecommendation =
-        (!$rootScope.user || this.recommendations.every((r) => r.issuer._id !== $rootScope.user._id))
+        (!userManagementUtils.user || this.recommendations.every((r) => r.issuer._id !== userManagementUtils.user._id))
           ? true : false;
     };
   }]);

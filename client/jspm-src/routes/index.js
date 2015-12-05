@@ -14,14 +14,26 @@ function DialogController($scope, $mdDialog) {
 DialogController.$inject = ['$scope', '$mdDialog'];
 
 angular.module('id-routes', [])
-  .controller('DoctorListCtrl', ['$mdDialog', '$mdToast', '$http', function($mdDialog, $mdToast, $http) {
+  .controller('DoctorListCtrl', ['$mdDialog', '$mdToast', '$http', 'doctorsService',
+                                  function($mdDialog, $mdToast, $http, doctorsService) {
     this.doctors = [{firstName: 'test'}, {firstName: 'test2'}];
-    $http.get('/api/doctors').then(function (response) {
-      console.log(response.data)
-    }, function (rejection) {
-      console.error(rejection);
-      $mdToast.showSimple('היתה בעיה בטעינת האינדקס');
-    });
+    $http.get('/api/doctors')
+      .then((response) =>{
+        this.doctors.push(...response.data);
+        console.log(response.data)
+      })
+      .catch(function (rejection) {
+        console.error(rejection);
+        $mdToast.showSimple('היתה בעיה בטעינת האינדקס');
+      });
+
+    this.addDoctor = (event) => {
+      doctorsService.addOrEditDoctor(event).then((doctor) => {
+        this.doctors.push(doctor);
+      });
+    };
+
+
     this.openSearchDialog = function (event) {
       $mdDialog.show({
           template: `
@@ -40,7 +52,8 @@ angular.module('id-routes', [])
   .controller('DoctorDetailCtrl', ['$routeParams', 'doctorDetails',
       function($routeParams, doctorDetails) {
     this.id = $routeParams.doctorId;
-
+      doctorDetails.name = {first: doctorDetails.firstName, last: doctorDetails.lastName, title: doctorDetails.title};
+      doctorDetails.imgUrl = 'images/ariela.jpg';
       Reflect.defineProperty(doctorDetails.name, 'full', {
         get: function () { return `${this.title} ${this.first} ${this.last}`; }
       });

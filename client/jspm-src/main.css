@@ -110,4 +110,30 @@ html {
   height: 96px;
   margin-right: 16px;
 }
+html[dir=rtl] md-input-container ng-message:not(.md-char-counter),
+html[dir=rtl] md-input-container data-ng-message:not(.md-char-counter),
+html[dir=rtl] md-input-container x-ng-message:not(.md-char-counter),
+html[dir=rtl] md-input-container [ng-message]:not(.md-char-counter),
+html[dir=rtl] md-input-container [data-ng-message]:not(.md-char-counter),
+html[dir=rtl] md-input-container [x-ng-message]:not(.md-char-counter),
+html[dir=rtl] md-input-container [ng-message-exp]:not(.md-char-counter),
+html[dir=rtl] md-input-container [data-ng-message-exp]:not(.md-char-counter),
+html[dir=rtl] md-input-container [x-ng-message-exp]:not(.md-char-counter),
+html[dir=rtl] md-input-container .md-char-counter:not(.md-char-counter) {
+  padding-right: initial;
+  padding-left: 50px;
+}
 
+html[dir=rtl] md-input-container.md-has-icon > label {
+  left: initial;
+  right: 36px;
+}
+
+html[dir=rtl] md-input-container.md-has-icon {
+  padding-left: initial;
+  padding-right: 2px;
+}
+html[dir=rtl] md-input-container > md-icon {
+  right: 2px;
+  left: initial;
+}

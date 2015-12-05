@@ -32,7 +32,7 @@
       </md-tab>
       <md-tab label="המלצות">
         <div ng-controller="RecommendationsController as ctrl">
-          <md-toolbar class="md-accent rec-toolbar" ng-show="!user || ctrl.canAddRecommendation">
+          <md-toolbar class="md-accent rec-toolbar" ng-show="!ctrl.auth.user || ctrl.canAddRecommendation">
 
             <div class="md-toolbar-tools">
               <div>
@@ -54,14 +54,14 @@
                     <div class="md-list-item-text">
                       <h3 style="display:inline;">נכתב על-ידי {{recommendation.issuer.displayName}} <md-icon class="md-accent"><md-tooltip>
                         זהות מאומתת
-                      </md-tooltip>verified_user</md-icon></h3>
+                      </md-tooltip>verified_ctrl.auth.user</md-icon></h3>
                       <h4 class="md-caption" style="display:inline;">— נוצר {{recommendation.createdAt}}</h4><h4
                       class="md-caption"
                       style="display:inline;"
                       ng-show="!!recommendation.updatedAt">
                       , נערך {{recommendation.updatedAt}}</h4>
 
-                      <div ng-show="!!user && user._id === recommendation.issuer._id"
+                      <div ng-show="!!ctrl.auth.user && ctrl.auth.user._id === recommendation.issuer._id"
                            style="position:absolute; bottom: 0; left: 0;">
                         <md-button class="md-icon-button" ng-click="ctrl.addRecommendation($event, recommendation)">
                           <md-tooltip>

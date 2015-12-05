@@ -37,18 +37,30 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
       controllerAs: 'doctor',
       controller: 'DoctorDetailCtrl',
       resolve: {
+        //doctorDetails: ['$http', '$route', function($http, $route) {
+        //  return $http
+        //    .get(`data/doctors/${$route.current.params.doctorId}.json`)
+        //    .then((response) =>
+        //      //new Promise(function(resolve){setTimeout(resolve,3000)}));
+        //      response.data);
+        //}],
         doctorDetails: ['$http', '$route', function($http, $route) {
           return $http
-            .get(`data/doctors/${$route.current.params.doctorId}.json`)
-            .then((response) =>
-              //new Promise(function(resolve){setTimeout(resolve,3000)}));
-              response.data);
+            .get(`api/doctors/${$route.current.params.doctorId}`)
+            .then((response) => {
+              //console.log(response.data);
+
+              return response.data;
+            });
         }]
       }
     })
     .when('/users/:userId', {
       templateUrl: 'partials/user-detail.html',
-      requireAuth: true
+      requireAuth: true,
+      controller: ['$scope', 'userManagementUtils', function ($scope, userManagementUtils) {
+        $scope.auth = userManagementUtils;
+      }]
     })
     .when('/users/:userId/pages', {
       templateUrl: 'partials/user-pages.html',
@@ -65,11 +77,12 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
       redirectTo: '/errors/404'
     });
 }])
-.run(['$rootScope', '$location', '$timeout', function ($rootScope, $location, $timeout){
+.run(['$rootScope', '$location', '$timeout', 'userManagementUtils',
+    function ($rootScope, $location, $timeout, userManagementUtils){
   let isViewLoading = false;
   $rootScope.isViewLoadingSlow = false;
   $rootScope.$on('$routeChangeStart', function(e, nextRoute) {
-    if (nextRoute.$$route.requireAuth && !$rootScope.isAuthenticated()) {
+    if (nextRoute.$$route.requireAuth && !userManagementUtils.isAuthenticated()) {
       $location.path(`/errors/unauthenticated`).replace();
     } else {
       isViewLoading = true;

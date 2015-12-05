@@ -8,7 +8,6 @@ const log = config.get('log');
 const router = express.Router();
 
 router.post('/recommendations', ensureUser, function (req, res) {
-  // Create a new instance of the Beer model
   const recommendation = new Recommendation();
 
   recommendation.content = req.body.content;

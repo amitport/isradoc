@@ -1,0 +1,62 @@
+<md-dialog>
+  <form novalidate name="ctrl.form">
+    <md-dialog-content class="md-dialog-content">
+      <div layout="column" class="md-inline-form md-dialog-content-body">
+        <div layout layout-sm="column">
+          <md-input-container class="md-block">
+            <label>תואר</label>
+            <md-select ng-model="ctrl.doctor.title" name="title">
+              <md-option value=""></md-option>
+              <md-option value="דוקטור">
+                דוקטור
+              </md-option>
+              <md-option value="פרופסור">
+                פרופסור
+              </md-option>
+            </md-select>
+            <div ng-messages="ctrl.form.title.$error">
+              <div ng-message="required">שדה חובה</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>שם פרטי</label>
+            <input type="text" ng-model="ctrl.doctor.firstName" name="firstName" required>
+            <div ng-messages="ctrl.form.firstName.$error">
+              <div ng-message="required">שדה חובה</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>שם משפחה</label>
+            <input type="text" ng-model="ctrl.doctor.lastName" name="lastName" required>
+            <div ng-messages="ctrl.form.lastName.$error">
+              <div ng-message="required">שדה חובה</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+          <md-input-container flex class="md-block">
+            <label>שורת מפתח</label>
+            <input type="text" ng-model="ctrl.doctor.tagline" name="tagline" required>
+            <div ng-messages="ctrl.form.tagline.$error">
+              <div ng-message="required">שדה חובה</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>טלפון ראשי</label>
+            <input style="direction: ltr;" type="text" ng-model="ctrl.doctor.mainPhone" name="mainPhone" required>
+            <div ng-messages="ctrl.form.mainPhone.$error">
+              <div ng-message="required">שדה חובה</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <button class="md-primary md-button"
+              type="button"
+              ng-click="ctrl.save()">שמור
+      </button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

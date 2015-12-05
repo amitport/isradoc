@@ -25,8 +25,8 @@
     <!-- fill up the space between left and right area -->
     <span flex></span>
     <div style="margin-left: 15px;" layout layout-align="center center" ng-controller="UserMenuController as ctrl">
-      <md-menu  layout layout-align="center center" ng-if="isAuthenticated()">
-        <md-button style="padding: 4px 0 0 0;" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+      <md-menu  layout layout-align="center center" ng-if="ctrl.isAuthenticated()">
+        <md-button style="padding: 4px 0 0 0;" class="md-icon-button" ng-click="$mdOpenMenu($event)">
           <md-tooltip>
 פתיחת תפריט</md-tooltip>
             <md-icon md-menu-origin>menu</md-icon>
@@ -35,10 +35,10 @@
         </md-button>
         <md-menu-content>
           <md-menu-item>
-            <md-button ng-click="ctrl.gotoUserProfile(user._id)" class="md-button">ניהול פרופיל משתמש</md-button>
+            <md-button ng-click="ctrl.gotoUserProfile()" class="md-button">ניהול פרופיל משתמש</md-button>
           </md-menu-item>
           <md-menu-item>
-            <md-button ng-click="ctrl.gotoUserPages(user._id)" class="md-button">ניהול דפים</md-button>
+            <md-button ng-click="ctrl.gotoUserPages()" class="md-button">ניהול דפים</md-button>
           </md-menu-item>
           <md-menu-divider></md-menu-divider>
           <md-menu-item>
@@ -46,7 +46,7 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
-      <md-button class="md-icon-button" ng-if="!isAuthenticated()" ng-click="openAuthProviderSelectionDialog($event)">
+      <md-button class="md-icon-button" ng-if="!ctrl.isAuthenticated()" ng-click="ctrl.openAuthDialog($event)">
         <md-tooltip>
           כניסה
         </md-tooltip>

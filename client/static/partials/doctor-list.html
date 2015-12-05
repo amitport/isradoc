@@ -6,9 +6,10 @@
     </md-button>
   </div>
 </md-toolbar>
-<md-button class="md-warn md-fab md-fab-top-left">
+<md-button class="md-warn md-fab md-fab-top-left"
+          ng-click="ctrl.addDoctor($event)">
   <md-tooltip md-direction="bottom">
-    הוספת רופא / מרפאה
+    הוספת רופא
   </md-tooltip>
   <md-icon>add</md-icon>
 </md-button>
@@ -18,12 +19,13 @@
     <md-list layout-padding>
       <md-list-item class="md-3-line" ng-repeat="doctorInfo in ctrl.doctors track by $index">
         <!--<img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">-->
-        <div class="md-list-item-text">
-          <h3>{{doctorInfo.firstName}}</h3>
-          <h4>{message.who}}</h4>
-          <p>
-            {message.notes}}
-          </p>
+        <div class="md-list-item-text" style="direction: ltr;">
+          {{doctorInfo | json}}
+          <!--<h3>{{doctorInfo.firstName}}</h3>-->
+          <!--<h4>{message.who}}</h4>-->
+          <!--<p>-->
+            <!--{message.notes}}-->
+          <!--</p>-->
         </div>
       </md-list-item>
       </md-list>

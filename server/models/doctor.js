@@ -1,14 +1,6 @@
 import mongoose from 'mongoose';
 import validators from 'mongoose-validators';
 
-//"name": {
-//  "title": "ד\"ר",
-//    "first": "אריאלה",
-//    "last": "פורטנוי הידש"
-//},
-//"tagline": "רופאת שיניים מומחית לרפואת שיניים לילדים ונוער",
-//  "imgUrl": "images/ariela.jpg",
-//  "mainPhone": "08-6999888"
 const DoctorSchema = new mongoose.Schema({
   title: {
     type: String
@@ -40,7 +32,10 @@ const DoctorSchema = new mongoose.Schema({
   mainImgUrl: {
     type: String,
     validate: validators.isURL()
-  }
+  },
+  owner: {type: mongoose.Schema.ObjectId, required: true, ref: 'User'},
+}, {
+  timestamps: true
 });
 
 DoctorSchema.index({ firstName: 1, lastName: 1});
