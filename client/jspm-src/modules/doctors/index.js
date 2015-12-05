@@ -53,6 +53,18 @@ class DoctorsService {
         });
     })
   }
+
+  delete(doctor) {
+    return this.$http.delete(`/api/doctors/${doctor._id}`)
+      .then(() => {
+        this.$mdToast.showSimple('המלצה נמחקה');
+      })
+      .catch((rejection) => {
+        console.error(rejection);
+        this.$mdToast.showSimple('היתה בעיה במחיקת ההמלצה, בבקשה נסה שוב מאוחר יותר');
+        return Promise.reject();
+      })
+  }
 }
 DoctorsService.$inject = ['userManagementUtils', '$mdDialog', '$mdToast', '$http'];
 

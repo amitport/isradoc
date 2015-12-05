@@ -61,5 +61,25 @@ router.get('/doctors/:id',  function (req, res) {
     });
 });
 
+router.delete('/doctors/:id', ensureUser, function (req, res) {
+  Doctor
+    .findById(req.params.id)
+    .exec()
+    .then(function (doctor) {
+      if (!doctor) {
+        res.status(404).send();
+      } else {
+        doctor.remove()
+          .then(function () {
+            res.status(200).send();
+          }, function (err) {
+            res.status(500).send(err);
+          })
+      }
+    }, function (err) {
+      res.status(500).send(err);
+    });
+});
+
 export default router;
 
