@@ -11,8 +11,10 @@ router.post('/recommendations', ensureUser, function (req, res) {
   const recommendation = new Recommendation();
 
   recommendation.content = req.body.content;
+
   recommendation.issuer = req.user._id;
-  recommendation.target = req.user._id;// TODO actual target id
+  recommendation.target = req.body.target;
+
 
   recommendation.save(function(err) {
     if (err) {
@@ -27,9 +29,8 @@ router.post('/recommendations', ensureUser, function (req, res) {
 });
 
 router.get('/recommendations', function (req, res) {
-  // todo filter by entity id
   Recommendation
-    .find({}, 'content createdAt updatedAt issuer', {lean: true, sort: { _id : -1 }})
+    .find(req.query.q ? JSON.parse(req.query.q) : {}, 'content createdAt updatedAt issuer', {lean: true, sort: { _id : -1 }})
     .populate('issuer', 'avatarImageUrl displayName')
     .exec()
   .then(function (recommendations) {
@@ -87,3 +88,4 @@ router.delete('/recommendations/:id', ensureUser, function (req, res) {
 });
 
 export default router;
+

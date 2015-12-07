@@ -31,62 +31,7 @@
         </md-content>
       </md-tab>
       <md-tab label="המלצות">
-        <div ng-controller="RecommendationsController as ctrl">
-          <md-toolbar class="md-accent rec-toolbar" ng-show="!ctrl.auth.user || ctrl.canAddRecommendation">
-
-            <div class="md-toolbar-tools">
-              <div>
-                <md-button class="md-raised md-accent md-hue-2"
-                            ng-click="ctrl.addRecommendation($event)">
-                  <md-icon>add</md-icon>
-                  כתיבת המלצה&nbsp;</md-button>
-              </div>
-            </div>
-
-          </md-toolbar>
-          <md-content class="md-padding">
-              <p ng-show="ctrl.recommendations.length === 0" style="font-style: italic;">לא נמצאו המלצות</p>
-                <md-list>
-                  <md-list-item class="md-3-line md-long-text"
-                                ng-repeat="recommendation in ctrl.recommendations track by $index">
-                    <img class="md-avatar" ng-src="{{recommendation.issuer.avatarImageUrl}}?sz=32"/>
-
-                    <div class="md-list-item-text">
-                      <h3 style="display:inline;">נכתב על-ידי {{recommendation.issuer.displayName}} <md-icon class="md-accent"><md-tooltip>
-                        זהות מאומתת
-                      </md-tooltip>verified_ctrl.auth.user</md-icon></h3>
-                      <h4 class="md-caption" style="display:inline;">— נוצר {{recommendation.createdAt}}</h4><h4
-                      class="md-caption"
-                      style="display:inline;"
-                      ng-show="!!recommendation.updatedAt">
-                      , נערך {{recommendation.updatedAt}}</h4>
-
-                      <div ng-show="!!ctrl.auth.user && ctrl.auth.user._id === recommendation.issuer._id"
-                           style="position:absolute; bottom: 0; left: 0;">
-                        <md-button class="md-icon-button" ng-click="ctrl.addRecommendation($event, recommendation)">
-                          <md-tooltip>
-                            עריכה
-                          </md-tooltip>
-                          <md-icon>mode_edit</md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" ng-click="ctrl.delete(recommendation, $index)">
-                          <md-tooltip>
-                            מחיקה
-                          </md-tooltip>
-                          <md-icon>delete</md-icon>
-                        </md-button>
-                      </div>
-                      <p style="margin: 4px 0 38px 0;">
-                      <pre>{{recommendation.content}}</pre>
-                      </p>
-                    </div>
-                    <md-divider></md-divider>
-                  </md-list-item>
-                </md-list>
-
-
-          </md-content>
-        </div>
+        <recommendations target-id="{{doctor.id}}"></recommendations>
       </md-tab>
       <md-tab label="פרסומים">
         <md-content class="md-padding">

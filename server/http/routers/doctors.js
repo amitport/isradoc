@@ -32,7 +32,7 @@ router.post('/doctors', ensureUser, function (req, res) {
 
 router.get('/doctors', function (req, res) {
   Doctor
-    .find({})
+    .find(req.query.q ? JSON.parse(req.query.q) : {})
     .select('-__v')
     .lean()
     .sort({firstName: 1, lastName: 1})

@@ -57,11 +57,11 @@ class DoctorsService {
   delete(doctor) {
     return this.$http.delete(`/api/doctors/${doctor._id}`)
       .then(() => {
-        this.$mdToast.showSimple('המלצה נמחקה');
+        this.$mdToast.showSimple('רשומה נמחקה');
       })
       .catch((rejection) => {
         console.error(rejection);
-        this.$mdToast.showSimple('היתה בעיה במחיקת ההמלצה, בבקשה נסה שוב מאוחר יותר');
+        this.$mdToast.showSimple('היתה בעיה, בבקשה נסה שוב מאוחר יותר');
         return Promise.reject();
       })
   }
@@ -69,5 +69,10 @@ class DoctorsService {
 DoctorsService.$inject = ['userManagementUtils', '$mdDialog', '$mdToast', '$http'];
 
 angular.module('id-doctors', ['satellizer', 'ngMaterial', 'id-user-management'])
-  .service('doctorsService', DoctorsService);
+  .service('doctorsService', DoctorsService)
+  .directive('doctorList', function () {
+    return {
+      templateUrl: 'partials/doctor-list-content.html'
+    }
+  });
 
