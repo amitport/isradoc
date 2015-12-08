@@ -88,8 +88,8 @@ angular.module('id-doctors', ['satellizer', 'ngMaterial', 'id-user-management'])
       controllerAs: 'ctrl',
       controller: ['doctorsService', '$scope', '$mdDialog', function (doctorsService, $scope, $mdDialog) {
         this.addDoctor = (event) => {
-          doctorsService.addOrEditDoctor(event).then((/*d*/) => {
-            $scope.$broadcast('id-doctor-added');
+          doctorsService.addOrEditDoctor(event).then(() => {
+            $scope.$parent.$broadcast('id-doctor-added'); // TODO this, more aesthetically
           });
         };
 
