@@ -27,9 +27,7 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
 
   $routeProvider
     .when('/doctors', {
-      templateUrl: 'partials/doctor-list.html',
-      controllerAs: 'ctrl',
-      controller: 'DoctorListCtrl'
+      templateUrl: 'partials/doctor-list.html'
     })
     .when('/', {redirectTo: '/doctors'})
     .when('/doctors/:doctorId', {
@@ -64,7 +62,10 @@ angular.module('isradoc', ['ngMaterial', 'ngRoute', 'id-routes', 'id-user-manage
     })
     .when('/users/:userId/pages', {
       templateUrl: 'partials/user-pages.html',
-      requireAuth: true
+      requireAuth: true,
+      controller: ['$scope', 'userManagementUtils', function ($scope, userManagementUtils) {
+        $scope.auth = userManagementUtils;
+      }]
     })
     .when('/errors/:status', {
       templateUrl: 'partials/error-detail.html',

@@ -14,46 +14,6 @@ function DialogController($scope, $mdDialog) {
 DialogController.$inject = ['$scope', '$mdDialog'];
 
 angular.module('id-routes', [])
-  .controller('DoctorListCtrl', ['$mdDialog', '$mdToast', '$http', 'doctorsService',
-                                  function($mdDialog, $mdToast, $http, doctorsService) {
-    this.doctors = [];
-    $http.get('/api/doctors')
-      .then((response) =>{
-        this.doctors.push(...response.data.map((d) => {return {...d, fullName: `${d.title} ${d.firstName} ${d.lastName}`};}));
-        console.log(response.data)
-      })
-      .catch(function (rejection) {
-        console.error(rejection);
-        $mdToast.showSimple('היתה בעיה בטעינת האינדקס');
-      });
-
-    this.addDoctor = (event) => {
-      doctorsService.addOrEditDoctor(event).then((d) => {
-        d.fullName = `${d.title} ${d.firstName} ${d.lastName}`;
-        this.doctors.push(d);
-      });
-    };
-
-    this.delete = (doctor, index) => {
-      doctorsService.delete(doctor).then(() => {
-        this.doctors.splice(index, 1);
-      });
-    };
-    this.openSearchDialog = function (event) {
-      $mdDialog.show({
-          template: `
-<md-dialog>
-  <md-dialog-content class="md-dialog-content">
-    <div class="md-dialog-content-body" layout layout-padding>
-      <p style="font-style: italic;">האתר עדיין לא תומך בחיפוש, בבקשה בדקו מאוחר יותר</p>
-    </div>
-  </md-dialog-content>
-</md-dialog>`,
-          targetEvent: event,
-          clickOutsideToClose:true
-        });
-    };
-  }])
   .controller('DoctorDetailCtrl', ['$routeParams', 'doctorDetails',
       function($routeParams, doctorDetails) {
     this.id = $routeParams.doctorId;

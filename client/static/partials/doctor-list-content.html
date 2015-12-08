@@ -1,6 +1,6 @@
-<md-content>
+<md-content flex>
   <section layout="column" layout-padding>
-    <md-subheader class="md-primary md-no-sticky">רופאים אחרונים שנוספו</md-subheader>
+    <md-subheader class="md-primary md-no-sticky">{{ctrl.header}}</md-subheader>
     <md-list>
       <md-list-item class="md-2-line" ng-repeat="doctorInfo in ctrl.doctors track by $index">
         <img ng-src="http://placehold.it/50x50" class="md-avatar" alt="{{doctorInfo.fullName}}">
