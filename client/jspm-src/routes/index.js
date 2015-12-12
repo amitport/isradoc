@@ -14,14 +14,18 @@ function DialogController($scope, $mdDialog) {
 DialogController.$inject = ['$scope', '$mdDialog'];
 
 angular.module('id-routes', [])
-  .controller('DoctorDetailCtrl', ['$routeParams', 'doctorDetails',
-      function($routeParams, doctorDetails) {
+  .controller('DoctorDetailCtrl', ['$routeParams', 'doctorDetails', 'doctorsService',
+      function($routeParams, doctorDetails, doctorsService) {
     this.id = $routeParams.doctorId;
       doctorDetails.name = {first: doctorDetails.firstName, last: doctorDetails.lastName, title: doctorDetails.title};
-      doctorDetails.imgUrl = 'http://placehold.it/150x150';//'images/ariela.jpg';
+      doctorDetails.imgUrl = 'http://placehold.it/150x150';
       Reflect.defineProperty(doctorDetails.name, 'full', {
         get: function () { return `${this.title} ${this.first} ${this.last}`; }
       });
 
     this.details = doctorDetails;
+
+    this.edit = function(event) {
+      doctorsService.addOrEditDoctor(event, this.details);
+    }
   }]);

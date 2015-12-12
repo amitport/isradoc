@@ -137,3 +137,10 @@ html[dir=rtl] md-input-container > md-icon {
   right: 2px;
   left: initial;
 }
+
+html[dir=rtl] md-tabs {
+  direction: ltr;
+}
+html[dir=rtl] md-tabs md-tab-content {
+  direction: rtl;
+}

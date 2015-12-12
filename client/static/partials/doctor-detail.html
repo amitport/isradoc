@@ -24,20 +24,22 @@
     </div>
   </div>
   <div flex layout="column" style="height: 100%">
-    <md-tabs flex md-center-tabs="true" md-no-pagination="true" md-swipe-content="true" md-stretch-tabs="always">
-      <md-tab label="אודות">
-        <md-content class="md-padding">
-
-        </md-content>
-      </md-tab>
-      <md-tab label="המלצות">
-        <recommendations target-id="{{doctor.id}}"></recommendations>
-      </md-tab>
+    <md-tabs flex md-center-tabs="true" md-no-pagination="true" md-swipe-content="true" md-stretch-tabs="always"
+          md-selected="2">
       <md-tab label="פרסומים">
         <md-content class="md-padding">
           <p style="font-style: italic;">האתר עדיין לא תומך בהוספת פרסומים, בבקשה בדקו מאוחר יותר</p>
         </md-content>
       </md-tab>
+      <md-tab label="המלצות">
+        <recommendations target-id="{{doctor.id}}"></recommendations>
+      </md-tab>
+      <md-tab label="אודות">
+        <md-content class="md-padding">
+
+        </md-content>
+      </md-tab>
+
     </md-tabs>
 
   </div>
