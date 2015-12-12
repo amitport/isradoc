@@ -29,6 +29,10 @@ const DoctorSchema = new mongoose.Schema({
       message: '{VALUE} is not a valid phone number!'
     }
   },
+  mainImg: {
+    data: String,
+    mimetype: String
+  },
   mainImgUrl: {
     type: String,
     validate: validators.isURL()

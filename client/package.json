@@ -14,11 +14,13 @@
     },
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.4.8",
+      "angular-file-upload": "github:danialfarid/ng-file-upload-bower@^10.1.9",
       "angular-material": "github:angular/bower-material@1.0.0-rc5",
       "angular-route": "github:angular/bower-angular-route@^1.4.8",
       "css": "github:systemjs/plugin-css@^0.1.20",
       "material-design-icons": "github:google/material-design-icons@^2.1.1",
       "moment": "npm:moment@^2.10.6",
+      "ngImgCrop": "github:alexk111/ngImgCrop@^0.3.2",
       "satellizer": "github:sahat/satellizer@^0.13.1"
     },
     "devDependencies": {

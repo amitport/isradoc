@@ -11,6 +11,7 @@ import usefulHttpBuilder from 'useful-http';
 
 import recommendationsRouter from './routers/recommendations';
 import doctorsRouter from './routers/doctors';
+import supportPhotoUpload from './upload';
 
 export default function http() {
   return usefulHttpBuilder()
@@ -19,6 +20,7 @@ export default function http() {
     .log({stream: config.get('httpLogStream')})
     // TODO serve-favicon middleware
     .compress()
+    .tap(supportPhotoUpload)
     .serveFonts()
     .renderIndex({
       serverPagesDir: clientRelative('server-views'),

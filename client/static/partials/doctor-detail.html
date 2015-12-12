@@ -1,6 +1,7 @@
 <div layout="column" layout-fill>
   <div layout="column" layout-gt-sm="row" layout-padding layout-align-gt-sm="space-between center">
-    <img class="d-profile-pic" height="100" width="100" ng-src="{{doctor.details.imgUrl}}" title="{{doctor.details.name.full}}" alt="{{doctor.details.name.full}}">
+    <img ng-click="doctor.openImgSelectDialog($event)" class="d-profile-pic" height="100" width="100"
+         ng-src="data:{{doctor.details.mainImg.mimetype}};base64,{{doctor.details.mainImg.data}}" title="{{doctor.details.name.full}}" alt="{{doctor.details.name.full}}">
     <div class="doctor-name">
         <span layout="row" layout-align="start center">
             <span class="md-title">{{doctor.details.name.full}}</span>
