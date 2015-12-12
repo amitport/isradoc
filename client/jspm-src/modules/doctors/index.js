@@ -12,7 +12,12 @@ class DoctorsService {
   query(q) {
     return this.$http.get('/api/doctors', {params: {q}})
       .then((response) =>
-        response.data.map((d) => {return {...d, fullName: `${d.title} ${d.firstName} ${d.lastName}`};})
+        response.data.map((d) => {return {...d,
+          fullName: `${d.title} ${d.firstName} ${d.lastName}`,
+          imgUrl: d.hasOwnProperty('mainImg') ?
+            `data:${d.mainImg.mimetype};base64,${d.mainImg.data}`:
+            'http://placehold.it/150x150'
+        };})
       )
       .catch((rejection) => {
         console.error(rejection);

@@ -3,7 +3,7 @@
     <md-subheader class="md-primary md-no-sticky">{{ctrl.header}}</md-subheader>
     <md-list>
       <md-list-item class="md-2-line" ng-repeat="doctorInfo in ctrl.doctors track by $index">
-        <img ng-src="http://placehold.it/50x50" class="md-avatar" alt="{{doctorInfo.fullName}}">
+        <img ng-src="{{doctorInfo.imgUrl}}" class="md-avatar" alt="{{doctorInfo.fullName}}">
         <div class="md-list-item-text">
           <h3><a ng-href="/doctors/{{doctorInfo._id}}">{{doctorInfo.fullName}}</a></h3>
           <p>{{doctorInfo.tagline}}</p>

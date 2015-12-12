@@ -33,7 +33,7 @@ const DoctorSchema = new mongoose.Schema({
     data: String,
     mimetype: String
   },
-  mainImgUrl: {
+  mainImgUrl: {// TODO migrate from using mainImg to using mainImgUrl which points to some cloud storage/cdn
     type: String,
     validate: validators.isURL()
   },

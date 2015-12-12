@@ -6,19 +6,8 @@ const upload = multer({storage: multer.memoryStorage()});
 
 export default function supportPhotoUpload(app) {
   app.post('/api/doctors/:doctorId/actions/uploadMainImg', ensureUser, upload.single('file'), function (req, res, next) {
-    // req.files is array of `photos` files
-    // req.body will contain the text fields, if there were any
-    //console.dir(req.body)
-    //console.log(req.params.doctorId);
-    //
-    //console.log(req.user._id);
-    //console.log(req.file.mimetype);
-    //console.log(req.file.buffer.length)
-    //const data = fs.readFileSync(req.file.path);
-    //console.log(data.length)
-
     Doctor
-      .findById('5663332bd2cf261831713742' /* todo req.params.doctorId */)
+      .findById(req.params.doctorId)
       .exec()
       .then(function (doctor) {
         if (!doctor) {

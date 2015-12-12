@@ -1,7 +1,7 @@
 <div layout="column" layout-fill>
   <div layout="column" layout-gt-sm="row" layout-padding layout-align-gt-sm="space-between center">
     <img ng-click="doctor.openImgSelectDialog($event)" class="d-profile-pic" height="100" width="100"
-         ng-src="data:{{doctor.details.mainImg.mimetype}};base64,{{doctor.details.mainImg.data}}" title="{{doctor.details.name.full}}" alt="{{doctor.details.name.full}}">
+         ng-src="{{doctor.details.imgUrl}}" title="{{doctor.details.name.full}}" alt="{{doctor.details.name.full}}">
     <div class="doctor-name">
         <span layout="row" layout-align="start center">
             <span class="md-title">{{doctor.details.name.full}}</span>
@@ -19,7 +19,7 @@
         <md-icon style="float:right; height: 48px; width: 48px; font-size: 48px;" aria-label="Call">phone</md-icon>
         <div style="margin-left:8px;" layout="column" layout-align="center start">
           <div>להזמנת תור</div>
-          <h1 style="margin: 0; width: 142px;" class="md-headline">{{doctor.details.mainPhone}}</h1>
+          <h1 style="margin: 0; width: 142px; direction: ltr; text-align: end;" class="md-headline">{{doctor.details.mainPhone}}</h1>
         </div>
       </a>
     </div>
