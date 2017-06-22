@@ -1,0 +1,10 @@
+<p>
+  doctor-browser works! <br>
+  <a md-raised-button routerLink="./1">doctor 1</a>
+</p>
+
+<ul>
+  <li *ngFor="let doctor of doctors | async">
+    {{doctor.name}}
+  </li>
+</ul>

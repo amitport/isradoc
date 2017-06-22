@@ -1,0 +1,34 @@
+<div fxLayout="column">
+  <md-toolbar color="primary">
+    <button md-icon-button routerLink="/welcome">
+      <md-icon>home</md-icon>
+    </button>
+    <button md-button
+            routerLink="/doctors" routerLinkActive [routerLinkActiveOptions]="{exact: true}"
+            #doctorBrowserLink="routerLinkActive" [disabled]="doctorBrowserLink.isActive">
+      doctor-browser
+    </button>
+    <span fxFlex></span>
+    <div>
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item
+                routerLink="/users/1" routerLinkActive
+                #userDetailsLink="routerLinkActive" [disabled]="userDetailsLink.isActive">
+          user-details
+        </button>
+        <button md-menu-item (click)="signOut()">
+          sign-out
+        </button>
+      </md-menu>
+    </div>
+  </md-toolbar>
+  <div style="position: relative;">
+    <md-progress-bar  *ngIf="loadingIndicator | async as isLoading" [@fade]="isLoading" style="position: absolute;" mode="indeterminate" color="accent">
+    </md-progress-bar>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
