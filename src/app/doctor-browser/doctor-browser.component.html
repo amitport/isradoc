@@ -1,10 +1,12 @@
-<p>
-  doctor-browser works! <br>
-  <a md-raised-button routerLink="./1">doctor 1</a>
-</p>
+<md-nav-list>
+  <a md-list-item [routerLink]="[doctor.$key]" *ngFor="let doctor of doctors | async">
+    <img md-list-avatar [src]="doctor.imageUrl" [alt]="doctor.name">
+    <h4 md-line>{{doctor.name}}</h4>
+    <p md-line>{{doctor.tagline}}</p>
+    <div class="favorites-indicator" fxLayout="row" fxLayoutAlign="start center">
+      <md-icon>favorite</md-icon>
+      <div>13</div>
+    </div>
+  </a>
+</md-nav-list>
 
-<ul>
-  <li *ngFor="let doctor of doctors | async">
-    {{doctor.name}}
-  </li>
-</ul>

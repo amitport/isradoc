@@ -1,34 +1,40 @@
 <div fxLayout="column">
   <md-toolbar color="primary">
-    <button md-icon-button routerLink="/welcome">
-      <md-icon>home</md-icon>
-    </button>
     <button md-button
-            routerLink="/doctors" routerLinkActive [routerLinkActiveOptions]="{exact: true}"
+            routerLink="/welcome" routerLinkActive [routerLinkActiveOptions]="{exact: true}"
             #doctorBrowserLink="routerLinkActive" [disabled]="doctorBrowserLink.isActive">
-      doctor-browser
+      <h3 class="mat-subheading-2" style="display: inline-block;">יִשׂרָא-דוֹק</h3>
+      <small class="mat-caption" style="vertical-align: sub;">אינדקס רופאים</small>
     </button>
     <span fxFlex></span>
+    <button md-raised-button color="accent" routerLink="/doctors">
+      <md-icon>search</md-icon>
+      חיפוש
+    </button>
     <div>
       <button md-icon-button [mdMenuTriggerFor]="menu">
-        <md-icon>more_vert</md-icon>
+        <md-icon>menu</md-icon>
       </button>
       <md-menu #menu="mdMenu">
         <button md-menu-item
                 routerLink="/users/1" routerLinkActive
-                #userDetailsLink="routerLinkActive" [disabled]="userDetailsLink.isActive">
-          user-details
+                #userDetailsLink="routerLinkActive" [hidden]="userDetailsLink.isActive">
+ניהול פרופיל משתמש
         </button>
+        <button md-menu-item disabled >
+          ניהול דפים
+        </button>
+        <md-divider></md-divider>
         <button md-menu-item (click)="signOut()">
-          sign-out
+          יציאה
         </button>
       </md-menu>
     </div>
   </md-toolbar>
   <div style="position: relative;">
-    <md-progress-bar  *ngIf="loadingIndicator | async as isLoading" [@fade]="isLoading" style="position: absolute;" mode="indeterminate" color="accent">
+    <md-progress-bar *ngIf="loadingIndicator | async as isLoading" [@fade]="isLoading" style="position: absolute;"
+                     mode="indeterminate" color="accent">
     </md-progress-bar>
   </div>
-
   <router-outlet></router-outlet>
 </div>

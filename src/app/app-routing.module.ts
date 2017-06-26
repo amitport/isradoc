@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { DoctorBrowserComponent } from './doctor-browser/doctor-browser.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { LandingComponent } from './landing/landing.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PageComponent } from './page/page.component';
-import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
-import { DoctorListResolver } from './doctor-list.resolver';
+import { DoctorComponent } from './doctor/doctor.component';
+import { DoctorAboutComponent } from './doctor/about/doctor-about.component';
+import { DoctorRecommendationsComponent } from './doctor/recommendations/doctor-recommendations.component';
+import { DoctorLinksComponent } from './doctor/links/doctor-links.component';
+import { DoctorResolver } from 'app/doctor-resolver';
 
 const routes: Routes = [
   {
@@ -26,7 +29,30 @@ const routes: Routes = [
           },
           {
             path: ':doctorId',
-            component: DoctorDetailsComponent
+            component: DoctorComponent,
+            resolve: {
+              doctor: DoctorResolver
+            },
+            children: [
+              {
+                path: 'about',
+                component: DoctorAboutComponent,
+
+              },
+              {
+                path: 'recommendations',
+                component: DoctorRecommendationsComponent,
+              },
+              {
+                path: 'links',
+                component: DoctorLinksComponent,
+              },
+              {
+                path: '',
+                redirectTo: 'about',
+                pathMatch: 'full'
+              }
+            ]
             // ,
             // resolve: {
             //   doctor: DoctorListResolver
@@ -42,13 +68,14 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    component: LandingComponent
+    component: LandingPageComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [DoctorResolver]
 })
 export class AppRoutingModule {
 }

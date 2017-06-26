@@ -1,6 +1,25 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-blue-grey);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn:    mat-palette($mat-red);
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+@include angular-material-theme($candy-app-theme);
+
+$custom-typography: mat-typography-config(
+  $font-family: "'Noto Sans Hebrew', Roboto, 'Helvetica Neue', sans-serif"
+);
+@include angular-material-typography($custom-typography);
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('http://fonts.googleapis.com/earlyaccess/notosanshebrew.css');
+
+[hidden] { /* make sure browser hides all hidden elements */
+  display: none !important;
+}
 
 body {
   margin: 0;

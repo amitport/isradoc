@@ -12,7 +12,8 @@ export class DoctorBrowserComponent implements OnInit {
 
   constructor(db: AngularFireDatabase,
               loadingIndicator: LoadingIndicator) {
-    this.doctors = db.list('/users');
+    this.doctors = db.list('/doctors');
+
     loadingIndicator.addProcess(this.doctors.first());
   }
 

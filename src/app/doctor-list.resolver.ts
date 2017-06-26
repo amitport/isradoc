@@ -7,7 +7,6 @@ import 'rxjs/add/operator/delay';
 @Injectable()
 export class DoctorListResolver implements Resolve<{}> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{}> | Promise<{}> | {} {
-    debugger;
     return Observable.of({test: true}).delay(5000);
   }
 }

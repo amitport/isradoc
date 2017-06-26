@@ -5,13 +5,15 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
+import { Doctor } from 'app/models/doctor';
 
 @Component({
-  selector: 'id-doctor-details',
-  templateUrl: './doctor-details.component.html',
-  styleUrls: ['./doctor-details.component.scss']
+  selector: 'id-doctor',
+  templateUrl: './doctor.component.html',
+  styleUrls: ['./doctor.component.scss']
 })
-export class DoctorDetailsComponent implements OnInit {
+export class DoctorComponent implements OnInit {
+  doctor: Doctor;
   doctorId: string;
 
   constructor(private route: ActivatedRoute,
@@ -19,10 +21,14 @@ export class DoctorDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.doctorId = this.route.snapshot.params.doctorId;
+    this.route.data
+      .subscribe(({doctor}: { doctor: Doctor }) => {
+        this.doctor = doctor;
+      });
+
     setTimeout(() => {
 
-    this.loadingIndicator.addProcess(Observable.of(true).delay(4000));
+      this.loadingIndicator.addProcess(Observable.of(true).delay(500));
     }, 3000)
   }
 }
