@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 import {
+  MdAutocompleteModule,
   MdButtonModule,
   MdCoreModule,
-  MdIconModule,
+  MdIconModule, MdInputModule,
   MdListModule,
   MdMenuModule,
+  MdOptionModule,
   MdProgressBarModule,
   MdSnackBarModule,
   MdTabsModule,
@@ -29,6 +31,8 @@ import { environment } from '../environments/environment';
 import { DoctorAboutComponent } from './doctor/about/doctor-about.component';
 import { DoctorRecommendationsComponent } from './doctor/recommendations/doctor-recommendations.component';
 import { DoctorLinksComponent } from './doctor/links/doctor-links.component';
+import { DOCTOR_SERVICE, InMemoryDoctorsService } from './store/doctor.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,10 +48,15 @@ import { DoctorLinksComponent } from './doctor/links/doctor-links.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
 
     MdButtonModule,
+    MdOptionModule,
     MdIconModule,
+    MdAutocompleteModule,
+    MdInputModule,
     MdListModule,
     MdMenuModule,
     MdCoreModule,
@@ -63,7 +72,10 @@ import { DoctorLinksComponent } from './doctor/links/doctor-links.component';
     BrowserAnimationsModule,
     FlexLayoutModule
   ],
-  providers: [LoadingIndicator],
+  providers: [
+    LoadingIndicator,
+    {provide: DOCTOR_SERVICE, useClass: InMemoryDoctorsService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

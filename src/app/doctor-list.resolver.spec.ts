@@ -1,6 +1,5 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-
-import { DoctorListResolver } from './doctor-list-resolver.guard';
+import { DoctorListResolver } from './doctor-list.resolver';
 
 describe('DoctorListResolver', () => {
   beforeEach(() => {

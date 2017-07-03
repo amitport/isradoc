@@ -1,7 +1,26 @@
+<form [formGroup]="doctorQueryForm" novalidate>
+  <md-input-container style="width: 340px;">
+           <!--[formControl]="doctorQueryForm.get('speciality')"-->
+    <input mdInput placeholder="התמחות" [mdAutocomplete]="specialityAuto"
+           formControlName="speciality"
+           (blur)="onBlur()" >
+    <md-error *ngIf="doctorQueryForm.get('speciality').hasError('isSpeciality')">
+      בבקשה בחר התמחות מהרשימה
+    </md-error>
+  </md-input-container>
+
+  <md-autocomplete #specialityAuto="mdAutocomplete" [displayWith]="displayFn">
+    <md-option *ngFor="let speciality of filteredSpecialities | async" [value]="speciality" dir="rtl">
+      {{speciality.name}}
+      ({{speciality.category[0]}})
+    </md-option>
+  </md-autocomplete>
+</form>
+
 <md-nav-list>
-  <a md-list-item [routerLink]="[doctor.$key]" *ngFor="let doctor of doctors | async">
-    <img md-list-avatar [src]="doctor.imageUrl" [alt]="doctor.name">
-    <h4 md-line>{{doctor.name}}</h4>
+  <a md-list-item [routerLink]="[doctor.slug]" *ngFor="let doctor of doctors">
+    <img md-list-avatar [src]="doctor.portraitPhotoUrl" [alt]="doctor.slug">
+    <h4 md-line>{{doctor.listName}}</h4>
     <p md-line>{{doctor.tagline}}</p>
     <div class="favorites-indicator" fxLayout="row" fxLayoutAlign="start center">
       <md-icon>favorite</md-icon>
