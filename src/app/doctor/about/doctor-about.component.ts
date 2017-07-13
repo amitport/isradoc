@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Doctor } from '../../models/doctor';
 
 @Component({
-  selector: 'id-doctor-about',
+  selector: 'app-doctor-about',
   templateUrl: './doctor-about.component.html',
   styleUrls: ['./doctor-about.component.scss']
 })

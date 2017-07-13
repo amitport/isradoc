@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'id-doctor-links',
+  selector: 'app-doctor-links',
   templateUrl: './doctor-links.component.html',
   styleUrls: ['./doctor-links.component.scss']
 })

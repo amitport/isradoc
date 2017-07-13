@@ -8,7 +8,7 @@ import 'rxjs/add/observable/of';
 import { Doctor } from 'app/models/doctor';
 
 @Component({
-  selector: 'id-doctor',
+  selector: 'app-doctor',
   templateUrl: './doctor.component.html',
   styleUrls: ['./doctor.component.scss']
 })

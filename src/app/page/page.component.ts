@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { fade } from '../animations';
 
 @Component({
-  selector: 'id-page',
+  selector: 'app-page',
   animations: [fade],
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss']

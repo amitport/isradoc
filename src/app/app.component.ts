@@ -7,7 +7,7 @@ interface AppState {
 }
 
 @Component({
-  selector: 'id-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

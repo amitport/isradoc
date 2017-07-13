@@ -24,7 +24,7 @@ function validateSpeciality(c: FormControl) {
 }
 
 @Component({
-  selector: 'id-doctor-browser',
+  selector: 'app-doctor-browser',
   templateUrl: './doctor-browser.component.html',
   styleUrls: ['./doctor-browser.component.scss']
 })
