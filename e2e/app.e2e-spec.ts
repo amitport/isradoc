@@ -1,16 +1,14 @@
-import { IsradocPage } from './app.po';
+import { AppPage } from './app.po';
 
 describe('isradoc App', () => {
-  let page: IsradocPage;
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new IsradocPage();
+    page = new AppPage();
   });
 
-  it('should display welcome message', done => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    page.getParagraphText()
-      .then(msg => expect(msg).toEqual('Welcome to id!!'))
-      .then(done, done.fail);
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
