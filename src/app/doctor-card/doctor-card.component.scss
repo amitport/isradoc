@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+:host {
+  @include mat-elevation(2);
+  background-color: map-get($mat-light-theme-background, card);
+
+  .summary {
+    padding: 24px;
+  }
+
+  .expansion-label {
+    line-height: initial;
+    margin-left: 24px;
+    margin-top: 16px;
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .portrait {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+  }
+}

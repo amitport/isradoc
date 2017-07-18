@@ -1,0 +1,21 @@
+<div style="margin: 20px;">
+  <h1 class="mat-display-1" style="margin: 10px;">יִשׂרָא-דוֹק</h1>
+  <h3>אינדקס רופאים</h3>
+</div>
+<form (ngSubmit)="onSubmit()"
+      style="width: 400px;" fxLayout fxLayoutAlign="start center">
+
+  <md-input-container fxFlex>
+    <input
+      [(ngModel)]="query" name="query" type="text"
+      mdInput placeholder="חפש רופאים, התמחויות, מרפאות וכו'">
+  </md-input-container>
+
+  <button type="submit" md-icon-button>
+    <md-icon>search</md-icon>
+  </button>
+</form>
+<div [ngSwitch]="doctors.length !== 0" *ngIf="queryDone" style="width: 100%;">
+  <div *ngSwitchCase="false">לא נמצאו תוצאות</div>
+  <app-doctor-list *ngSwitchCase="true" style="width: 100%;" [doctors]="doctors"></app-doctor-list>
+</div>

@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingIndicator } from '../loading-indicator.service';
-import { Observable } from 'rxjs/Observable';
-
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/observable/of';
-import { Doctor } from 'app/models/doctor';
+import { Doctor } from '../store/doctor';
 
 @Component({
   selector: 'app-doctor',
@@ -14,21 +9,10 @@ import { Doctor } from 'app/models/doctor';
 })
 export class DoctorComponent implements OnInit {
   doctor: Doctor;
-  doctorId: string;
 
-  constructor(private route: ActivatedRoute,
-              private loadingIndicator: LoadingIndicator) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.data
-      .subscribe(({doctor}: { doctor: Doctor }) => {
-        this.doctor = doctor;
-      });
-
-    setTimeout(() => {
-
-      this.loadingIndicator.addProcess(Observable.of(true).delay(500));
-    }, 3000)
+    this.doctor = this.route.snapshot.data.doctor;
   }
 }

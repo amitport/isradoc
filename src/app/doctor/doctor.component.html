@@ -1,41 +1,11 @@
-<div fxLayout fxLayoutAlign="space-between center" style="margin: 16px;">
-  <div fxLayout>
-    <img style="border-radius: 50%; width: 80px; height: 80px;" [src]="doctor.portraitPhotoUrl ">
-    <div style="padding: 16px;">
-      {{ doctor.name }}
-    </div>
-  </div>
-  <button md-raised-button color="warn" style="padding: 8px 0; min-width: 200px;">
-    <div fxLayout fxLayoutAlign="start center">
-      <md-icon style="height: 48px; width: 48px; font-size: 48px;">phone</md-icon>
-      <div fxLayout="column" fxLayoutAlign="center start" style="line-height: initial; margin: 0 8px;">
-        <div style="font-size: 16px;">להזמנת תור</div>
-        <div dir="ltr" style="font-size: 24px; line-height: 32px;">*1234</div>
-      </div>
-      <div style="width:8px;"></div>
-    </div>
+<md-toolbar color="primary">
+  <button md-button routerLink="/">
+    <h3>יִשׂרָא-דוֹק</h3>
   </button>
-</div>
+  <md-toolbar-row></md-toolbar-row>
+</md-toolbar>
 
-<nav md-tab-nav-bar>
-  <a md-tab-link
-     routerLink="./about"
-     routerLinkActive #aboutLinkActive="routerLinkActive"
-     [active]="aboutLinkActive.isActive">
-    אודות
-  </a>
-  <a md-tab-link
-     routerLink="./recommendations"
-     routerLinkActive #recommendationsLinkActive="routerLinkActive"
-     [active]="recommendationsLinkActive.isActive">
-    המלצות
-  </a>
-  <a md-tab-link
-     routerLink="./links"
-     routerLinkActive #linksLinkActive="routerLinkActive"
-     [active]="linksLinkActive.isActive">
-    קישורים
-  </a>
-</nav>
+<div fxFlex="20px;"></div>
 
-<router-outlet></router-outlet>
+<app-doctor-card style="margin: -70px 120px 0 120px;" [doctor]="doctor"></app-doctor-card>
+

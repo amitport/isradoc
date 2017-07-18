@@ -1,0 +1,42 @@
+<div class="summary" fxLayout fxLayoutAlign="start center" @fadeIn>
+  <img fxFlexOffset="16px" class="portrait" [src]="doctor.portraitPhotoUrl" [alt]="doctor.slug">
+  <div fxLayout="column" fxLayoutAlign="space-between start">
+    <div [ngSwitch]="isListItem">
+      <div *ngSwitchCase="true" fxLayout>
+        <h1>{{doctor.listName}}</h1>
+        <a md-icon-button routerLink="/doctors/{{doctor.slug}}" style="color: rgb(121,134,203);"
+           title="פתח בחלון חדש" target="_blank">
+          <md-icon>launch</md-icon>
+        </a>
+      </div>
+      <h1 *ngSwitchDefault>{{doctor.listName}}</h1>
+    </div>
+    <h3 style="margin: 0;">{{doctor.tagline}}</h3>
+  </div>
+  <div fxFlex></div>
+  <a href="tel:{{doctor.primaryPhoneNumber}}" md-raised-button color="warn" style="padding: 8px 0; min-width: 200px;">
+    <div fxLayout fxLayoutAlign="start center">
+      <md-icon style="height: 48px; width: 48px; font-size: 48px;">phone</md-icon>
+      <div fxLayout="column" fxLayoutAlign="center start" style="line-height: initial; margin: 0 8px;">
+        <div style="font-size: 16px;">להזמנת תור</div>
+        <div dir="ltr" style="font-size: 24px; line-height: 32px;">{{doctor.primaryPhoneNumber}}</div>
+      </div>
+      <div style="width:8px;"></div>
+    </div>
+  </a>
+</div>
+<div [ngSwitch]="isListItem">
+  <md-expansion-panel *ngSwitchCase="true" #expansion class="mat-elevation-z0">
+    <md-expansion-panel-header >
+      <div fxLayout fxLayoutAlign="end" fxFlex>
+        <div fxFlexOffset="24px" class="expansion-label">
+          {{expansion.expanded ? 'סגור' : 'הצג פרטים נוספים'}}
+        </div>
+      </div>
+    </md-expansion-panel-header>
+    <app-doctor-details [doctor]="doctor"></app-doctor-details>
+  </md-expansion-panel>
+  <div *ngSwitchDefault fxLayout="column" fxLayoutAlign="start center" style="padding: 16px 24px">
+    <app-doctor-details [doctor]="doctor"></app-doctor-details>
+  </div>
+</div>
