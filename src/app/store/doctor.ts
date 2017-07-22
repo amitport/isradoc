@@ -8,6 +8,9 @@ export interface Doctor {
   tagline?: string;
   portraitPhotoUrl?: string;
   primaryPhoneNumber?: string;
+
+  practices?: Practice[];
+  recommendations?: Recommendation[];
   //
   // constructor(raw: any) {
   //   Object.assign(this, raw);
@@ -18,15 +21,23 @@ export interface Doctor {
   // }
 }
 
+export interface Recommendation {
+  text: string;
+}
+
 export interface StreetAddress {
   city: string;
-  street: string;
+  textLine?: string;
+  coordinates?: string;
 }
 
 export interface Practice {
   name: string;
-  description: string;
-  phones: string[];
+  description?: string;
+  phone?: string;
+  fax?: string;
+  email?: string;
+  open?: any;
   websiteUrl?: string;
   imageUrls?: string[];
   location?: StreetAddress;

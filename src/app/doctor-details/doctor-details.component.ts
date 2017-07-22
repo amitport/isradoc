@@ -8,5 +8,6 @@ import { Doctor } from '../store/doctor';
 })
 export class DoctorDetailsComponent {
   @Input() doctor: Doctor;
+
   constructor() { }
 }

@@ -8,12 +8,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorResolver } from './doctor/doctor-resolver.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MdExpansionModule, MdIconModule, MdInputModule, MdToolbarModule } from '@angular/material';
+import { MdButtonModule, MdCardModule, MdExpansionModule, MdIconModule, MdInputModule, MdToolbarModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorsService } from './store/doctors.service';
 import { DoctorCardComponent } from './doctor-card/doctor-card.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { PracticeDetailsComponent } from './practice-details/practice-details.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
     DoctorComponent,
     DoctorListComponent,
     DoctorCardComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    PracticeDetailsComponent,
+    RecommendationsComponent,
   ],
   imports: [
     // angular
@@ -37,6 +41,7 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
     MdInputModule,
     MdExpansionModule,
     MdToolbarModule,
+    MdCardModule,
 
     // flex-layout
     FlexLayoutModule,

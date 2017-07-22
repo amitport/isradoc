@@ -1,3 +1,68 @@
-<p>
-  פרטים עבור {{doctor.listName}}
-</p>
+<div fxLayout="column">
+  <div fxLayout="row">
+    <div fxFlex fxLayout="column">
+      <div fxLayout="column">
+        <div class="details-toolbar">הכשרה וניסיון</div>
+        <div class="details-content mat-h3">
+          <ul>
+            <li>רופאת שיניים</li>
+            <li>מומחית ברפואת שיניים לילדים</li>
+            <li>בעלת ניסיון רב בטיפולי שיניים לילדים בטכניקות שונות דוגמת גז צחוק, סדציה והרדמה מלאה</li>
+            <li>חברה בהסתדרות לרפואת שיניים ובאיגוד לרפואת שיניים לילדים</li>
+          </ul>
+
+        </div>
+      </div>
+      <div fxLayout="column">
+        <div class="details-toolbar">קישורים</div>
+        <div class="details-content mat-h3">
+          <ul>
+            <li><a href="" target="_blank">facebook</a></li>
+            <li><a href="" target="_blank">linkedIn</a></li>
+            <li>מומחית ברפואת שיניים לילדים</li>
+            <li>בעלת ניסיון רב בטיפולי שיניים לילדים בטכניקות שונות דוגמת גז צחוק, סדציה והרדמה מלאה</li>
+            <li>חברה בהסתדרות לרפואת שיניים ובאיגוד לרפואת שיניים לילדים</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div fxFlex="16px;"></div>
+    <div fxFlex fxLayout *ngIf="doctor.practices" fxLayout="column">
+      <div class="details-toolbar">מרפאות</div>
+      <div class="details-content">
+        <ng-container [ngSwitch]="doctor.practices.length">
+          <div *ngSwitchCase="1" class="mat-elevation-z1" style="padding: 0 16px 16px;">
+            <div style="line-height: 68px; font-size: 15px; display: flex; width: 100%;">
+              <div style="display: flex; flex-grow: 1; color: rgba(0, 0, 0, 0.87); margin-right: 16px;">
+                {{doctor.practices[0].name}}
+              </div>
+              <div style="display: flex; flex-grow: 2; color: rgba(0, 0, 0, 0.54); margin-right: 16px;">
+                {{doctor.practices[0].location.city}}
+              </div>
+            </div>
+            <app-practice-details [practice]="doctor.practices[0]"></app-practice-details>
+          </div>
+
+          <md-accordion *ngSwitchDefault>
+            <md-expansion-panel *ngFor="let practice of doctor.practices; first as isFirst"
+                                [expanded]="isFirst">
+              <md-expansion-panel-header>
+                <mat-panel-title>{{practice.name}}</mat-panel-title>
+                <mat-panel-description>{{practice.location.city}}</mat-panel-description>
+              </md-expansion-panel-header>
+              <app-practice-details [practice]="practice"></app-practice-details>
+            </md-expansion-panel>
+          </md-accordion>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" style="margin-top: 16px;">
+    <div class="details-toolbar">המלצות</div>
+    <div class="details-content mat-h3">
+      <app-recommendations [recommendations]="doctor.recommendations"></app-recommendations>
+
+    </div>
+  </div>
+</div>

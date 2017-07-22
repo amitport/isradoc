@@ -2,6 +2,7 @@
 
 :host {
   @include mat-elevation(2);
+  min-width: 700px;
   background-color: map-get($mat-light-theme-background, card);
 
   .summary {

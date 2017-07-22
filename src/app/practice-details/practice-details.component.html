@@ -1,0 +1,78 @@
+<div fxLayout="row">
+  <div fxFlex="16px;"></div>
+  <div>
+    <div fxLayout="row">
+      <div fxFlex>
+        <img style="max-width: 100%; margin-bottom: 18px;" border="0"
+             src="http://maps.googleapis.com/maps/api/staticmap?markers=31.889236%2C35.034649&size=440x140&key=AIzaSyD4I4yo9UyVbLY7pgKBtiLuHn1ORorbEz4"
+        >
+      </div>
+      <div fxFlex="16px"></div>
+    </div>
+    <div fxLayout fxLayoutAlign="space-between center">
+      <strong>כתובת</strong>
+
+      <a [href]="practice.location.coordinates" target="_blank" md-button color="primary">
+        <md-icon>directions</md-icon>
+        {{practice.location.textLine}}
+      </a>
+    </div>
+    <div fxLayout fxLayoutAlign="space-between center">
+      <strong>טלפון</strong>
+
+      <a href="tel:{{practice.phone}}" md-button color="primary">
+        <md-icon>phone</md-icon>
+        {{practice.phone}}
+      </a>
+    </div>
+    <div fxLayout fxLayoutAlign="space-between center" style="height: 36px;">
+      <strong>פקס</strong>
+
+      <div fxLayout>
+        <div>{{practice.fax}}</div>
+        <div fxFlex="16px"></div>
+      </div>
+    </div>
+    <div fxLayout fxLayoutAlign="space-between center">
+      <strong>דוא"ל</strong>
+
+      <a href="mailto:{{practice.email}}" md-button color="primary">
+        <md-icon>email</md-icon>
+        {{practice.email}}
+      </a>
+    </div>
+    <div fxLayout fxLayoutAlign="space-between start">
+      <strong style="margin-top: 8px;">שעות פעילות</strong>
+
+      <div fxLayout style="text-align: end;">
+        <div>
+          <div *ngFor="let daysRangeOpen of practice.open">
+            <strong>{{daysRangeOpen.days}}</strong>
+            {{daysRangeOpen.hours}}
+          </div>
+        </div>
+        <div fxFlex="16px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--<div ng-if="!!doc.clinics[0].email" style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">-->
+  <!--<strong>דוא"ל</strong>-->
+  <!--<span flex></span>-->
+  <!--<a style="text-transform: inherit;" class="md-button md-primary md-hue-1" href="mailto:{{doc.clinics[0].email}}">-->
+  <!--<md-icon md-svg-icon="icons/email.svg"></md-icon>-->
+  <!--{{doc.clinics[0].email}}-->
+  <!--</a>-->
+  <!--</div>-->
+  <!--<div ng-if="!!doc.clinics[0].open" style="min-height:48px;padding:0 14px;" layout-fill layout="row" layout-align="start center">-->
+  <!--<strong>שעות פעילות</strong>-->
+  <!--<span flex></span>-->
+  <!--<span style="text-align:left">-->
+  <!--<div ng-repeat="entry in doc.clinics[0].open track by $index">-->
+  <!--<strong>{{entry.days}} </strong>{{entry.hours}}-->
+  <!--</div>-->
+  <!--</span>-->
+  <!--</div>-->
+  <!--</div>-->
+
+</div>
