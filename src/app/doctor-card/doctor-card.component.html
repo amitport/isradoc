@@ -1,15 +1,18 @@
 <div class="summary" fxLayout fxLayoutAlign="start center" @fadeIn>
   <img fxFlexOffset="16px" class="portrait" [src]="doctor.portraitPhotoUrl" [alt]="doctor.slug">
   <div fxLayout="column" fxLayoutAlign="space-between start">
-    <div [ngSwitch]="isListItem">
-      <div *ngSwitchCase="true" fxLayout>
-        <h1>{{doctor.listName}}</h1>
-        <a md-icon-button routerLink="/doctors/{{doctor.slug}}" style="color: rgb(121,134,203);"
-           title="פתח בחלון חדש" target="_blank">
+    <div>
+      <div fxLayout fxLayoutAlign="start center">
+        <h1 style="margin: 0 0 4px 8px;">{{doctor.listName}}</h1>
+        <a *ngIf="isListItem" md-icon-button routerLink="/doctors/{{doctor.slug}}" class="app-card-action"
+           title="עבוד לדף הרופא">
           <md-icon>launch</md-icon>
         </a>
+        <button md-icon-button title="ערוך" class="app-card-action">
+          <md-icon>mode_edit</md-icon>
+        </button>
       </div>
-      <h1 *ngSwitchDefault>{{doctor.listName}}</h1>
+      <!--<h1 *ngSwitchDefault>{{doctor.listName}}</h1>-->
     </div>
     <h3 style="margin: 0;">{{doctor.tagline}}</h3>
   </div>

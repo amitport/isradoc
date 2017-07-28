@@ -21,6 +21,10 @@ $custom-typography: mat-typography-config(
   display: none !important;
 }
 
+.mat-icon-button.app-card-action {
+  color: rgb(121, 134, 203);
+}
+
 body {
   margin: 0;
 }

@@ -58,11 +58,25 @@
       </div>
     </div>
   </div>
-  <div fxLayout="column" style="margin-top: 16px;">
-    <div class="details-toolbar">המלצות</div>
-    <div class="details-content mat-h3">
-      <app-recommendations [recommendations]="doctor.recommendations"></app-recommendations>
+  <div fxLayout style="margin-top: 16px;">
+    <app-recommendations fxFlex [recommendations]="doctor.recommendations"></app-recommendations>
+    <div fxFlex="16px;"></div>
+    <div fxFlex fxLayout="column" >
+      <div class="details-toolbar">צור קשר</div>
+      <div class="details-content mat-h3" style="margin: 16px 8px;">
+        <form style="width: 100%;" novalidate>
+          <md-input-container style="width: 100%;">
+            <textarea mdInput placeholder="תוכן ההודעה"></textarea>
+          </md-input-container>
+          <md-input-container style="width: 100%;">
+            <input type="text" mdInput placeholder="פרטיך לחזרה">
+          </md-input-container>
 
+          <div fxLayout fxLayoutAlign="end">
+            <button md-raised-button color="warn" type="submit">שלח</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

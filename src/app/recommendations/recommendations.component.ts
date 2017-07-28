@@ -4,16 +4,26 @@ import { Recommendation } from '../store/doctor';
 @Component({
   selector: 'app-recommendations',
   template: `
-    <ng-container [ngSwitch]="recommendations?.length > 0">
-      <div *ngSwitchCase="false">
-        היה  הראשון להמליץ
+    <div class="details-toolbar">
+      המלצות
+    </div>
+    <div style="margin: 16px 8px;" fxLayout="column" class="details-content mat-h3" >
+        <ul *ngIf="recommendations?.length > 0">
+          <li *ngFor="let recommendation of recommendations">
+            {{recommendation.text}}
+          </li>
+        </ul>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <div *ngIf="recommendations?.length === 0">
+          לא נמצאו המלצות
+        </div>
+        <div fxFlex></div>
+        <button md-raised-button color="warn">
+          <md-icon>add</md-icon>
+          הוספת המלצה
+        </button>
       </div>
-      <ul *ngSwitchCase="true">
-        <li *ngFor="let recommendation of recommendations">
-          {{recommendation.text}}
-        </li>
-      </ul>
-    </ng-container>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
