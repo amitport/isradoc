@@ -18,8 +18,8 @@ import { Recommendation } from '../store/doctor';
           לא נמצאו המלצות
         </div>
         <div fxFlex></div>
-        <button md-raised-button color="warn">
-          <md-icon>add</md-icon>
+        <button mat-raised-button color="warn">
+          <mat-icon>add</mat-icon>
           הוספת המלצה
         </button>
       </div>

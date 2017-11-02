@@ -12,16 +12,16 @@
     <div fxLayout fxLayoutAlign="space-between center">
       <strong>כתובת</strong>
 
-      <a [href]="practice.location.coordinates" target="_blank" md-button color="primary">
-        <md-icon>directions</md-icon>
+      <a [href]="practice.location.coordinates" target="_blank" mat-button color="primary">
+        <mat-icon>directions</mat-icon>
         {{practice.location.textLine}}
       </a>
     </div>
     <div fxLayout fxLayoutAlign="space-between center">
       <strong>טלפון</strong>
 
-      <a href="tel:{{practice.phone}}" md-button color="primary">
-        <md-icon>phone</md-icon>
+      <a href="tel:{{practice.phone}}" mat-button color="primary">
+        <mat-icon>phone</mat-icon>
         {{practice.phone}}
       </a>
     </div>
@@ -36,8 +36,8 @@
     <div fxLayout fxLayoutAlign="space-between center">
       <strong>דוא"ל</strong>
 
-      <a href="mailto:{{practice.email}}" md-button color="primary">
-        <md-icon>email</md-icon>
+      <a href="mailto:{{practice.email}}" mat-button color="primary">
+        <mat-icon>email</mat-icon>
         {{practice.email}}
       </a>
     </div>
@@ -59,8 +59,8 @@
   <!--<div ng-if="!!doc.clinics[0].email" style="height:48px; padding-right: 14px;" layout-fill layout="row" layout-align="start center">-->
   <!--<strong>דוא"ל</strong>-->
   <!--<span flex></span>-->
-  <!--<a style="text-transform: inherit;" class="md-button md-primary md-hue-1" href="mailto:{{doc.clinics[0].email}}">-->
-  <!--<md-icon md-svg-icon="icons/email.svg"></md-icon>-->
+  <!--<a style="text-transform: inherit;" class="mat-button mat-primary mat-hue-1" href="mailto:{{doc.clinics[0].email}}">-->
+  <!--<mat-icon mat-svg-icon="icons/email.svg"></mat-icon>-->
   <!--{{doc.clinics[0].email}}-->
   <!--</a>-->
   <!--</div>-->

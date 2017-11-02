@@ -4,12 +4,12 @@
     <div>
       <div fxLayout fxLayoutAlign="start center">
         <h1 style="margin: 0 0 4px 8px;">{{doctor.listName}}</h1>
-        <a *ngIf="isListItem" md-icon-button routerLink="/doctors/{{doctor.slug}}" class="app-card-action"
+        <a *ngIf="isListItem" mat-icon-button routerLink="/doctors/{{doctor.slug}}" class="app-card-action"
            title="עבוד לדף הרופא">
-          <md-icon>launch</md-icon>
+          <mat-icon>launch</mat-icon>
         </a>
-        <button md-icon-button title="ערוך" class="app-card-action">
-          <md-icon>mode_edit</md-icon>
+        <button mat-icon-button title="ערוך" class="app-card-action">
+          <mat-icon>mode_edit</mat-icon>
         </button>
       </div>
       <!--<h1 *ngSwitchDefault>{{doctor.listName}}</h1>-->
@@ -17,9 +17,9 @@
     <h3 style="margin: 0;">{{doctor.tagline}}</h3>
   </div>
   <div fxFlex></div>
-  <a href="tel:{{doctor.primaryPhoneNumber}}" md-raised-button color="warn" style="padding: 8px 0; min-width: 200px;">
+  <a href="tel:{{doctor.primaryPhoneNumber}}" mat-raised-button color="warn" style="padding: 8px 0; min-width: 200px;">
     <div fxLayout fxLayoutAlign="start center">
-      <md-icon style="height: 48px; width: 48px; font-size: 48px;">phone</md-icon>
+      <mat-icon style="height: 48px; width: 48px; font-size: 48px;">phone</mat-icon>
       <div fxLayout="column" fxLayoutAlign="center start" style="line-height: initial; margin: 0 8px;">
         <div style="font-size: 16px;">להזמנת תור</div>
         <div dir="ltr" style="font-size: 24px; line-height: 32px;">{{doctor.primaryPhoneNumber}}</div>
@@ -29,16 +29,16 @@
   </a>
 </div>
 <div [ngSwitch]="isListItem">
-  <md-expansion-panel *ngSwitchCase="true" #expansion class="mat-elevation-z0">
-    <md-expansion-panel-header>
+  <mat-expansion-panel *ngSwitchCase="true" #expansion class="mat-elevation-z0">
+    <mat-expansion-panel-header>
       <div fxLayout fxLayoutAlign="end" fxFlex>
         <div fxFlexOffset="24px" class="expansion-label">
           {{expansion.expanded ? 'סגור' : 'הצג פרטים נוספים'}}
         </div>
       </div>
-    </md-expansion-panel-header>
+    </mat-expansion-panel-header>
     <app-doctor-details [doctor]="doctor"></app-doctor-details>
-  </md-expansion-panel>
+  </mat-expansion-panel>
   <div *ngSwitchDefault fxLayout="column" fxLayoutAlign="start center" style="padding: 16px 24px">
     <app-doctor-details [doctor]="doctor"></app-doctor-details>
   </div>

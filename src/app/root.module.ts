@@ -8,7 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorResolver } from './doctor/doctor-resolver.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MdButtonModule, MdCardModule, MdExpansionModule, MdIconModule, MdInputModule, MdToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatInputModule, MatToolbarModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorsService } from './store/doctors.service';
@@ -36,12 +36,12 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
     FormsModule,
 
     // material
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
-    MdExpansionModule,
-    MdToolbarModule,
-    MdCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatToolbarModule,
+    MatCardModule,
 
     // flex-layout
     FlexLayoutModule,

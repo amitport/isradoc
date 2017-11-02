@@ -44,16 +44,16 @@
             <app-practice-details [practice]="doctor.practices[0]"></app-practice-details>
           </div>
 
-          <md-accordion *ngSwitchDefault>
-            <md-expansion-panel *ngFor="let practice of doctor.practices; first as isFirst"
+          <mat-accordion *ngSwitchDefault>
+            <mat-expansion-panel *ngFor="let practice of doctor.practices; first as isFirst"
                                 [expanded]="isFirst">
-              <md-expansion-panel-header>
+              <mat-expansion-panel-header>
                 <mat-panel-title>{{practice.name}}</mat-panel-title>
                 <mat-panel-description>{{practice.location.city}}</mat-panel-description>
-              </md-expansion-panel-header>
+              </mat-expansion-panel-header>
               <app-practice-details [practice]="practice"></app-practice-details>
-            </md-expansion-panel>
-          </md-accordion>
+            </mat-expansion-panel>
+          </mat-accordion>
         </ng-container>
       </div>
     </div>
@@ -65,15 +65,15 @@
       <div class="details-toolbar">צור קשר</div>
       <div class="details-content mat-h3" style="margin: 16px 8px;">
         <form style="width: 100%;" novalidate>
-          <md-input-container style="width: 100%;">
-            <textarea mdInput placeholder="תוכן ההודעה"></textarea>
-          </md-input-container>
-          <md-input-container style="width: 100%;">
-            <input type="text" mdInput placeholder="פרטיך לחזרה">
-          </md-input-container>
+          <mat-input-container style="width: 100%;">
+            <textarea matInput placeholder="תוכן ההודעה"></textarea>
+          </mat-input-container>
+          <mat-input-container style="width: 100%;">
+            <input type="text" matInput placeholder="פרטיך לחזרה">
+          </mat-input-container>
 
           <div fxLayout fxLayoutAlign="end">
-            <button md-raised-button color="warn" type="submit">שלח</button>
+            <button mat-raised-button color="warn" type="submit">שלח</button>
           </div>
         </form>
       </div>

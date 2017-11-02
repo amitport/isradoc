@@ -5,14 +5,14 @@
 <form (ngSubmit)="onSubmit()"
       style="width: 400px;" fxLayout fxLayoutAlign="start center">
 
-  <md-input-container fxFlex>
+  <mat-input-container fxFlex>
     <input
       [(ngModel)]="query" name="query" type="text"
-      mdInput placeholder="חפש רופאים, התמחויות, מרפאות וכו'">
-  </md-input-container>
+      matInput placeholder="חפש רופאים, התמחויות, מרפאות וכו'">
+  </mat-input-container>
 
-  <button type="submit" md-icon-button>
-    <md-icon>search</md-icon>
+  <button type="submit" mat-icon-button>
+    <mat-icon>search</mat-icon>
   </button>
 </form>
 <div [ngSwitch]="doctors.length !== 0" *ngIf="queryDone" style="width: 100%;">
